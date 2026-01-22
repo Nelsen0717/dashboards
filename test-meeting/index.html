@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方睿科技產品週會更新 | FUNRAISE Dashboard</title>
+    <style>
+/* ================================================
+   FUNRAISE Dashboard Styles
+   Brand Colors & Typography
+   ================================================ */
+
+:root {
+    /* FUNRAISE 品牌色 */
+    --funraise-primary: #FAC800;      /* 主色黃 */
+    --funraise-gray: #969B9B;         /* 輔助灰 */
+    --funraise-dark: #333333;         /* 深灰 */
+    --funraise-gold: #ba9846;         /* 金色 */
+    --funraise-silver: #b9bcbe;       /* 銀色 */
+
+    /* 擴展色 */
+    --bg-light: #FAFAFA;
+    --bg-white: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #E5E5E5;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* 間距 */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* 圓角 */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* 陰影 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Dashboard Container */
+.dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    background-color: var(--bg-white);
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Header */
+.dashboard-header {
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 3px solid var(--funraise-primary);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.brand-mark {
+    color: var(--funraise-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.brand-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--funraise-dark);
+}
+
+.header-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--funraise-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.dashboard-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--funraise-dark);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--funraise-primary);
+    display: inline-block;
+}
+
+/* Summary Section */
+.summary-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.summary-card {
+    background: linear-gradient(135deg, var(--funraise-dark) 0%, #4a4a4a 100%);
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+}
+
+.summary-card .section-title {
+    color: var(--funraise-primary);
+    border-bottom-color: var(--funraise-primary);
+}
+
+.summary-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+/* Metrics Section */
+.metrics-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.metric-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.metric-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--funraise-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.metric-value.trend-up {
+    color: var(--success);
+}
+
+.metric-value.trend-down {
+    color: var(--danger);
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Highlights Section */
+.highlights-section {
+    margin-bottom: var(--spacing-2xl);
+    background: #FFFBEB;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--funraise-primary);
+}
+
+.highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+}
+
+.highlight-marker {
+    color: var(--funraise-primary);
+    font-size: 0.75rem;
+    margin-top: 0.4em;
+}
+
+.highlight-text {
+    font-size: 1rem;
+}
+
+/* Content Sections */
+.content-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.text-content {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.text-content p {
+    margin-bottom: var(--spacing-md);
+}
+
+.list-content {
+    list-style: none;
+    padding-left: var(--spacing-md);
+}
+
+.list-content li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.list-content li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--funraise-primary);
+    font-weight: 700;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--funraise-primary);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: var(--spacing-lg);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--spacing-xl) - 4px);
+    top: 0.5em;
+    width: 10px;
+    height: 10px;
+    background: var(--funraise-primary);
+    border-radius: 50%;
+}
+
+.timeline-time {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--funraise-gold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.timeline-content {
+    color: var(--text-primary);
+}
+
+/* Table */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background: var(--funraise-dark);
+    color: white;
+    font-weight: 700;
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg-light);
+}
+
+/* Action Items */
+.action-items-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.action-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s;
+}
+
+.action-item:hover {
+    border-color: var(--funraise-primary);
+}
+
+.action-item.done {
+    opacity: 0.6;
+}
+
+.action-item.done .action-text {
+    text-decoration: line-through;
+}
+
+.action-item.in-progress {
+    border-left: 3px solid var(--funraise-primary);
+}
+
+.action-checkbox {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--funraise-primary);
+}
+
+.action-content {
+    flex: 1;
+}
+
+.action-text {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.action-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.action-owner::before {
+    content: "👤 ";
+}
+
+.action-due::before {
+    content: "📅 ";
+}
+
+/* Footer */
+.dashboard-footer {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.footer-timestamp {
+    margin-top: var(--spacing-xs);
+    font-size: 0.75rem;
+}
+
+/* Print Styles */
+@media print {
+    .dashboard {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .metric-card:hover,
+    .action-item:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="brand">
+                    <span class="brand-mark">▲</span>
+                    <span class="brand-text">FUNRAISE</span>
+                </div>
+                <div class="header-meta">
+                    <span class="generated-at">2024-01-22T10:00:00Z</span>
+                </div>
+            </div>
+            <h1 class="dashboard-title">方睿科技產品週會更新</h1>
+            
+            <p class="dashboard-subtitle">PickPeak 回顧與下一步計畫</p>
+            
+        </header>
+
+        <!-- Summary -->
+        
+        <section class="summary-section">
+            <div class="summary-card">
+                <h2 class="section-title">摘要</h2>
+                <p class="summary-text">本次方睿科技產品週會主要回顧了 PickPeak 發表會的成功舉辦，並確定了客戶轉化追蹤、產品優化和團隊擴編為下一階段的優先事項。會議中也提到網站流量和 NPS 分數表現良好，並規劃了各項待辦事項以推進後續工作，下次會議定於 1/29 (三) 10:00。</p>
+            </div>
+        </section>
+        
+
+        <!-- Metrics -->
+        
+        <section class="metrics-section">
+            <div class="metrics-grid">
+                
+                <div class="metric-card">
+                    <span class="metric-value trend-up">
+                        150%
+                        ↑
+                    </span>
+                    <span class="metric-label">網站流量</span>
+                </div>
+                
+                <div class="metric-card">
+                    <span class="metric-value ">
+                        32
+                        
+                    </span>
+                    <span class="metric-label">Demo 申請</span>
+                </div>
+                
+                <div class="metric-card">
+                    <span class="metric-value ">
+                        72
+                        
+                    </span>
+                    <span class="metric-label">NPS 分數</span>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Highlights -->
+        
+        <section class="highlights-section">
+            <h2 class="section-title">重點摘要</h2>
+            <div class="highlights-list">
+                
+                <div class="highlight-item">
+                    <span class="highlight-marker">●</span>
+                    <span class="highlight-text">PickPeak 發表會成功舉辦，報名人數達 549 人且媒體曝光達標。</span>
+                </div>
+                
+                <div class="highlight-item">
+                    <span class="highlight-marker">●</span>
+                    <span class="highlight-text">下一階段優先事項聚焦於建立 CRM 流程、根據用戶反饋調整功能及招募 2 位前端工程師。</span>
+                </div>
+                
+                <div class="highlight-item">
+                    <span class="highlight-marker">●</span>
+                    <span class="highlight-text">網站流量較上月增加 150%，NPS 分數達到 72，顯示良好市場反應。</span>
+                </div>
+                
+                <div class="highlight-item">
+                    <span class="highlight-marker">●</span>
+                    <span class="highlight-text">Nelsen、Mike、Amanda 及開發團隊已分配待辦事項，確保後續工作有序推進。</span>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Content Sections -->
+        
+        <section class="content-section">
+            <h2 class="section-title">PickPeak 發表會回顧</h2>
+
+            
+            <ul class="list-content">
+                
+                <li>1/13 發表會成功舉辦，報名人數 549 人</li>
+                
+                <li>現場反應熱烈，收到多個潛在客戶詢問</li>
+                
+                <li>媒體曝光達標，後續需要整理 PR 報告</li>
+                
+            </ul>
+
+            
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title">下一階段優先事項</h2>
+
+            
+            <ul class="list-content">
+                
+                <li>客戶轉化追蹤：建立 CRM 流程</li>
+                
+                <li>產品優化：根據用戶反饋調整功能</li>
+                
+                <li>團隊擴編：需要招募 2 位前端工程師</li>
+                
+            </ul>
+
+            
+        </section>
+        
+
+        <!-- Action Items -->
+        
+        <section class="action-items-section">
+            <h2 class="section-title">待辦事項</h2>
+            <div class="action-items-list">
+                
+                <div class="action-item ">
+                    <div class="action-checkbox">
+                        ○
+                    </div>
+                    <div class="action-content">
+                        <span class="action-text">整理發表會資料，歸檔到 Notion</span>
+                        <div class="action-meta">
+                            <span class="action-owner">Nelsen</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-item ">
+                    <div class="action-checkbox">
+                        ○
+                    </div>
+                    <div class="action-content">
+                        <span class="action-text">準備投資人更新信</span>
+                        <div class="action-meta">
+                            <span class="action-owner">Mike</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-item ">
+                    <div class="action-checkbox">
+                        ○
+                    </div>
+                    <div class="action-content">
+                        <span class="action-text">發布工程師職缺</span>
+                        <div class="action-meta">
+                            <span class="action-owner">Amanda</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-item ">
+                    <div class="action-checkbox">
+                        ○
+                    </div>
+                    <div class="action-content">
+                        <span class="action-text">完成 v1.1 hotfix</span>
+                        <div class="action-meta">
+                            <span class="action-owner">開發團隊</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>由 FUNRAISE 儀表板精靈自動生成</p>
+            <p class="footer-timestamp">生成時間：2024-01-22T10:00:00Z</p>
+        </footer>
+    </div>
+</body>
+</html>
