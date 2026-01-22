@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNRAISE 工作專業版 v2 - 完整元件展示</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           FUNRAISE 工作專業版 v2 - 完整樣式表
+           參考: meeting-summary header 風格
+           ============================================ */
+
+        :root {
+            /* 主色調 */
+            --fr-primary: #FAC800;
+            --fr-primary-light: #fff050;
+            --fr-primary-gradient: linear-gradient(135deg, #FAC800 0%, #fff050 100%);
+
+            /* 中性色 */
+            --fr-dark: #333333;
+            --fr-gray: #969B9B;
+            --fr-light-gray: #F5F5F5;
+            --fr-white: #FFFFFF;
+
+            /* 語意色 */
+            --fr-success: #22C55E;
+            --fr-warning: #F59E0B;
+            --fr-danger: #EF4444;
+            --fr-info: #3B82F6;
+
+            /* 字級 */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+
+            /* 間距 */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--fr-light-gray);
+            color: var(--fr-dark);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           HEADER - 深灰底 + 黃色斜切幾何裝飾
+           ============================================ */
+        .fr-header {
+            background: var(--fr-dark);
+            color: var(--fr-white);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fr-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: var(--fr-primary);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .fr-header__content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fr-header__brand {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .fr-header__logo {
+            height: 32px;
+            margin-right: var(--space-3);
+        }
+
+        .fr-header__title {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            color: var(--fr-white);
+        }
+
+        .fr-header__subtitle {
+            font-size: var(--text-lg);
+            opacity: 0.9;
+            margin-bottom: var(--space-4);
+        }
+
+        .fr-header__meta {
+            display: flex;
+            gap: var(--space-6);
+            font-size: var(--text-sm);
+            opacity: 0.8;
+        }
+
+        .fr-header__meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        /* ============================================
+           MAIN CONTAINER
+           ============================================ */
+        .fr-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-6);
+        }
+
+        /* ============================================
+           CARD - 基礎卡片
+           ============================================ */
+        .fr-card {
+            background: var(--fr-white);
+            border-radius: 12px;
+            padding: var(--space-6);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: var(--space-4);
+        }
+
+        .fr-card__title {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--fr-dark);
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-2);
+            border-bottom: 2px solid var(--fr-primary);
+        }
+
+        /* ============================================
+           METRICS - 指標卡片
+           ============================================ */
+        .fr-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .fr-metric {
+            background: var(--fr-white);
+            border-radius: 12px;
+            padding: var(--space-6);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--fr-primary);
+        }
+
+        .fr-metric__label {
+            font-size: var(--text-sm);
+            color: var(--fr-gray);
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        .fr-metric__value {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .fr-metric__number {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            color: var(--fr-dark);
+        }
+
+        .fr-metric__trend--up { color: var(--fr-success); }
+        .fr-metric__trend--down { color: var(--fr-danger); }
+        .fr-metric__trend--stable { color: var(--fr-gray); }
+
+        .fr-metric__change {
+            font-size: var(--text-xs);
+            color: var(--fr-gray);
+            margin-top: var(--space-1);
+        }
+
+        /* ============================================
+           HIGHLIGHTS - 重點列表
+           ============================================ */
+        .fr-highlights {
+            list-style: none;
+        }
+
+        .fr-highlight {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-6);
+            position: relative;
+        }
+
+        .fr-highlight::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--fr-primary);
+            border-radius: 50%;
+        }
+
+        /* ============================================
+           PIE CHART - 圓餅圖（純 CSS）
+           ============================================ */
+        .fr-pie-chart {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .fr-pie {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        /* 使用 conic-gradient 製作圓餅圖 */
+        .fr-pie--example {
+            background: conic-gradient(
+                var(--fr-primary) 0deg 144deg,      /* 40% */
+                var(--fr-info) 144deg 252deg,       /* 30% */
+                var(--fr-success) 252deg 324deg,    /* 20% */
+                var(--fr-gray) 324deg 360deg        /* 10% */
+            );
+        }
+
+        .fr-pie__center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: var(--fr-white);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fr-pie__total {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--fr-dark);
+        }
+
+        .fr-pie__label {
+            font-size: var(--text-sm);
+            color: var(--fr-gray);
+        }
+
+        .fr-pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .fr-pie-legend__item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .fr-pie-legend__color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .fr-pie-legend__label {
+            font-size: var(--text-sm);
+            color: var(--fr-dark);
+        }
+
+        .fr-pie-legend__value {
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        /* ============================================
+           LINE CHART - 折線圖（純 CSS + SVG）
+           ============================================ */
+        .fr-line-chart {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background: linear-gradient(to top, var(--fr-light-gray) 0%, transparent 100%);
+            border-radius: 8px;
+            padding: var(--space-4);
+        }
+
+        .fr-line-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .fr-line-chart__line {
+            fill: none;
+            stroke: var(--fr-primary);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .fr-line-chart__area {
+            fill: url(#lineGradient);
+            opacity: 0.3;
+        }
+
+        .fr-line-chart__dot {
+            fill: var(--fr-primary);
+            stroke: var(--fr-white);
+            stroke-width: 2;
+        }
+
+        .fr-line-chart__labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-2);
+            font-size: var(--text-xs);
+            color: var(--fr-gray);
+        }
+
+        /* ============================================
+           BAR CHART - 長條圖
+           ============================================ */
+        .fr-bar-chart__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-3);
+        }
+
+        .fr-bar-chart__label {
+            width: 100px;
+            font-size: var(--text-sm);
+            flex-shrink: 0;
+        }
+
+        .fr-bar-chart__bar-wrapper {
+            flex: 1;
+            height: 28px;
+            background: var(--fr-light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 var(--space-3);
+        }
+
+        .fr-bar-chart__bar {
+            height: 100%;
+            background: var(--fr-primary-gradient);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: var(--space-2);
+            color: var(--fr-dark);
+            font-size: var(--text-sm);
+            font-weight: 600;
+        }
+
+        .fr-bar-chart__value {
+            width: 50px;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           STACKED BAR - 堆疊長條圖
+           ============================================ */
+        .fr-stacked-bar {
+            margin-bottom: var(--space-4);
+        }
+
+        .fr-stacked-bar__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+            font-size: var(--text-sm);
+        }
+
+        .fr-stacked-bar__track {
+            height: 32px;
+            background: var(--fr-light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .fr-stacked-bar__segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-xs);
+            font-weight: 600;
+            color: var(--fr-white);
+        }
+
+        /* ============================================
+           GANTT CHART - 甘特圖
+           ============================================ */
+        .fr-gantt {
+            overflow-x: auto;
+        }
+
+        .fr-gantt__header {
+            display: grid;
+            grid-template-columns: 150px repeat(12, 1fr);
+            gap: 1px;
+            background: var(--fr-dark);
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        .fr-gantt__header-cell {
+            background: var(--fr-dark);
+            color: var(--fr-white);
+            padding: var(--space-2) var(--space-3);
+            font-size: var(--text-xs);
+            text-align: center;
+        }
+
+        .fr-gantt__row {
+            display: grid;
+            grid-template-columns: 150px repeat(12, 1fr);
+            gap: 1px;
+            background: #E5E5E5;
+        }
+
+        .fr-gantt__task-name {
+            background: var(--fr-white);
+            padding: var(--space-2) var(--space-3);
+            font-size: var(--text-sm);
+        }
+
+        .fr-gantt__cell {
+            background: var(--fr-white);
+            padding: var(--space-2);
+            min-height: 40px;
+        }
+
+        .fr-gantt__bar {
+            height: 24px;
+            background: var(--fr-primary-gradient);
+            border-radius: 4px;
+        }
+
+        .fr-gantt__bar--progress {
+            background: var(--fr-success);
+        }
+
+        .fr-gantt__bar--pending {
+            background: var(--fr-gray);
+        }
+
+        /* ============================================
+           COMPARISON TABLE - 比較表格
+           ============================================ */
+        .fr-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fr-comparison-table th {
+            background: var(--fr-dark);
+            color: var(--fr-white);
+            padding: var(--space-3) var(--space-4);
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .fr-comparison-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .fr-comparison-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .fr-comparison-table td {
+            padding: var(--space-3) var(--space-4);
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        .fr-comparison-table tbody tr:nth-child(even) {
+            background: var(--fr-light-gray);
+        }
+
+        .fr-comparison-table .positive {
+            color: var(--fr-success);
+            font-weight: 600;
+        }
+
+        .fr-comparison-table .negative {
+            color: var(--fr-danger);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           PROGRESS RING - 環形進度
+           ============================================ */
+        .fr-progress-rings {
+            display: flex;
+            gap: var(--space-6);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .fr-progress-ring {
+            text-align: center;
+        }
+
+        .fr-progress-ring__svg {
+            width: 120px;
+            height: 120px;
+            transform: rotate(-90deg);
+        }
+
+        .fr-progress-ring__bg {
+            fill: none;
+            stroke: var(--fr-light-gray);
+            stroke-width: 10;
+        }
+
+        .fr-progress-ring__fill {
+            fill: none;
+            stroke: var(--fr-primary);
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 314;  /* 2 * π * 50 */
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .fr-progress-ring__text {
+            font-size: var(--text-sm);
+            color: var(--fr-gray);
+            margin-top: var(--space-2);
+        }
+
+        .fr-progress-ring__value {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--fr-dark);
+            display: block;
+        }
+
+        /* ============================================
+           ACTIONS - 待辦事項
+           ============================================ */
+        .fr-actions {
+            list-style: none;
+        }
+
+        .fr-action {
+            display: flex;
+            align-items: flex-start;
+            background: var(--fr-white);
+            border: 1px solid #E5E5E5;
+            border-radius: 8px;
+            padding: var(--space-4);
+            margin-bottom: var(--space-2);
+        }
+
+        .fr-action__checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--fr-gray);
+            border-radius: 4px;
+            margin-right: var(--space-3);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fr-action--done .fr-action__checkbox {
+            background: var(--fr-success);
+            border-color: var(--fr-success);
+            color: white;
+        }
+
+        .fr-action--done .fr-action__checkbox::after { content: '✓'; font-weight: bold; }
+        .fr-action--done .fr-action__text { text-decoration: line-through; color: var(--fr-gray); }
+
+        .fr-action--progress .fr-action__checkbox {
+            background: var(--fr-primary);
+            border-color: var(--fr-primary);
+        }
+
+        .fr-action--progress .fr-action__checkbox::after { content: '●'; font-size: 8px; }
+
+        .fr-action__content { flex: 1; }
+        .fr-action__text { font-weight: 500; margin-bottom: var(--space-1); }
+        .fr-action__meta { font-size: var(--text-sm); color: var(--fr-gray); }
+
+        /* ============================================
+           TIMELINE
+           ============================================ */
+        .fr-timeline {
+            position: relative;
+            padding-left: var(--space-8);
+        }
+
+        .fr-timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--fr-primary);
+        }
+
+        .fr-timeline__item {
+            position: relative;
+            padding-bottom: var(--space-6);
+        }
+
+        .fr-timeline__item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--fr-primary);
+            border-radius: 50%;
+            border: 3px solid var(--fr-white);
+        }
+
+        .fr-timeline__time {
+            font-size: var(--text-sm);
+            color: var(--fr-gray);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .fr-footer {
+            background: var(--fr-dark);
+            color: var(--fr-gray);
+            text-align: center;
+            padding: var(--space-6);
+            margin-top: var(--space-8);
+            font-size: var(--text-sm);
+        }
+
+        /* ============================================
+           UTILITIES
+           ============================================ */
+        .section-gap { margin-bottom: var(--space-6); }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .fr-header { padding: 25px; }
+            .fr-header::after { width: 50%; }
+            .fr-header__title { font-size: var(--text-2xl); }
+            .fr-main { padding: var(--space-4); }
+            .fr-metrics-grid { grid-template-columns: 1fr; }
+            .fr-pie-chart { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER：深灰底 + 黃色斜切 -->
+    <header class="fr-header">
+        <div class="fr-header__content">
+            <div class="fr-header__brand">
+                <img src="https://storage.googleapis.com/funraise_meetings/Dark%3Don.png" alt="FUNRAISE" class="fr-header__logo">
+            </div>
+            <h1 class="fr-header__title">方睿科技產品週會更新</h1>
+            <p class="fr-header__subtitle">PickPeak 回顧與下一步計畫</p>
+            <div class="fr-header__meta">
+                <span class="fr-header__meta-item">📅 2026-01-22</span>
+                <span class="fr-header__meta-item">👥 Nelsen, Mike, Amanda, 開發團隊</span>
+                <span class="fr-header__meta-item">⏱️ 週會更新</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="fr-main">
+        <!-- 指標區 -->
+        <div class="fr-metrics-grid section-gap">
+            <div class="fr-metric">
+                <span class="fr-metric__label">網站流量</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">+150%</span>
+                    <span class="fr-metric__trend--up">↑</span>
+                </div>
+                <span class="fr-metric__change">vs 上月</span>
+            </div>
+            <div class="fr-metric">
+                <span class="fr-metric__label">Demo 申請</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">32</span>
+                    <span class="fr-metric__trend--stable">→</span>
+                </div>
+                <span class="fr-metric__change">本週累計</span>
+            </div>
+            <div class="fr-metric">
+                <span class="fr-metric__label">NPS 分數</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">72</span>
+                    <span class="fr-metric__trend--up">↑</span>
+                </div>
+                <span class="fr-metric__change">+8 pts</span>
+            </div>
+            <div class="fr-metric">
+                <span class="fr-metric__label">轉換率</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">4.2%</span>
+                    <span class="fr-metric__trend--up">↑</span>
+                </div>
+                <span class="fr-metric__change">+0.8%</span>
+            </div>
+        </div>
+
+        <!-- 圓餅圖 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">用戶來源分佈</h3>
+            <div class="fr-pie-chart">
+                <div class="fr-pie fr-pie--example">
+                    <div class="fr-pie__center">
+                        <span class="fr-pie__total">549</span>
+                        <span class="fr-pie__label">總報名</span>
+                    </div>
+                </div>
+                <div class="fr-pie-legend">
+                    <div class="fr-pie-legend__item">
+                        <span class="fr-pie-legend__color" style="background: var(--fr-primary)"></span>
+                        <span class="fr-pie-legend__label">口碑推薦</span>
+                        <span class="fr-pie-legend__value">40%</span>
+                    </div>
+                    <div class="fr-pie-legend__item">
+                        <span class="fr-pie-legend__color" style="background: var(--fr-info)"></span>
+                        <span class="fr-pie-legend__label">官網直接</span>
+                        <span class="fr-pie-legend__value">30%</span>
+                    </div>
+                    <div class="fr-pie-legend__item">
+                        <span class="fr-pie-legend__color" style="background: var(--fr-success)"></span>
+                        <span class="fr-pie-legend__label">社群媒體</span>
+                        <span class="fr-pie-legend__value">20%</span>
+                    </div>
+                    <div class="fr-pie-legend__item">
+                        <span class="fr-pie-legend__color" style="background: var(--fr-gray)"></span>
+                        <span class="fr-pie-legend__label">其他</span>
+                        <span class="fr-pie-legend__value">10%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 折線圖 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">週流量趨勢</h3>
+            <div class="fr-line-chart">
+                <svg viewBox="0 0 400 150" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FAC800;stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:#FAC800;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Area fill -->
+                    <path class="fr-line-chart__area" d="M0,120 L57,100 L114,80 L171,90 L228,50 L285,40 L342,30 L400,20 L400,150 L0,150 Z" />
+                    <!-- Line -->
+                    <path class="fr-line-chart__line" d="M0,120 L57,100 L114,80 L171,90 L228,50 L285,40 L342,30 L400,20" />
+                    <!-- Dots -->
+                    <circle class="fr-line-chart__dot" cx="0" cy="120" r="5" />
+                    <circle class="fr-line-chart__dot" cx="57" cy="100" r="5" />
+                    <circle class="fr-line-chart__dot" cx="114" cy="80" r="5" />
+                    <circle class="fr-line-chart__dot" cx="171" cy="90" r="5" />
+                    <circle class="fr-line-chart__dot" cx="228" cy="50" r="5" />
+                    <circle class="fr-line-chart__dot" cx="285" cy="40" r="5" />
+                    <circle class="fr-line-chart__dot" cx="342" cy="30" r="5" />
+                    <circle class="fr-line-chart__dot" cx="400" cy="20" r="5" />
+                </svg>
+            </div>
+            <div class="fr-line-chart__labels">
+                <span>W1</span>
+                <span>W2</span>
+                <span>W3</span>
+                <span>W4</span>
+                <span>W5</span>
+                <span>W6</span>
+                <span>W7</span>
+                <span>W8</span>
+            </div>
+        </div>
+
+        <!-- 堆疊長條圖 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">預算使用狀況</h3>
+            <div class="fr-stacked-bar">
+                <div class="fr-stacked-bar__header">
+                    <span>Q1 預算執行</span>
+                    <span>$150,000 / $200,000</span>
+                </div>
+                <div class="fr-stacked-bar__track">
+                    <div class="fr-stacked-bar__segment" style="width: 40%; background: var(--fr-primary);">行銷</div>
+                    <div class="fr-stacked-bar__segment" style="width: 25%; background: var(--fr-info);">研發</div>
+                    <div class="fr-stacked-bar__segment" style="width: 10%; background: var(--fr-success);">人事</div>
+                    <div class="fr-stacked-bar__segment" style="width: 25%; background: var(--fr-light-gray); color: var(--fr-gray);">剩餘</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 環形進度 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">Q1 目標達成率</h3>
+            <div class="fr-progress-rings">
+                <div class="fr-progress-ring">
+                    <svg class="fr-progress-ring__svg" viewBox="0 0 120 120">
+                        <circle class="fr-progress-ring__bg" cx="60" cy="60" r="50" />
+                        <circle class="fr-progress-ring__fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 78.5;" />
+                    </svg>
+                    <div class="fr-progress-ring__text">
+                        <span class="fr-progress-ring__value">75%</span>
+                        營收目標
+                    </div>
+                </div>
+                <div class="fr-progress-ring">
+                    <svg class="fr-progress-ring__svg" viewBox="0 0 120 120">
+                        <circle class="fr-progress-ring__bg" cx="60" cy="60" r="50" />
+                        <circle class="fr-progress-ring__fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 125.6; stroke: var(--fr-info);" />
+                    </svg>
+                    <div class="fr-progress-ring__text">
+                        <span class="fr-progress-ring__value">60%</span>
+                        用戶獲取
+                    </div>
+                </div>
+                <div class="fr-progress-ring">
+                    <svg class="fr-progress-ring__svg" viewBox="0 0 120 120">
+                        <circle class="fr-progress-ring__bg" cx="60" cy="60" r="50" />
+                        <circle class="fr-progress-ring__fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 0; stroke: var(--fr-success);" />
+                    </svg>
+                    <div class="fr-progress-ring__text">
+                        <span class="fr-progress-ring__value">100%</span>
+                        產品上線
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 長條圖比較 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">部門績效對比</h3>
+            <div class="fr-bar-chart">
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">行銷團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 90%;">90%</div>
+                    </div>
+                    <span class="fr-bar-chart__value">90%</span>
+                </div>
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">產品團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 85%;">85%</div>
+                    </div>
+                    <span class="fr-bar-chart__value">85%</span>
+                </div>
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">業務團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 72%;">72%</div>
+                    </div>
+                    <span class="fr-bar-chart__value">72%</span>
+                </div>
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">客服團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 95%;">95%</div>
+                    </div>
+                    <span class="fr-bar-chart__value">95%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 甘特圖 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">專案時程（簡易甘特圖）</h3>
+            <div class="fr-gantt">
+                <div class="fr-gantt__header">
+                    <div class="fr-gantt__header-cell">任務</div>
+                    <div class="fr-gantt__header-cell">1月</div>
+                    <div class="fr-gantt__header-cell">2月</div>
+                    <div class="fr-gantt__header-cell">3月</div>
+                    <div class="fr-gantt__header-cell">4月</div>
+                    <div class="fr-gantt__header-cell">5月</div>
+                    <div class="fr-gantt__header-cell">6月</div>
+                </div>
+                <div class="fr-gantt__row">
+                    <div class="fr-gantt__task-name">產品發表會</div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar fr-gantt__bar--progress" style="width: 100%;"></div></div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"></div>
+                </div>
+                <div class="fr-gantt__row">
+                    <div class="fr-gantt__task-name">客戶轉化追蹤</div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar" style="width: 50%;"></div></div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar" style="width: 100%;"></div></div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar" style="width: 50%;"></div></div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"></div>
+                </div>
+                <div class="fr-gantt__row">
+                    <div class="fr-gantt__task-name">v2.0 開發</div>
+                    <div class="fr-gantt__cell"></div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar fr-gantt__bar--pending" style="width: 50%;"></div></div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar fr-gantt__bar--pending" style="width: 100%;"></div></div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar fr-gantt__bar--pending" style="width: 100%;"></div></div>
+                    <div class="fr-gantt__cell"><div class="fr-gantt__bar fr-gantt__bar--pending" style="width: 50%;"></div></div>
+                    <div class="fr-gantt__cell"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 比較表格 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">本月 vs 上月比較</h3>
+            <table class="fr-comparison-table">
+                <thead>
+                    <tr>
+                        <th>指標</th>
+                        <th>上月</th>
+                        <th>本月</th>
+                        <th>變化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>網站訪客</td>
+                        <td>12,500</td>
+                        <td>31,250</td>
+                        <td class="positive">+150%</td>
+                    </tr>
+                    <tr>
+                        <td>Demo 申請</td>
+                        <td>28</td>
+                        <td>32</td>
+                        <td class="positive">+14%</td>
+                    </tr>
+                    <tr>
+                        <td>客戶流失</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td class="positive">-40%</td>
+                    </tr>
+                    <tr>
+                        <td>支援工單</td>
+                        <td>45</td>
+                        <td>62</td>
+                        <td class="negative">+38%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 待辦事項 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">待辦事項</h3>
+            <ul class="fr-actions">
+                <li class="fr-action fr-action--done">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">完成 v1.1 hotfix</span>
+                        <span class="fr-action__meta">開發團隊 · 已完成</span>
+                    </div>
+                </li>
+                <li class="fr-action fr-action--progress">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">發布工程師職缺</span>
+                        <span class="fr-action__meta">Amanda · 進行中</span>
+                    </div>
+                </li>
+                <li class="fr-action">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">整理發表會資料，歸檔到 Notion</span>
+                        <span class="fr-action__meta">Nelsen · 待處理</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 時間軸 -->
+        <div class="fr-card">
+            <h3 class="fr-card__title">近期里程碑</h3>
+            <div class="fr-timeline">
+                <div class="fr-timeline__item">
+                    <span class="fr-timeline__time">2026-01-13</span>
+                    <div>PickPeak 產品發表會成功舉辦，549 人報名</div>
+                </div>
+                <div class="fr-timeline__item">
+                    <span class="fr-timeline__time">2026-01-20</span>
+                    <div>v1.1 hotfix 完成部署</div>
+                </div>
+                <div class="fr-timeline__item">
+                    <span class="fr-timeline__time">2026-02-15</span>
+                    <div>Q1 中期檢視會議</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fr-footer">
+        <p>由 FUNRAISE 儀表板精靈自動生成 · 2026-01-22</p>
+    </footer>
+</body>
+</html>
