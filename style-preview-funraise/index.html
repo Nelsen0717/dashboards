@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNRAISE 工作專業版 - 風格預覽</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           FUNRAISE 工作專業版 - 完整樣式表
+           ============================================ */
+
+        :root {
+            /* 主色調 */
+            --fr-primary: #FAC800;
+            --fr-primary-light: #fff050;
+            --fr-primary-gradient: linear-gradient(135deg, #FAC800 0%, #fff050 100%);
+
+            /* 中性色 */
+            --fr-dark: #333333;
+            --fr-gray: #969B9B;
+            --fr-light-gray: #F5F5F5;
+            --fr-white: #FFFFFF;
+
+            /* 語意色 */
+            --fr-success: #22C55E;
+            --fr-warning: #F59E0B;
+            --fr-danger: #EF4444;
+            --fr-info: #3B82F6;
+
+            /* 字級 */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+
+            /* 間距 */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--fr-light-gray);
+            color: var(--fr-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .fr-header {
+            background: var(--fr-primary-gradient);
+            color: var(--fr-dark);
+            padding: var(--space-8) var(--space-6);
+            text-align: center;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .fr-header__brand {
+            font-size: var(--text-sm);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: var(--space-2);
+        }
+
+        .fr-header__title {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+        }
+
+        .fr-header__subtitle {
+            font-size: var(--text-lg);
+            opacity: 0.9;
+        }
+
+        .fr-header__date {
+            display: block;
+            margin-top: var(--space-4);
+            font-size: var(--text-sm);
+            opacity: 0.7;
+        }
+
+        /* Main Container */
+        .fr-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-6);
+        }
+
+        /* Card */
+        .fr-card {
+            background: var(--fr-white);
+            border-radius: 12px;
+            padding: var(--space-6);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: var(--space-4);
+        }
+
+        .fr-card__title {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--fr-dark);
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-2);
+            border-bottom: 2px solid var(--fr-primary);
+        }
+
+        /* Metrics Grid */
+        .fr-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .fr-metric {
+            background: var(--fr-white);
+            border-radius: 12px;
+            padding: var(--space-6);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .fr-metric__label {
+            font-size: var(--text-sm);
+            color: var(--fr-gray);
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        .fr-metric__value {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .fr-metric__number {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            color: var(--fr-dark);
+        }
+
+        .fr-metric__trend--up { color: var(--fr-success); font-size: var(--text-xl); }
+        .fr-metric__trend--down { color: var(--fr-danger); font-size: var(--text-xl); }
+        .fr-metric__trend--stable { color: var(--fr-gray); font-size: var(--text-xl); }
+
+        .fr-metric__change {
+            font-size: var(--text-xs);
+            color: var(--fr-gray);
+            display: block;
+            margin-top: var(--space-1);
+        }
+
+        /* Highlights */
+        .fr-highlights {
+            list-style: none;
+        }
+
+        .fr-highlight {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-6);
+            position: relative;
+        }
+
+        .fr-highlight::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--fr-primary);
+            border-radius: 50%;
+        }
+
+        /* Actions */
+        .fr-actions {
+            list-style: none;
+        }
+
+        .fr-action {
+            display: flex;
+            align-items: flex-start;
+            background: var(--fr-white);
+            border: 1px solid #E5E5E5;
+            border-radius: 8px;
+            padding: var(--space-4);
+            margin-bottom: var(--space-2);
+        }
+
+        .fr-action__checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--fr-gray);
+            border-radius: 4px;
+            margin-right: var(--space-3);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fr-action--done .fr-action__checkbox {
+            background: var(--fr-success);
+            border-color: var(--fr-success);
+            color: white;
+        }
+        .fr-action--done .fr-action__checkbox::after { content: '✓'; font-weight: bold; }
+        .fr-action--done .fr-action__text { text-decoration: line-through; color: var(--fr-gray); }
+
+        .fr-action--progress .fr-action__checkbox {
+            background: var(--fr-primary);
+            border-color: var(--fr-primary);
+        }
+        .fr-action--progress .fr-action__checkbox::after { content: '●'; font-size: 8px; }
+
+        .fr-action__content { flex: 1; }
+        .fr-action__text { font-weight: 500; margin-bottom: var(--space-1); }
+        .fr-action__meta { font-size: var(--text-sm); color: var(--fr-gray); }
+
+        /* Progress Bar */
+        .fr-progress { margin-bottom: var(--space-4); }
+        .fr-progress__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+            font-size: var(--text-sm);
+        }
+        .fr-progress__track {
+            height: 8px;
+            background: #E5E5E5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .fr-progress__fill {
+            height: 100%;
+            background: var(--fr-primary-gradient);
+            border-radius: 4px;
+        }
+
+        /* Bar Chart */
+        .fr-bar-chart__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-3);
+        }
+        .fr-bar-chart__label {
+            width: 100px;
+            font-size: var(--text-sm);
+            flex-shrink: 0;
+        }
+        .fr-bar-chart__bar-wrapper {
+            flex: 1;
+            height: 24px;
+            background: #E5E5E5;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 var(--space-3);
+        }
+        .fr-bar-chart__bar {
+            height: 100%;
+            background: var(--fr-primary-gradient);
+            border-radius: 4px;
+        }
+        .fr-bar-chart__value {
+            width: 60px;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        /* Timeline */
+        .fr-timeline {
+            position: relative;
+            padding-left: var(--space-8);
+        }
+        .fr-timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--fr-primary);
+        }
+        .fr-timeline__item {
+            position: relative;
+            padding-bottom: var(--space-6);
+        }
+        .fr-timeline__item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--fr-primary);
+            border-radius: 50%;
+            border: 3px solid var(--fr-white);
+        }
+        .fr-timeline__time {
+            font-size: var(--text-sm);
+            color: var(--fr-gray);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        /* Table */
+        .fr-table-wrapper { overflow-x: auto; }
+        .fr-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .fr-table th {
+            background: var(--fr-dark);
+            color: var(--fr-white);
+            font-weight: 500;
+            padding: var(--space-3) var(--space-4);
+            text-align: left;
+        }
+        .fr-table td {
+            padding: var(--space-3) var(--space-4);
+            border-bottom: 1px solid #E5E5E5;
+        }
+        .fr-table tbody tr:nth-child(even) { background: var(--fr-light-gray); }
+
+        /* Footer */
+        .fr-footer {
+            background: var(--fr-dark);
+            color: var(--fr-gray);
+            text-align: center;
+            padding: var(--space-6);
+            margin-top: var(--space-8);
+            font-size: var(--text-sm);
+            border-radius: 24px 24px 0 0;
+        }
+
+        /* Section spacing */
+        .section-gap { margin-bottom: var(--space-6); }
+
+        /* Grid layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .fr-header { padding: var(--space-6) var(--space-4); border-radius: 0 0 16px 16px; }
+            .fr-header__title { font-size: var(--text-2xl); }
+            .fr-main { padding: var(--space-4); }
+            .fr-metrics-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="fr-header">
+        <div class="fr-header__brand">FUNRAISE</div>
+        <h1 class="fr-header__title">方睿科技產品週會更新</h1>
+        <p class="fr-header__subtitle">PickPeak 回顧與下一步計畫</p>
+        <span class="fr-header__date">2026-01-22</span>
+    </header>
+
+    <main class="fr-main">
+        <!-- 摘要 -->
+        <div class="fr-card section-gap" style="background: #FFF9E6; border-left: 4px solid var(--fr-primary);">
+            <p style="font-size: var(--text-lg);">本次會議主要回顧了 PickPeak 發表會的成功舉辦，並確定了客戶轉化追蹤、產品優化和團隊擴編為下一階段的優先事項。</p>
+        </div>
+
+        <!-- 指標區 -->
+        <div class="fr-metrics-grid section-gap">
+            <div class="fr-metric">
+                <span class="fr-metric__label">網站流量</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">+150%</span>
+                    <span class="fr-metric__trend--up">↑</span>
+                </div>
+                <span class="fr-metric__change">vs 上月</span>
+            </div>
+            <div class="fr-metric">
+                <span class="fr-metric__label">Demo 申請</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">32</span>
+                    <span class="fr-metric__trend--stable">→</span>
+                </div>
+                <span class="fr-metric__change">本週累計</span>
+            </div>
+            <div class="fr-metric">
+                <span class="fr-metric__label">NPS 分數</span>
+                <div class="fr-metric__value">
+                    <span class="fr-metric__number">72</span>
+                    <span class="fr-metric__trend--up">↑</span>
+                </div>
+                <span class="fr-metric__change">+8 pts</span>
+            </div>
+        </div>
+
+        <!-- 重點摘要 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">重點摘要</h3>
+            <ul class="fr-highlights">
+                <li class="fr-highlight">PickPeak 發表會成功舉辦，報名人數達 549 人且媒體曝光達標</li>
+                <li class="fr-highlight">下一階段優先事項聚焦於 CRM 流程、功能調整及工程師招募</li>
+                <li class="fr-highlight">網站流量較上月增加 150%，NPS 分數達 72</li>
+            </ul>
+        </div>
+
+        <!-- 兩欄內容 -->
+        <div class="grid-2 section-gap">
+            <div class="fr-card">
+                <h3 class="fr-card__title">PickPeak 發表會回顧</h3>
+                <ul class="fr-highlights">
+                    <li class="fr-highlight">1/13 發表會成功舉辦，報名人數 549 人</li>
+                    <li class="fr-highlight">現場反應熱烈，收到多個潛在客戶詢問</li>
+                    <li class="fr-highlight">媒體曝光達標，後續需要整理 PR 報告</li>
+                </ul>
+            </div>
+            <div class="fr-card">
+                <h3 class="fr-card__title">下一階段優先事項</h3>
+                <ul class="fr-highlights">
+                    <li class="fr-highlight">客戶轉化追蹤：建立 CRM 流程</li>
+                    <li class="fr-highlight">產品優化：根據用戶反饋調整功能</li>
+                    <li class="fr-highlight">團隊擴編：需要招募 2 位前端工程師</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 數據比較 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">部門績效對比</h3>
+            <div class="fr-bar-chart">
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">產品團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 85%"></div>
+                    </div>
+                    <span class="fr-bar-chart__value">85%</span>
+                </div>
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">業務團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 72%"></div>
+                    </div>
+                    <span class="fr-bar-chart__value">72%</span>
+                </div>
+                <div class="fr-bar-chart__item">
+                    <span class="fr-bar-chart__label">行銷團隊</span>
+                    <div class="fr-bar-chart__bar-wrapper">
+                        <div class="fr-bar-chart__bar" style="width: 90%"></div>
+                    </div>
+                    <span class="fr-bar-chart__value">90%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 進度追蹤 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">Q1 目標進度</h3>
+            <div class="fr-progress">
+                <div class="fr-progress__header">
+                    <span>營收目標</span>
+                    <span>75%</span>
+                </div>
+                <div class="fr-progress__track">
+                    <div class="fr-progress__fill" style="width: 75%"></div>
+                </div>
+            </div>
+            <div class="fr-progress">
+                <div class="fr-progress__header">
+                    <span>用戶獲取</span>
+                    <span>62%</span>
+                </div>
+                <div class="fr-progress__track">
+                    <div class="fr-progress__fill" style="width: 62%"></div>
+                </div>
+            </div>
+            <div class="fr-progress">
+                <div class="fr-progress__header">
+                    <span>產品上線</span>
+                    <span>100%</span>
+                </div>
+                <div class="fr-progress__track">
+                    <div class="fr-progress__fill" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 待辦事項 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">待辦事項</h3>
+            <ul class="fr-actions">
+                <li class="fr-action fr-action--done">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">完成 v1.1 hotfix</span>
+                        <span class="fr-action__meta">開發團隊 · 已完成</span>
+                    </div>
+                </li>
+                <li class="fr-action fr-action--progress">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">發布工程師職缺</span>
+                        <span class="fr-action__meta">Amanda · 進行中</span>
+                    </div>
+                </li>
+                <li class="fr-action">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">整理發表會資料，歸檔到 Notion</span>
+                        <span class="fr-action__meta">Nelsen · 待處理</span>
+                    </div>
+                </li>
+                <li class="fr-action">
+                    <span class="fr-action__checkbox"></span>
+                    <div class="fr-action__content">
+                        <span class="fr-action__text">準備投資人更新信</span>
+                        <span class="fr-action__meta">Mike · 待處理</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 時間軸 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">近期里程碑</h3>
+            <div class="fr-timeline">
+                <div class="fr-timeline__item">
+                    <span class="fr-timeline__time">2026-01-13</span>
+                    <div>PickPeak 產品發表會成功舉辦，549 人報名</div>
+                </div>
+                <div class="fr-timeline__item">
+                    <span class="fr-timeline__time">2026-01-20</span>
+                    <div>v1.1 hotfix 完成部署</div>
+                </div>
+                <div class="fr-timeline__item">
+                    <span class="fr-timeline__time">2026-01-29</span>
+                    <div>下次產品週會</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表格 -->
+        <div class="fr-card section-gap">
+            <h3 class="fr-card__title">團隊資源分配</h3>
+            <div class="fr-table-wrapper">
+                <table class="fr-table">
+                    <thead>
+                        <tr>
+                            <th>部門</th>
+                            <th>人數</th>
+                            <th>本月重點</th>
+                            <th>狀態</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RD</td>
+                            <td>8</td>
+                            <td>v1.2 功能開發</td>
+                            <td style="color: var(--fr-success);">● 正常</td>
+                        </tr>
+                        <tr>
+                            <td>PM</td>
+                            <td>3</td>
+                            <td>用戶研究與需求整理</td>
+                            <td style="color: var(--fr-success);">● 正常</td>
+                        </tr>
+                        <tr>
+                            <td>BD</td>
+                            <td>4</td>
+                            <td>客戶跟進與轉化</td>
+                            <td style="color: var(--fr-warning);">● 需關注</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fr-footer">
+        <p>由 FUNRAISE 儀表板精靈自動生成</p>
+        <p>2026-01-22 10:00</p>
+    </footer>
+</body>
+</html>
