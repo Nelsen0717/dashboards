@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelsen 個人版 - 風格預覽</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           NELSEN 個人版 - 完整樣式表
+           雜誌感、知性、個人品牌風格
+           ============================================ */
+
+        :root {
+            /* 主色調 - 沉穩深藍 */
+            --nl-primary: #1E3A5F;
+            --nl-primary-light: #2D5A8C;
+            --nl-accent: #D4A574;
+            --nl-accent-light: #E8C9A0;
+
+            /* 中性色 */
+            --nl-dark: #1A1A2E;
+            --nl-gray: #6B7280;
+            --nl-light: #F8F9FA;
+            --nl-cream: #FFFEF9;
+
+            /* 語意色 */
+            --nl-success: #059669;
+            --nl-warning: #D97706;
+            --nl-danger: #DC2626;
+
+            /* 字級 */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 2rem;
+            --text-hero: 3rem;
+
+            /* 間距 */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', system-ui, sans-serif;
+            background: var(--nl-cream);
+            color: var(--nl-dark);
+            line-height: 1.8;
+        }
+
+        /* Header - 雜誌風格 */
+        .nl-header {
+            background: var(--nl-cream);
+            padding: var(--space-12) var(--space-6);
+            text-align: center;
+            border-bottom: 3px solid var(--nl-primary);
+        }
+
+        .nl-header__brand {
+            margin-bottom: var(--space-6);
+        }
+
+        .nl-header__name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-sm);
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            color: var(--nl-primary);
+            display: block;
+        }
+
+        .nl-header__tagline {
+            font-size: var(--text-xs);
+            color: var(--nl-gray);
+            letter-spacing: 0.1em;
+        }
+
+        .nl-header__title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-hero);
+            font-weight: 700;
+            color: var(--nl-dark);
+            line-height: 1.3;
+            max-width: 800px;
+            margin: 0 auto var(--space-4);
+        }
+
+        .nl-header__meta {
+            color: var(--nl-gray);
+            font-size: var(--text-sm);
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+        }
+
+        /* Main Container */
+        .nl-main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-8) var(--space-6);
+        }
+
+        /* Lead paragraph */
+        .nl-lead {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-xl);
+            color: var(--nl-dark);
+            line-height: 2;
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-8);
+            border-bottom: 1px solid var(--nl-accent-light);
+        }
+
+        /* Quote Block */
+        .nl-quote {
+            background: var(--nl-light);
+            border-left: 4px solid var(--nl-accent);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+
+        .nl-quote__text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-xl);
+            font-style: italic;
+            color: var(--nl-dark);
+            line-height: 1.8;
+        }
+
+        .nl-quote__author {
+            display: block;
+            margin-top: var(--space-3);
+            color: var(--nl-gray);
+            font-style: normal;
+            font-size: var(--text-sm);
+        }
+
+        /* Spotlight - 數據亮點 */
+        .nl-spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-8) 0;
+        }
+
+        .nl-spotlight {
+            text-align: center;
+            padding: var(--space-8);
+            background: linear-gradient(135deg, var(--nl-primary) 0%, var(--nl-primary-light) 100%);
+            color: var(--nl-cream);
+            border-radius: 12px;
+        }
+
+        .nl-spotlight__value {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .nl-spotlight__label {
+            font-size: var(--text-lg);
+            opacity: 0.9;
+            display: block;
+            margin-top: var(--space-2);
+        }
+
+        .nl-spotlight__context {
+            font-size: var(--text-sm);
+            opacity: 0.7;
+            margin-top: var(--space-4);
+        }
+
+        /* Section Title */
+        .nl-section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--nl-dark);
+            margin: var(--space-12) 0 var(--space-6);
+            padding-bottom: var(--space-3);
+            border-bottom: 2px solid var(--nl-accent);
+        }
+
+        /* Insight Cards */
+        .nl-insights {
+            display: grid;
+            gap: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .nl-insight {
+            background: var(--nl-cream);
+            border: 1px solid var(--nl-accent-light);
+            border-radius: 8px;
+            padding: var(--space-6);
+            position: relative;
+            padding-left: calc(var(--space-6) + 48px);
+        }
+
+        .nl-insight__number {
+            position: absolute;
+            left: var(--space-4);
+            top: var(--space-4);
+            background: var(--nl-primary);
+            color: var(--nl-cream);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: var(--text-lg);
+        }
+
+        .nl-insight__title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-xl);
+            color: var(--nl-dark);
+            margin-bottom: var(--space-2);
+        }
+
+        .nl-insight__desc {
+            color: var(--nl-gray);
+            line-height: 1.8;
+        }
+
+        /* Learning Note */
+        .nl-note {
+            display: flex;
+            background: #FEF3C7;
+            border-radius: 8px;
+            padding: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .nl-note__icon {
+            font-size: 1.5rem;
+            margin-right: var(--space-3);
+            flex-shrink: 0;
+        }
+
+        .nl-note__content { flex: 1; }
+
+        .nl-note__title {
+            font-weight: 700;
+            color: var(--nl-dark);
+            margin-bottom: var(--space-1);
+        }
+
+        .nl-note__text {
+            color: var(--nl-dark);
+            font-size: var(--text-sm);
+        }
+
+        /* Conversation Box */
+        .nl-conversation {
+            margin: var(--space-6) 0;
+            background: var(--nl-light);
+            border-radius: 12px;
+            padding: var(--space-6);
+        }
+
+        .nl-message {
+            margin-bottom: var(--space-4);
+        }
+
+        .nl-message:last-child { margin-bottom: 0; }
+
+        .nl-message__speaker {
+            font-weight: 700;
+            color: var(--nl-primary);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .nl-message--answer .nl-message__speaker {
+            color: var(--nl-accent);
+        }
+
+        .nl-message__text {
+            color: var(--nl-dark);
+            line-height: 1.8;
+        }
+
+        /* Timeline - 個人版 */
+        .nl-timeline {
+            position: relative;
+            padding-left: var(--space-8);
+            margin: var(--space-6) 0;
+        }
+
+        .nl-timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--nl-accent);
+        }
+
+        .nl-timeline__item {
+            position: relative;
+            padding-bottom: var(--space-6);
+        }
+
+        .nl-timeline__item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--nl-accent);
+            border-radius: 50%;
+            border: 3px solid var(--nl-cream);
+        }
+
+        .nl-timeline__date {
+            font-size: var(--text-sm);
+            color: var(--nl-gray);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .nl-timeline__title {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            color: var(--nl-dark);
+        }
+
+        .nl-timeline__desc {
+            color: var(--nl-gray);
+            font-size: var(--text-sm);
+            margin-top: var(--space-1);
+        }
+
+        /* Prose - 一般文字段落 */
+        .nl-prose {
+            color: var(--nl-dark);
+            line-height: 2;
+            margin: var(--space-6) 0;
+        }
+
+        .nl-prose p {
+            margin-bottom: var(--space-4);
+        }
+
+        .nl-prose strong {
+            color: var(--nl-primary);
+        }
+
+        /* Footer */
+        .nl-footer {
+            background: var(--nl-dark);
+            color: var(--nl-cream);
+            padding: var(--space-8) var(--space-6);
+            text-align: center;
+            margin-top: var(--space-12);
+        }
+
+        .nl-footer__name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: var(--text-xl);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .nl-footer__role {
+            font-size: var(--text-sm);
+            color: var(--nl-accent);
+            display: block;
+        }
+
+        .nl-footer__links {
+            margin: var(--space-4) 0;
+        }
+
+        .nl-footer__links a {
+            color: var(--nl-cream);
+            text-decoration: none;
+            font-size: var(--text-sm);
+            opacity: 0.8;
+        }
+
+        .nl-footer__links a:hover { opacity: 1; }
+
+        .nl-footer__copyright {
+            font-size: var(--text-xs);
+            color: var(--nl-gray);
+            margin-top: var(--space-4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nl-header { padding: var(--space-8) var(--space-4); }
+            .nl-header__title { font-size: var(--text-2xl); }
+            .nl-main { padding: var(--space-6) var(--space-4); }
+            .nl-spotlight__value { font-size: 2.5rem; }
+            .nl-spotlight-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="nl-header">
+        <div class="nl-header__brand">
+            <span class="nl-header__name">NELSEN</span>
+            <span class="nl-header__tagline">Thoughts & Insights</span>
+        </div>
+        <h1 class="nl-header__title">從 549 人的發表會，我學到的三件事</h1>
+        <div class="nl-header__meta">
+            <span>2026-01-22</span>
+            <span>閱讀時間 5 分鐘</span>
+        </div>
+    </header>
+
+    <main class="nl-main">
+        <p class="nl-lead">
+            上週 PickPeak 產品發表會落幕，549 人報名、現場座無虛席。但數字背後，真正讓我思考的是這場發表會帶來的深層啟示。
+        </p>
+
+        <!-- 數據亮點 -->
+        <div class="nl-spotlight-grid">
+            <div class="nl-spotlight">
+                <span class="nl-spotlight__value">549</span>
+                <span class="nl-spotlight__label">報名人數</span>
+                <p class="nl-spotlight__context">超出預期 37%</p>
+            </div>
+            <div class="nl-spotlight">
+                <span class="nl-spotlight__value">150%</span>
+                <span class="nl-spotlight__label">流量成長</span>
+                <p class="nl-spotlight__context">發表會後一週</p>
+            </div>
+            <div class="nl-spotlight">
+                <span class="nl-spotlight__value">72</span>
+                <span class="nl-spotlight__label">NPS 分數</span>
+                <p class="nl-spotlight__context">業界優秀水準</p>
+            </div>
+        </div>
+
+        <h2 class="nl-section-title">三個關鍵洞察</h2>
+
+        <div class="nl-insights">
+            <div class="nl-insight">
+                <span class="nl-insight__number">1</span>
+                <h3 class="nl-insight__title">產品即內容，內容即傳播</h3>
+                <p class="nl-insight__desc">我們沒有花大錢買廣告，而是讓產品本身成為話題。當你的產品解決了真實痛點，用戶會主動幫你傳播。這次 70% 的報名來自口碑推薦。</p>
+            </div>
+            <div class="nl-insight">
+                <span class="nl-insight__number">2</span>
+                <h3 class="nl-insight__title">細節決定體驗，體驗決定記憶</h3>
+                <p class="nl-insight__desc">從入場動線、座位安排到茶歇設計，每個細節都是品牌的延伸。有參與者特別提到我們的名牌設計很用心——這種小細節會被記住。</p>
+            </div>
+            <div class="nl-insight">
+                <span class="nl-insight__number">3</span>
+                <h3 class="nl-insight__title">數據是起點，不是終點</h3>
+                <p class="nl-insight__desc">549 人報名很棒，但更重要的是這 549 人之後會做什麼。建立完整的轉化追蹤機制，才能讓一場活動產生持續的商業價值。</p>
+            </div>
+        </div>
+
+        <blockquote class="nl-quote">
+            <p class="nl-quote__text">「創業最難的不是找到機會，而是在機會出現時，你有沒有準備好去承接它。」</p>
+            <cite class="nl-quote__author">— 會後與 Bruce 的對話</cite>
+        </blockquote>
+
+        <h2 class="nl-section-title">接下來的行動</h2>
+
+        <div class="nl-note">
+            <span class="nl-note__icon">💡</span>
+            <div class="nl-note__content">
+                <h4 class="nl-note__title">本週優先事項</h4>
+                <p class="nl-note__text">建立 CRM 流程，確保每一個潛在客戶都能得到適當的跟進。同時整理發表會的完整資料，為團隊留下可複用的 SOP。</p>
+            </div>
+        </div>
+
+        <div class="nl-prose">
+            <p>
+                發表會結束後，我花了一整天整理思緒。<strong>成功的活動不是終點，而是下一階段的起點</strong>。
+            </p>
+            <p>
+                接下來三個月，團隊的重點會放在客戶轉化和產品優化。我們需要證明的是：好的開始能夠轉化為持續的成長動能。
+            </p>
+        </div>
+
+        <h2 class="nl-section-title">近期時間軸</h2>
+
+        <div class="nl-timeline">
+            <div class="nl-timeline__item">
+                <span class="nl-timeline__date">2026-01-13</span>
+                <div class="nl-timeline__title">PickPeak 產品發表會</div>
+                <div class="nl-timeline__desc">549 人報名，現場反應熱烈</div>
+            </div>
+            <div class="nl-timeline__item">
+                <span class="nl-timeline__date">2026-01-20</span>
+                <div class="nl-timeline__title">團隊回顧會議</div>
+                <div class="nl-timeline__desc">整理經驗學習，制定下一步計畫</div>
+            </div>
+            <div class="nl-timeline__item">
+                <span class="nl-timeline__date">2026-02-15</span>
+                <div class="nl-timeline__title">Q1 中期檢視</div>
+                <div class="nl-timeline__desc">評估轉化成效，調整策略方向</div>
+            </div>
+        </div>
+
+        <h2 class="nl-section-title">對話摘錄</h2>
+
+        <div class="nl-conversation">
+            <div class="nl-message nl-message--question">
+                <span class="nl-message__speaker">MBA 同學問：</span>
+                <p class="nl-message__text">發表會籌備最困難的是什麼？</p>
+            </div>
+            <div class="nl-message nl-message--answer">
+                <span class="nl-message__speaker">我的回答：</span>
+                <p class="nl-message__text">最難的不是執行，而是取捨。我們砍掉了很多「看起來很酷但不必要」的環節，把資源集中在真正重要的事情上。Less is more 這句話，在辦活動時特別真實。</p>
+            </div>
+        </div>
+
+        <div class="nl-prose">
+            <p>
+                這篇文章算是給自己的一個記錄，也希望對正在籌備類似活動的朋友有些參考價值。如果你有任何問題，歡迎在 LinkedIn 上找我聊聊。
+            </p>
+        </div>
+    </main>
+
+    <footer class="nl-footer">
+        <span class="nl-footer__name">Nelsen Chen</span>
+        <span class="nl-footer__role">COO @ FUNRAISE | NTU EiMBA '25</span>
+        <div class="nl-footer__links">
+            <a href="https://linkedin.com/in/nelsenchen">LinkedIn</a>
+        </div>
+        <p class="nl-footer__copyright">© 2026 Nelsen Chen. All rights reserved.</p>
+    </footer>
+</body>
+</html>
