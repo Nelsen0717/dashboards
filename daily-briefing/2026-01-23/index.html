@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>方睿科技 (FUNRAISE) 每日執行簡報 - 2026-01-23</title>
+    <title>FUNRAISE 每日執行簡報 - 2026-01-23</title>
     <style>
         :root {
-            --primary-color: #1A365D; /* 深藍 */
-            --accent-color: #D69E2E; /* 金色 */
-            --success-color: #38A169; /* 綠色 */
-            --warning-color: #DD6B20; /* 橙色 */
-            --danger-color: #E53E3E; /* 紅色 */
-            --background-color: #F7FAFC; /* 淺灰 */
-            --card-background-color: #FFFFFF;
-            --text-color: #333;
-            --light-grey: #e2e8f0;
+            --primary-color: #1A365D;
+            --accent-color: #D69E2E;
+            --success-color: #38A169;
+            --warning-color: #DD6B20;
+            --danger-color: #E53E3E;
+            --background-color: #F7FAFC;
+            --card-background: #FFFFFF;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.2s ease-in-out;
         }
 
         body {
@@ -22,6 +24,567 @@
             margin: 0;
             padding: 20px;
             background-color: var(--background-color);
-            color: var(--text-color);
+            color: #333;
             line-height: 1.6;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .metric-card-title {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .metric-card-value {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 等寬字體 */
+        }
+
+        /* Executive Summary */
+        .executive-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .insight-card {
+            background-color: #F0F3F6; /* 淡色背景 */
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border-left: 5px solid; /* Colored border will be set dynamically */
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .insight-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .insight-card .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .insight-card h4 {
+            display: inline-block;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .insight-card .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .tag.high { background-color: var(--danger-color); color: white; }
+        .tag.medium { background-color: var(--warning-color); color: white; }
+        .tag.low { background-color: var(--success-color); color: white; }
+
+        /* Market Intelligence Tabs/Accordion */
+        .accordion-section {
+            margin-bottom: 20px;
+        }
+
+        .accordion-section summary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 10px;
+            list-style: none; /* Remove default marker */
+            position: relative;
+        }
+
+        .accordion-section summary::marker {
+            display: none;
+        }
+
+        .accordion-section summary::after {
+            content: '▼'; /* Down arrow */
+            position: absolute;
+            right: 20px;
+            transition: transform 0.2s;
+        }
+
+        .accordion-section details[open] summary::after {
+            content: '▲'; /* Up arrow */
+        }
+
+        .accordion-content {
+            padding: 15px 0;
+        }
+
+        /* Competitor Cards */
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .competitor-card {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .competitor-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .competitor-card .logo-placeholder {
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
+        .competitor-card .impact-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 600;
+            margin-top: 10px;
+            background-color: #e0e7ff; /* Light blue */
+            color: var(--primary-color);
+        }
+
+        /* News Cards */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background-color: var(--card-background);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+        .news-card h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            line-height: 1.4;
+        }
+        .news-card p {
+            font-size: 0.9em;
+            color: #555;
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+        .news-meta {
+            font-size: 0.8em;
+            color: #777;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .news-meta .source {
+            font-weight: 600;
+        }
+        .news-meta .category-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            background-color: #e6fffa; /* Light green */
+            color: #2c5282; /* Darker blue */
+        }
+        .news-meta .category-tag.ai { background-color: #e0e7ff; color: #2c5282; }
+        .news-meta .category-tag.proptech { background-color: #fff3e0; color: #9B5F00; }
+        .news-meta .category-tag.taiwan { background-color: #ffe0e0; color: #8A0000; }
+        .news-meta .category-tag.other { background-color: #f0f0f0; color: #555; }
+
+
+        /* Internal Updates */
+        .internal-updates-group {
+            background-color: #fdfdfe;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+        }
+
+        .internal-updates-group summary {
+            background-color: #edf2f7;
+            padding: 12px 20px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-color);
+            list-style: none;
+            position: relative;
+        }
+        .internal-updates-group summary::marker { display: none; }
+        .internal-updates-group summary::after {
+            content: '▼';
+            position: absolute;
+            right: 20px;
+            transition: transform 0.2s;
+            color: #666;
+        }
+        .internal-updates-group details[open] summary::after {
+            content: '▲';
+        }
+
+        .update-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-left: 10px;
+        }
+
+        .internal-update-list {
+            padding: 10px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .internal-update-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .internal-update-item:last-child {
+            border-bottom: none;
+        }
+
+        .internal-update-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 400;
+            flex-grow: 1;
+        }
+        .internal-update-item a:hover {
+            text-decoration: underline;
+        }
+        .internal-update-item .meta {
+            font-size: 0.8em;
+            color: #777;
+            margin-left: 15px;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        /* Action List */
+        .action-item {
+            background-color: var(--card-background);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .action-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .action-item input[type="checkbox"] {
+            margin-right: 15px;
+            margin-top: 5px;
+            transform: scale(1.3);
+        }
+
+        .action-details {
+            flex-grow: 1;
+        }
+
+        .action-details strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .action-details p {
+            font-size: 0.9em;
+            color: #555;
+            margin: 0;
+            margin-bottom: 8px;
+        }
+
+        .action-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8em;
+        }
+
+        .action-meta .priority-tag {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .priority-tag.high { background-color: var(--danger-color); color: white; }
+        .priority-tag.medium { background-color: var(--warning-color); color: white; }
+        .priority-tag.low { background-color: var(--success-color); color: white; }
+
+        .action-meta .time-estimate {
+            background-color: #e0f2f7;
+            color: #2c5282;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 0.85em;
+            color: #777;
+        }
+
+        .footer strong {
+            color: var(--primary-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .dashboard, .executive-summary-grid, .competitor-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .metric-card {
+                border-left: none;
+                border-bottom: 5px solid var(--accent-color);
+            }
+            .insight-card {
+                border-left: none;
+                border-top: 5px solid;
+            }
+            .action-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .action-item input[type="checkbox"] {
+                margin-bottom: 10px;
+            }
+            .action-meta {
+                margin-top: 10px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. 頂部儀表板區 -->
+        <header>
+            <h1>每日執行簡報</h1>
+            <p style="color: #666; font-size: 1.1em;">
+                👋 午安, Nelsen! 這是您 <strong>2026年01月23日 星期五</strong> 的執行摘要。
+            </p>
+        </header>
+
+        <div class="dashboard">
+            <div class="metric-card">
+                <div class="metric-card-title">📰 今日新聞數量</div>
+                <div class="metric-card-value">6</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-title">🏢 競品動態數量</div>
+                <div class="metric-card-value">1</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-title">📝 內部更新數量</div>
+                <div class="metric-card-value">20</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-title">⚡ 需關注事項數量</div>
+                <div class="metric-card-value">4</div>
+            </div>
+        </div>
+
+        <!-- 2. 🎯 執行摘要 -->
+        <h2>🎯 執行摘要</h2>
+        <div class="executive-summary-grid">
+            <div class="insight-card" style="border-left-color: var(--danger-color);">
+                <span class="icon">🏢</span>
+                <h4>CoStar 策略調整：Homes.com AI 為核心</h4>
+                <p>CoStar 延後 Homes.com 營收目標，但加速 AI 產品推出，並啟動 15 億美元股票回購，顯示其在住宅市場策略調整，並將 AI 視為核心成長驅動力。</p>
+                <span class="tag high">🔴 高</span>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--danger-color);">
+                <span class="icon">🤝</span>
+                <h4>內部聚焦生態系商業模式與價值主張</h4>
+                <p>多項內部更新圍繞 PickPeak 平台數據、生態系合作模式、收費機制及流量保證等議題，反映當前正積極與潛在夥伴溝通，需快速確立並溝通清晰的商業模式與價值主張。</p>
+                <span class="tag high">🔴 高</span>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--warning-color);">
+                <span class="icon">🌍</span>
+                <h4>全球 EOR 市場高速成長，潛在影響 CRE</h4>
+                <p>全球 EOR 市場預計在 2035 年達到 158.9 億美元，年均複合成長率達 9.24%。此趨勢雖非 PropTech 主流，但可能間接影響企業對彈性辦公空間的需求及國際人才流動，值得持續關注。</p>
+                <span class="tag medium">🟡 中</span>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--warning-color);">
+                <span class="icon">🤖</span>
+                <h4>AI 競爭白熱化，實質落地是關鍵</h4>
+                <p>微軟 CEO Satya Nadella 強調 AI 領域激烈競爭是好事，但同時也有評論指出其言論缺乏實質承諾。這凸顯了在 AI 浪潮中，具體產品與服務的落地能力是企業成功的關鍵。</p>
+                <span class="tag medium">🟡 中</span>
+            </div>
+        </div>
+
+        <!-- 3. 📊 市場情報 -->
+        <h2>📊 市場情報</h2>
+
+        <div class="accordion-section">
+            <details open>
+                <summary>🏢 競品追蹤</summary>
+                <div class="accordion-content">
+                    <div class="competitor-grid">
+                        <div class="competitor-card">
+                            <h4><span class="logo-placeholder">CS</span> CoStar Group</h4>
+                            <p><strong>動態摘要:</strong> CoStar 公布 2026 年營收指引 3.78-3.82 億美元，純利 1.75-2.15 億美元，並啟動 15 億美元自股買回計劃。Homes.com 的營收目標延至 2030 年，並縮減投資，但預計 35-40 天內推出 AI 產品以提升住宅市場份額。分析師評級分歧，下次財報預計 2/23 公布。</p>
+                            <a href="https://www.costargroup.com/" target="_blank">了解更多 »</a>
+                            <div class="impact-tag">對 FUNRAISE 啟示: 加速 AI 產品開發，關注住宅市場 AI 應用，提升數據準確性以應對競爭。</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="accordion-section">
+            <details open>
+                <summary>📰 產業新聞</summary>
+                <div class="accordion-content">
+                    <div class="news-grid">
+                        <div class="news-card">
+                            <h5>A new Guinness World Record shows how Ukraine's anti-Shahed interceptor drones have room to fly even faster</h5>
+                            <p>Ukrainian interceptors on the market can typically fly at speeds of up to 200 mph, but they'll need to be faster to catch Russia's newer Gerans.</p>
+                            <div class="news-meta">
+                                <span class="source">Business Insider</span>
+                                <span class="category-tag other">其他</span>
+                                <span>2026-01-22</span>
+                            </div>
+                            <a href="https://www.businessinsider.com/drone-warfare-interceptor-guinness-world-record-bells-fastest-quadcopter-ukraine-2026-1" target="_blank">閱讀原文</a>
+                        </div>
+                        <div class="news-card">
+                            <h5>Canon Ranked Top 10 for 42 Straight Years in US Patent Rankings</h5>
+                            <p>Canon spends a lot of money on R&D across their multiple divisions, from imaging, manufacturing, security and lithrography and more. Canon is also active in protecting their intellectual properties.</p>
+                            <div class="news-meta">
+                                <span class="source">Canonrumors.com</span>
+                                <span class="category-tag other">其他</span>
+                                <span>2026-01-22</span>
+                            </div>
+                            <a href="https://www.canonrumors.com/canon-ranked-top-10-for-42-straight-years-in-us-patent-rankings/" target="_blank">閱讀原文</a>
+                        </div>
+                        <div class="news-card">
+                            <h5>Why Satya Nadella said he's psyched about more competition</h5>
+                            <p>The Microsoft CEO said current competition is intense, but that's not a bad thing for innovation in the AI space.</p>
+                            <div class="news-meta">
+                                <span class="source">Business Insider</span>
+                                <span class="category-tag ai">AI</span>
+                                <span>2026-01-22</span>
+                            </div>
+                            <a href="https://www.businessinsider.com/satya-nadella-comments-competition-ai-zero-sum-game-2026-1" target="_blank">閱讀原文</a>
+                        </div>
+                        <div class="news-card">
+                            <h5>Deloitte is overhauling job titles for its US workforce — here's why</h5>
+                            <p>The Big Four firm is giving its US employees a new job title, according to an internal presentation seen by Business Insider, aiming for greater clarity and standardization.</p>
+                            <div class="news-meta">
+                                <span class="source">Business Insider</span>
+                                <span class="category-tag other">其他</span>
+                                <span>2026-01-22</span>
+                            </div>
+                            <a href="https://www.businessinsider.com/deloitte-gives-us-employees-new-job-titles-leader-role-2026-1" target="_blank">閱讀原文</a>
+                        </div>
+                        <div class="news-card">
+                            <h5>Satya Nadella: a masterclass in saying everything while promising nothing</h5>
+                            <p>A fact-check of Microsoft’s CEO reveals the gap between boardroom polish and operational reality, urging for more concrete actions in AI development.</p>
+                            <div class="news-meta">
+                                <span class="source">Medium</span>
+                                <span class="category-tag ai">AI</span>
+                                <span>2026-01-22</span>
+                            </div>
+                            <a href="https://jpcaparas.medium.com/satya-nadella-at-davos-a-masterclass-in-saying-everything-while-promising-nothing-8495c75c5ba3" target="_blank">閱讀原文</a>
+                        </div>
+                        <div class="news-card">
+                            <h5>[Latest] Global Employer of Record EOR Market Size/Share Worth USD 15.89 Billion by 2035 at a 9.24% CAGR: Custom Market Insights</h5>
+                            <p>The demand analysis of Global Employer of Record EOR Market size & share revenue was valued at approximately USD 6.82 Billion in 2025 and is expected to reach USD 15.89 Billion by 2035.</p>
+                            <div class="news-meta">
+                                <span class="source">GlobeNewswire</span>
+                                <span class="category-tag other">其他</span>
+                                <span>2026-01-22</span>
+                            </div>
+                            <a href="https://www.globenewswire.com/news-release/2026/01/22/3223371/0/en/Latest-Global-Employer-of-Record-EOR-Market-Size-Share-Worth-USD-15-89-Billion-by-2035-at-a-9-24-CAGR-Custom-Market-Insights-Analysis-Outlook-Leaders-Report-Trends-Forecast-Segment.html"
