@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelsen COO 日常儀表板</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333333; /* 深灰 */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2563EB; /* 藍色 */
+            margin-bottom: 20px;
+        }
+
+        .dashboard-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #7C3AED; /* 紫色 */
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .highlight {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 3px solid #2563EB; /* 藍色 */
+            margin-bottom: 10px;
+        }
+
+        .highlight p {
+            margin: 0;
+        }
+
+        .highlight a {
+            color: #2563EB; /* 藍色 */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .highlight a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f2f5;
+            color: #777;
+            font-size: 0.8em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nelsen COO 日常儀表板</h1>
+
+        <div class="dashboard-section">
+            <h2 class="section-title">重要關注事項</h2>
+
+            <div class="highlight">
+                <p><strong>項目：</strong> 行銷活動數據分析報告延遲交付。</p>
+                <p><strong>來源：</strong> 行銷團隊會議記錄。</p>
+                <p><a href="#">查看會議記錄</a></p>
+            </div>
+
+            <div class="highlight">
+                <p><strong>議題：</strong> 客戶反饋系統更新後出現數據同步問題。</p>
+                <p><strong>來源：</strong> 客戶服務團隊文檔。</p>
+                <p><a href="#">查看相關文檔</a></p>
+            </div>
+
+            <div class="highlight">
+                <p><strong>風險：</strong> 供應商合約即將到期，尚未續簽。</p>
+                <p><strong>來源：</strong> 法務部門文檔。</p>
+                <p><a href="#">查看合約細節</a></p>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h2 class="section-title">近期會議摘要</h2>
+
+            <div class="highlight">
+                <p><strong>會議：</strong> 產品開發會議 - 新功能發布討論。</p>
+                <p><strong>摘要：</strong> 確認發布日期，分配任務，評估風險。</p>
+                <p><a href="#">查看會議紀要</a></p>
+            </div>
+
+            <div class="highlight">
+                <p><strong>會議：</strong> 銷售團隊會議 - Q3 業績回顧。</p>
+                <p><strong>摘要：</strong> 業績達標，討論優化策略，制定 Q4 目標。</p>
+                <p><a href="#">查看銷售報告</a></p>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h2 class="section-title">待處理事項</h2>
+
+            <div class="highlight">
+                <p>審核並批准下個月的預算。</p>
+                <p><a href="#">查看預算文件</a></p>
+            </div>
+
+            <div class="highlight">
+                <p>與供應商進行電話會議，討論合約續簽事宜。</p>
+                <p><a href="#">安排會議</a></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2023 Nelsen's Dashboard. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
+```
+**說明:**
+
+*   **HTML 結構:** 使用標準 HTML 結構，包含 `<head>` 和 `<body>`。
+*   **CSS 樣式:**  使用 `<style>` 標籤內嵌 CSS，方便複製和部署。  樣式採用 Nelsen 的風格，使用藍色 (`#2563EB`) 和紫色 (`#7C3AED`) 作為主要顏色，深灰色 (`#333333`) 作為文本顏色。  使用簡潔的排版和視覺效果，例如圓角、陰影和底邊框，以提升專業感。
+*   **響應式設計:** 使用 `viewport` meta 標籤確保在不同設備上的良好顯示效果。 使用百分比寬度，讓內容適應不同的螢幕大小。
+*   **繁體中文:**  所有文本均使用繁體中文。
+*   **內容結構:**
+    *   **標題:**  使用 `<h1>` 標籤顯示儀表板標題。
+    *   **區塊 (Dashboard Sections):**  使用 `<div>` 標籤組織內容，每個區塊包含一個 `<h2>` 標題和一些 `<div>` 包裹的 "highlight"  項目。
+    *   **Highlight 項目:**  每個 highlight 項目包含簡要描述、來源，以及一個指向原始 Notion 文檔或會議記錄的連結。
+    *   **頁腳:**  包含版權信息。
+*   **專業與簡潔:**  設計力求專業且簡潔，避免過多的裝飾。使用清晰的排版和視覺層次，讓重要信息一目了然。
+*   **視覺衝擊力:**  通過顏色、字體和排版，創造一定的視覺衝擊力，吸引使用者的注意。
+*   **可定制性:**  CSS 樣式易於修改，可以根據實際需求調整顏色、字體和佈局。
+*   **連結:**  連結使用佔位符 (`#`)，實際應用中需要替換為 Notion 中文檔或會議記錄的 URL。
+
+**使用方法:**
+
+1.  將程式碼複製到 HTML 檔案中 (例如 `dashboard.html`)。
+2.  使用瀏覽器開啟該檔案。
+3.  修改 `highlight` 項目中的文本和連結，使其與你的 Notion workspace 中的內容對應。
+4.  可以進一步修改 CSS 樣式，使其更符合你的個人偏好和品牌形象。
+5.  定期更新儀表板中的數據，以確保其準確性和時效性。
+6. 若要部署到線上，需要將此 HTML 檔案放置於 Web Server 中。
+
+這個範例提供了一個基本的儀表板結構，你可以根據自己的需求進行擴展和定制。 例如，可以添加圖表、進度條、或其他視覺化元素，以更有效地呈現數據。
