@@ -1,179 +1,232 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUNRAISE AI 每日簡報 - COO Nelsen</title>
+    <title>FUNRAISE 每日簡報 - 2026年1月23日</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
+        :root {
+            --primary-color: #1A365D; /* 深藍 */
+            --accent-color: #D69E2E; /* 金色 */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --bg-color: #ffffff;
+            --light-grey: #f0f2f5;
+            --border-color: #e0e0e0;
         }
+
+        body {
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light-grey);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         .container {
             max-width: 900px;
-            margin: 20px auto;
-            background-color: #ffffff;
+            margin: 0 auto;
+            background-color: var(--bg-color);
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             padding: 30px;
+            box-sizing: border-box;
         }
+
         header {
-            background-color: #1A365D; /* 深藍 */
-            color: #ffffff;
-            padding: 20px 30px;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
             text-align: center;
-            margin: -30px -30px 30px -30px; /* Adjust to cover container edges */
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 30px;
         }
+
         header h1 {
-            margin: 0;
-            font-size: 2.2em;
-            color: #D69E2E; /* 金色 */
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            font-weight: 700;
         }
+
+        header h2 {
+            color: var(--accent-color);
+            font-size: 1.5em;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+
         header p {
-            margin: 5px 0 0;
             font-size: 0.9em;
-            opacity: 0.8;
+            color: #666;
+            margin-top: 15px;
         }
-        h2 {
-            color: #1A365D; /* 深藍 */
-            border-bottom: 2px solid #D69E2E; /* 金色 */
-            padding-bottom: 10px;
-            margin-top: 30px;
-            font-size: 1.8em;
+
+        section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
         }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
         h3 {
-            color: #1A365D;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+            font-weight: 700;
+        }
+
+        h4 {
+            color: var(--primary-color);
             font-size: 1.3em;
             margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
-        h4 {
-            color: #1A365D;
-            font-size: 1.1em;
-            margin-top: 20px;
-        }
+
         ul {
             list-style-type: disc;
             margin-left: 20px;
             padding-left: 0;
         }
+
         ol {
             list-style-type: decimal;
             margin-left: 20px;
             padding-left: 0;
         }
+
         li {
             margin-bottom: 8px;
         }
+
         a {
-            color: #D69E2E; /* 金色 */
+            color: var(--primary-color);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
+
         a:hover {
+            color: var(--accent-color);
             text-decoration: underline;
         }
-        .executive-summary ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 0;
+
+        .summary-list li {
+            font-weight: 500;
+            color: var(--primary-color);
         }
-        .executive-summary li:before {
-            content: '✓';
-            color: #D69E2E;
-            margin-right: 10px;
-            font-weight: bold;
+
+        .summary-list li strong {
+            color: var(--accent-color);
         }
+
         details {
-            background-color: #f9f9f9;
-            border: 1px solid #eee;
+            background-color: var(--light-grey);
+            border: 1px solid var(--border-color);
             border-radius: 5px;
             margin-bottom: 15px;
         }
+
         summary {
-            font-weight: bold;
-            padding: 15px;
+            font-weight: 700;
             cursor: pointer;
+            padding: 15px 20px;
             outline: none;
-            color: #1A365D;
-            background-color: #e6f0f9; /* Lighter blue for summary background */
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            color: var(--primary-color);
+            font-size: 1.1em;
+            display: block;
+            position: relative;
+            user-select: none;
         }
-        summary:hover {
-            background-color: #dbe8f5;
+
+        summary::before {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
         }
-        details[open] summary {
-            border-bottom: 1px solid #eee;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+
+        details[open] summary::before {
+            content: '-';
+            transform: rotate(0deg);
         }
-        .details-content {
-            padding: 15px;
+
+        details > div {
+            padding: 10px 20px 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
-        .news-item, .internal-item {
+
+        .news-item {
             margin-bottom: 15px;
             padding-bottom: 15px;
-            border-bottom: 1px dashed #eee;
+            border-bottom: 1px dashed var(--border-color);
         }
-        .news-item:last-child, .internal-item:last-child {
+
+        .news-item:last-child {
             border-bottom: none;
-            margin-bottom: 0;
             padding-bottom: 0;
         }
-        .news-item p {
-            margin: 5px 0;
-            font-size: 0.95em;
+
+        .news-item strong {
+            color: var(--primary-color);
         }
+
         .news-item .source {
             font-size: 0.85em;
-            color: #666;
+            color: #777;
+            margin-left: 10px;
         }
-        .action-item {
-            background-color: #e6f0f9;
-            border-left: 5px solid #D69E2E;
-            padding: 15px;
+
+        .internal-update-item {
             margin-bottom: 10px;
-            border-radius: 4px;
         }
+
+        .internal-update-item a {
+            font-weight: 500;
+            word-break: break-word;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #999;
+            border-top: 1px solid var(--border-color);
             font-size: 0.85em;
+            color: #888;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
-                margin: 10px;
                 padding: 20px;
             }
-            header {
-                padding: 15px 20px;
-                margin: -20px -20px 20px -20px;
-            }
             header h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
-            h2 {
-                font-size: 1.5em;
-                margin-top: 20px;
-            }
-            h3 {
+            header h2 {
                 font-size: 1.2em;
             }
-            summary {
-                padding: 12px;
+            h3 {
+                font-size: 1.5em;
             }
-            .details-content {
-                padding: 12px;
+            summary {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+            summary::before {
+                right: 15px;
             }
         }
     </style>
@@ -181,184 +234,149 @@
 <body>
     <div class="container">
         <header>
-            <h1>FUNRAISE AI 每日簡報</h1>
-            <p>致 COO Nelsen</p>
-            <p>生成時間: 2026-01-23 08:00 AM (GMT+8)</p>
+            <!-- FUNRAISE Logo Placeholder -->
+            <!-- <img src="path/to/funraise-logo.png" alt="FUNRAISE Logo" style="height: 50px; margin-bottom: 15px;"> -->
+            <h1>FUNRAISE 每日簡報</h1>
+            <h2>For COO Nelsen</h2>
+            <p><strong>日期：2026年1月23日</strong> | 生成時間：2026年1月23日 08:00 AM (GMT+8)</p>
         </header>
 
-        <section class="executive-summary">
-            <h2>執行摘要</h2>
-            <ul>
-                <li>CoStar Group 正積極推動其 AI 產品 (Homes.com AI)，預計 35-40 天內上市，並獲分析師高度肯定，預示 PropTech 領域 AI 競爭加劇。</li>
-                <li>公司內部大量更新集中於「生態系商業模式規劃」及「Pick Pro 與生態系合作」，顯示此為當前核心戰略重點。</li>
-                <li>科技巨頭（如 Apple）持續發布 AI 穿戴裝置和觸控螢幕筆電消息，反映 AI 整合及使用者體驗優化是跨產業的共同趨勢，值得 PropTech 借鑒。</li>
-                <li>CoStar News 網站監測到 404 錯誤，可能影響其最新動態的直接獲取，需留意其資訊發布渠道。</li>
+        <section>
+            <h3>執行摘要 (Executive Summary)</h3>
+            <p>以下是今日最關鍵的洞察，約 30 秒可快速瀏覽：</p>
+            <ul class="summary-list">
+                <li><strong>競品動態：</strong>CoStar Group 預計在 35-40 天內推出 Homes.com 的 AI 產品，並發布強勁的 2026 年財測，同時宣布 15 億美元的自股買回計劃，顯示其在住宅市場的積極佈局與信心。</li>
+                <li><strong>內部策略：</strong>公司內部圍繞「Pick Pro」及「生態系合作」展開密集討論，涵蓋商業模式、合作夥伴收費、數據價值共享及流量引導等核心議題，顯示團隊正積極探索新商業模式。</li>
+                <li><strong>USPACE 合作：</strong>USPACE 與 Forest 的合作討論持續推進，重點在於資料共享與業務開發策略，此為重要的外部合作機會。</li>
+                <li><strong>市場觀察：</strong>今日新聞動態中，缺乏直接與 PropTech 相關的重大國際趨勢報導，多為通用科技與商業新聞。</li>
             </ul>
         </section>
 
-        <details>
-            <summary><h2>市場動態</h2></summary>
-            <div class="details-content">
-                <h3>PropTech 國際趨勢</h3>
-                <ul>
-                    <li>
-                        <strong>AI 整合成為主流：</strong>
-                        <ul>
-                            <li>Apple 據報正開發具備麥克風、攝影機的 AI 穿戴裝置，以及觸控螢幕 M6 MacBook Pro，顯示 AI 應用及互動介面進化為科技業重點。</li>
-                            <li>Deloitte 正在重組其美國員工職稱，可能反映勞動力市場對新技能和組織架構的需求變化，PropTech 公司需關注人才策略。</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>區域擴張與資本支出：</strong>
-                        <ul>
-                            <li>Tripod Technology 預計 2026 年資本支出超過 50 億新台幣，用於越南和中國擴張，儘管為 PCB 產業，但其擴張策略及對 2026 年的樂觀預期可作為宏觀經濟參考。</li>
-                        </ul>
-                    </li>
-                </ul>
+        <section>
+            <h3>市場動態 (Market Dynamics)</h3>
+            <details>
+                <summary>PropTech 國際趨勢</summary>
+                <div>
+                    <p>今日新聞動態中，直接與 PropTech 相關的重大國際趨勢較少，主要為以下通用科技與商業新聞：</p>
+                    <div class="news-item">
+                        <a href="https://www.businessinsider.com/deloitte-gives-us-employees-new-job-titles-leader-role-2026-1" target="_blank">
+                            <strong>Deloitte is overhauling job titles for its US workforce — here's why</strong>
+                        </a>
+                        <span class="source">(Business Insider)</span>
+                        <p>描述：Deloitte 正為其美國員工調整職稱，這可能反映了專業服務業的組織結構和人才管理趨勢。</p>
+                    </div>
+                    <div class="news-item">
+                        <a href="https://www.yankodesign.com/2026/01/21/we-might-get-a-touchscreen-m6-macbook-pro-before-gta-6/" target="_blank">
+                            <strong>We Might Get A Touchscreen M6 MacBook Pro Before GTA 6</strong>
+                        </a>
+                        <span class="source">(Yanko Design)</span>
+                        <p>描述：關於 Apple 可能推出帶有 OLED 顯示器和觸控螢幕的 MacBook Pro 的報導，顯示科技產品的創新方向。</p>
+                    </div>
+                    <div class="news-item">
+                        <a href="https://www.cultofmac.com/?p=921761" target="_blank">
+                            <strong>Apple works on AI wearable with mics, cameras and more</strong>
+                        </a>
+                        <span class="source">(Cult of Mac)</span>
+                        <p>描述：Apple 據報正在開發一款具備麥克風、攝影機等功能的 AI 穿戴式設備，預示未來穿戴科技與 AI 的結合趨勢。</p>
+                    </div>
+                    <div class="news-item">
+                        <a href="https://www.digitimes.com/news/a20260121PD242/tripod-pcb-vietnam-expansion-2026.html" target="_blank">
+                            <strong>Tripod Technology targets over NT$5B in 2026 capex for Vietnam, China expansion</strong>
+                        </a>
+                        <span class="source">(Digitimes)</span>
+                        <p>描述：PCB 製造商 Tripod Technology 計劃在 2026 年投入超過新台幣 50 億元的資本支出，擴張在越南和中國的業務，反映了製造業的供應鏈調整與擴張。</p>
+                    </div>
+                    <div class="news-item">
+                        <a href="https://www.kentik.com/blog/from-stealth-blackout-to-whitelisting-inside-the-iranian-shutdown/" target="_blank">
+                            <strong>From stealth blackout to whitelisting: Inside the Iranian shutdown</strong>
+                        </a>
+                        <span class="source">(Kentik.com)</span>
+                        <p>描述：伊朗正經歷全球最嚴重的通訊中斷之一，此為地緣政治與網路基礎設施穩定性的重要事件。</p>
+                    </div>
+                </div>
+            </details>
 
-                <h3>台灣市場動態</h3>
-                <p>目前資料未顯示台灣主要競品有重大公開更新或市場變動。</p>
+            <details>
+                <summary>台灣市場動態</summary>
+                <div>
+                    <p>根據目前資料，今日無具體的台灣 PropTech 市場動態更新。</p>
+                </div>
+            </details>
 
-                <h3>競品重要更新</h3>
-                <div class="competitor-updates">
+            <details open>
+                <summary>競品重要更新</summary>
+                <div>
                     <h4>CoStar Group</h4>
                     <ul>
-                        <li><strong>AI 產品即將推出：</strong> Homes.com AI 產品預計在 35-40 天內發布，旨在擴大市場份額，這是其在 AI 領域的重大進展。</li>
-                        <li><strong>分析師評級強勁：</strong> 高盛維持「買入」評級，目標股價 84 美元，強調 AI 產品及 2026 年 EBITDA 邊際改善承諾；J.P.摩根維持「強烈買入」，目標 101 美元。BNP 帕里巴下調至中性，目標 64 美元。</li>
-                        <li><strong>財務預期：</strong> 預計 2026 年 EBITDA 指導區間為 7.4-8 億美元，2028 年複合營收成長率達 15%。</li>
-                        <li><strong>網站監控異常：</strong> CoStar 新聞頁面 (<code>https://www.costar.com/news</code>) 返回 404 錯誤，可能影響即時新聞追蹤。</li>
+                        <li><strong>財務與策略：</strong>發布 2026 年財測，預計營收達 37.8-38.2 億美元，純利 1.75-2.15 億美元，並宣布 15 億美元的自股買回計劃。Homes.com 的盈利目標延遲至 2030 年，但投資有所縮減。多位分析師維持「買入」評級，目標價 84-101 美元。</li>
+                        <li><strong>產品更新：</strong>Homes.com 的 AI 產品預計在 35-40 天內推出，旨在支持住宅市場份額的擴張。</li>
+                        <li><strong>市場動向：</strong>股價預測公正價值為 57.74-84.82 美元，EBITDA 目標至 2028 年保守，預期年複合成長 15%。</li>
+                        <li><em>網站監控補充：</em>CoStar.com/news 頁面顯示 404 錯誤，但 Perplexity 提供的財測與產品更新資訊應為最新數據。</li>
                     </ul>
-
                     <h4>VTS</h4>
                     <ul>
-                        <li>無重大更新。但其 2025 年 9 月的部落格文章顯示其長期關注「房地產 AI 革命」及「科技人才中心對辦公室需求」等議題。</li>
+                        <li>無重大更新。VTS 部落格顯示最新的文章為 2025 年 9 月關於 AI 在商用不動產的應用。</li>
                     </ul>
-
                     <h4>CBRE, 信義商業, 永慶商業, 591 房屋, 樂居</h4>
                     <ul>
                         <li>無重大更新。</li>
                     </ul>
                 </div>
-                <h3>相關新聞動態</h3>
-                <div class="news-list">
-                    <div class="news-item">
-                        <a href="https://www.businessinsider.com/deloitte-gives-us-employees-new-job-titles-leader-role-2026-1" target="_blank">Deloitte is overhauling job titles for its US workforce — here's why</a>
-                        <p>描述: The Big Four firm is giving its US employees a new job title, according to an internal presentation seen by Business Insider.</p>
-                        <p class="source">來源: Business Insider | 發布時間: 2026-01-22</p>
-                    </div>
-                    <div class="news-item">
-                        <a href="https://www.yankodesign.com/2026/01/21/we-might-get-a-touchscreen-m6-macbook-pro-before-gta-6/" target="_blank">We Might Get A Touchscreen M6 MacBook Pro Before GTA 6</a>
-                        <p>描述: Apple will ship a completely redesigned MacBook Pro with OLED displays and touchscreens before Rockstar manages to...</p>
-                        <p class="source">來源: Yanko Design | 發布時間: 2026-01-22</p>
-                    </div>
-                    <div class="news-item">
-                        <a href="https://www.cultofmac.com/?p=921761" target="_blank">Apple works on AI wearable with mics, cameras and more</a>
-                        <p>描述: An AI pin is reportedly on the drawing board at Apple. The hands-free device might may change the future of wearable technology.</p>
-                        <p class="source">來源: Cult of Mac | 發布時間: 2026-01-22</p>
-                    </div>
-                    <div class="news-item">
-                        <a href="https://www.digitimes.com/news/a20260121PD242/tripod-pcb-vietnam-expansion-2026.html" target="_blank">Tripod Technology targets over NT$5B in 2026 capex for Vietnam, China expansion</a>
-                        <p>描述: PCB maker Tripod Technology said full-year 2025 revenue reached a record high, and it expects stable momentum heading into 2026...</p>
-                        <p class="source">來源: Digitimes | 發布時間: 2026-01-22</p>
-                    </div>
-                    <div class="news-item">
-                        <a href="https://www.kentik.com/blog/from-stealth-blackout-to-whitelisting-inside-the-iranian-shutdown/" target="_blank">From stealth blackout to whitelisting: Inside the Iranian shutdown</a>
-                        <p>描述: Iran is in the midst of one of the world’s most severe communications blackouts. This post uses Kentik data to detail how this historic event unfolded...</p>
-                        <p class="source">來源: Kentik.com | 發布時間: 2026-01-22</p>
-                    </div>
-                </div>
-            </div>
-        </details>
-
-        <details>
-            <summary><h2>公司內部更新 (過去 24 小時)</h2></summary>
-            <div class="details-content">
-                <h3>生態系與合作夥伴策略</h3>
-                <ul>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/Pick-Pro-2f1b219245158058928af7bd8197dc2b" target="_blank">[Pick Pro 跟生態系合作的商模]</a> (最後編輯: 2026-01-23 03:42:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2f1b2192451580bd9849fcbc5a6c5305" target="_blank">[生態系商業模式規劃]</a> (最後編輯: 2026-01-23 03:29:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/PickPro-2f1b21924515809b9ea4c899156d58b1" target="_blank">生態系廠商跟PickPro的合作</a> (最後編輯: 2026-01-23 03:17:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/USPACE-2eeb219245158049b4b1ca68e5dba051" target="_blank">[USPACE] 討論發展方向</a> (最後編輯: 2026-01-23 02:26:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/01-22_-USpace_-_Forest_-_-_-2f1b219245158086bf2ccbadd67540ca" target="_blank">01-22_會議：USpace_與_Forest_合作討論_-_資料共享與業務開發-摘要</a> (最後編輯: 2026-01-23 02:24:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/Backbone-2eeb21924515805f9affc02215275fe7" target="_blank">推進Backbone</a> (最後編輯: 2026-01-23 02:16:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2e9b219245158111997eeca6a61b3f9b" target="_blank">推進生態系頁面</a> (最後編輯: 2026-01-23 02:16:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2f0b219245158043a2fbc857c8f8f9d2" target="_blank">展示型生態系夥伴的作品集提供到一個數量是否可以減免基本會費?還是一定要收，只是收多收少</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2f0b21924515801ab9c2c0f17ff009a2" target="_blank">你要跟我收基本會費，我們可以接受，但是你們平台流量才剛上線哪時候會有流量?</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2eeb21924515807e8e49ecea6c86ab79" target="_blank">在某棟大樓「沒有實際完工案例」，只做過很多類似案件或有很強能力，還有機會被推薦嗎？</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/Pickpeak-2-300-2eeb21924515809b935fc982b02197a4" target="_blank">你們平台（Pickpeak）怎麼蒐集到 2,300 多棟商辦大樓的資料？這麼大量，子公司單一商仲真的吃得完嗎？</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2eeb2192451580a0aed2f64bca18789b" target="_blank">雙方生態系合作模式?是否會收費?怎麼收費?</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2eeb2192451580f2b45dd0f0745b55a0" target="_blank">如果客戶沒有那麼多實際完工案，但有很多「虛擬案例」（例如用你們或我們的工具做出很多效果圖），這些虛擬作品會影響權重嗎？</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/Pickpeak-2eeb2192451580b4a311cc9e8b9f43ba" target="_blank">Pickpeak用戶收費模式?</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2eeb2192451580429278cf1c415a0f8b" target="_blank">資料提供給平台，你們怎麼把案源導回來給我們？</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2eeb2192451580438780ebabb2fadc0d" target="_blank">如果平台資料這麼開放，會不會只是把資料價值免費送給市場？</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/PP-PRO-PRO-2eeb21924515804f89a0d4a6e7b1a446" target="_blank">PP PRO的帳號是否會有限制同時登入人數?若無限制客戶只要買一個PRO帳號全公司共用好像就可以了</a> (最後編輯: 2026-01-23 02:14:00Z)
-                    </li>
-                </ul>
-
-                <h3>一般營運與內部工具</h3>
-                <ul>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/Nelsen-s-COO-Daily-Dashboard-2f0b2192451580db9aabd5ff17cc525a" target="_blank">Nelsen's COO Daily Dashboard</a> (最後編輯: 2026-01-23 03:08:00Z)
-                    </li>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/Business-Strategy-Center-2aab219245158193b2a6e8060b2351ec" target="_blank">Business Strategy Center</a> (最後編輯: 2026-01-23 02:23:00Z)
-                    </li>
-                </ul>
-
-                <h3>活動規劃</h3>
-                <ul>
-                    <li class="internal-item">
-                        <a href="https://www.notion.so/2dab219245158036aa13d18117c2a4db" target="_blank">[主舞台] 抽獎環節</a> (最後編輯: 2026-01-23 02:27:00Z)
-                    </li>
-                </ul>
-            </div>
-        </details>
+            </details>
+        </section>
 
         <section>
-            <h2>今日關注</h2>
-            <div class="action-item">
-                <ol>
-                    <li><strong>加速 AI 策略及產品整合：</strong> 鑑於 CoStar Group 即將推出具競爭力的 Homes.com AI 產品，請審視 FUNRAISE 在 PickPro/Pickpeak 上的 AI 發展藍圖，確保資源到位，並評估是否有加速 AI 功能開發或新應用導入的機會，以維持市場競爭力。</li>
-                    <li><strong>深入檢視生態系合作夥伴模型：</strong> 內部大量更新聚焦於「生態系商業模式規劃」及相關合作夥伴提問，顯示此為當前關鍵議題。請深入了解最新進展，確保策略方向明確，並協調團隊解決夥伴關係建立中的定價、價值主張、數據共享等核心問題，推動生態系策略的落地。</li>
-                    <li><strong>密切監控競品 AI 動向與網站異常：</strong> 儘管 CoStar 的新聞頁面出現 404 錯誤，其 Homes.com AI 產品的上市時間已明確。請確保團隊有替代方案追蹤 CoStar AI 產品的發布與市場反應，同時持續關注 VTS 等競品在 AI 領域的潛在動向，及時調整應對策略。</li>
-                </ol>
-            </div>
+            <h3>公司內部 (Internal Updates)</h3>
+            <details open>
+                <summary>過去 24 小時重要更新摘要 (共 20 個頁面)</summary>
+                <div>
+                    <h4>Pick Pro 與生態系合作模式</h4>
+                    <ul>
+                        <li class="internal-update-item"><a href="https://www.notion.so/Pick-Pro-2f1b219245158058928af7bd8197dc2b" target="_blank">[Pick Pro 跟生態系合作的商模]</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2f1b2192451580bd9849fcbc5a6c5305" target="_blank">[生態系商業模式規劃]</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/PickPro-2f1b21924515809b9ea4c899156d58b1" target="_blank">生態系廠商跟PickPro的合作</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2e9b219245158111997eeca6a61b3f9b" target="_blank">推進生態系頁面</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2f0b219245158043a2fbc857c8f8f9d2" target="_blank">展示型生態系夥伴的作品集提供到一個數量是否可以減免基本會費?還是一定要收，只是收多收少</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2f0b21924515801ab9c2c0f17ff009a2" target="_blank">你要跟我收基本會費，我們可以接受，但是你們平台流量才剛上線哪時候會有流量?</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2eeb21924515807e8e49ecea6c86ab79" target="_blank">在某棟大樓「沒有實際完工案例」，只做過很多類似案件或有很強能力，還有機會被推薦嗎？</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2eeb2192451580a0aed2f64bca18789b" target="_blank">雙方生態系合作模式?是否會收費?怎麼收費?</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2eeb2192451580f2b45dd0f0745b55a0" target="_blank">如果客戶沒有那麼多實際完工案，但有很多「虛擬案例」（例如用你們或我們的工具做出很多效果圖），這些虛擬作品會影響權重嗎？</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/Pickpeak-2eeb2192451580b4a311cc9e8b9f43ba" target="_blank">Pickpeak用戶收費模式?</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2eeb2192451580429278cf1c415a0f8b" target="_blank">資料提供給平台，你們怎麼把案源導回來給我們？</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2eeb2192451580438780ebabb2fadc0d" target="_blank">如果平台資料這麼開放，會不會只是把資料價值免費送給市場？</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/PP-PRO-PRO-2eeb21924515804f89a0d4a6e7b1a446" target="_blank">PP PRO的帳號是否會有限制同時登入人數?若無限制客戶只要買一個PRO帳號全公司共用好像就可以了</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/Pickpeak-2-300-2eeb21924515809b935fc982b02197a4" target="_blank">你們平台（Pickpeak）怎麼蒐集到 2,300 多棟商辦大樓的資料？這麼大量，子公司單一商仲真的吃得完嗎？</a> (edited by 2a7d...eb6a)</li>
+                    </ul>
+
+                    <h4>USPACE 合作與業務開發</h4>
+                    <ul>
+                        <li class="internal-update-item"><a href="https://www.notion.so/USPACE-2eeb219245158049b4b1ca68e5dba051" target="_blank">[USPACE] 討論發展方向</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/01-22_-USpace_-_Forest_-_-_-2f1b219245158086bf2ccbadd67540ca" target="_blank">01-22_會議：USpace_與_Forest_合作討論_-_資料共享與業務開發-摘要</a> (edited by 2a7d...eb6a)</li>
+                    </ul>
+
+                    <h4>策略與營運</h4>
+                    <ul>
+                        <li class="internal-update-item"><a href="https://www.notion.so/Nelsen-s-COO-Daily-Dashboard-2f0b2192451580db9aabd5ff17cc525a" target="_blank">Nelsen's COO Daily Dashboard</a> (edited by 1ba4...de1d)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/Business-Strategy-Center-2aab219245158193b2a6e8060b2351ec" target="_blank">Business Strategy Center</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/Backbone-2eeb21924515805f9affc02215275fe7" target="_blank">推進Backbone</a> (edited by 2a7d...eb6a)</li>
+                        <li class="internal-update-item"><a href="https://www.notion.so/2dab219245158036aa13d18117c2a4db" target="_blank">[主舞台] 抽獎環節</a> (edited by 28ed...05f2) - <em>可能與活動或行銷相關</em></li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <h3>今日關注 (Today's Focus)</h3>
+            <p>基於以上資訊，建議 COO 今日應關注的 3 件事：</p>
+            <ol>
+                <li><strong>研究 CoStar Homes.com AI 策略與影響：</strong>CoStar 在住宅市場的 AI 產品即將推出，且財務展望強勁。應深入了解其 AI 功能與市場策略，評估對 FUNRAISE 自身產品開發與市場競爭的潛在影響，並思考我們的應對措施。</li>
+                <li><strong>釐清 Pick Pro 生態系商業模式核心問題：</strong>內部關於 Pick Pro 生態系合作的討論非常活躍，尤其集中在收費模式、合作夥伴價值主張（流量、案源導引、虛擬案例權重）及數據共享等關鍵問題。建議優先召集相關團隊，對這些核心問題進行決策或明確方向，以加速模式落地。</li>
+                <li><strong>追蹤 USPACE 與 Forest 合作進度：</strong>USPACE 與 Forest 的合作在資料共享與業務開發方面有所推進。確認會議摘要的執行狀況，確保此策略合作能按預期發展，並為公司帶來實質效益。</li>
+            </ol>
         </section>
 
         <footer>
+            <p>&copy; 2026 方睿科技 (FUNRAISE). All rights reserved.</p>
             <p>Powered by FUNRAISE AI</p>
         </footer>
     </div>
