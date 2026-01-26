@@ -1,24 +1,850 @@
-商業</h4>
-                <p><strong>動態摘要:</strong> 無重大更新。</p>
-                <div class="impact-assessment">
-                    <strong>對我們的啟示:</strong> 同信義商業，永慶商業的動態對我們理解台灣市場至關重要。應保持警惕，尋找市場潛在的變化跡象。
-                </div>
-            </div>
-            <div class="competitor-card">
-                <h4><span class="logo-placeholder">591</span> 591 房屋</h4>
-                <p><strong>動態摘要:</strong> 無重大更新。</p>
-                <div class="impact-assessment">
-                    <strong>對我們的啟示:</strong> 作為台灣領先的線上房產平台，591的動向直接影響我們的C端市場策略。應持續監測其流量、功能更新及市場份額變化。
-                </div>
-            </div>
-            <div class="competitor-card">
-                <h4><span class="logo-placeholder">樂</span> 樂居</h4>
-                <p><strong>動態摘要:</strong> 無重大更新。</p>
-                <div class="impact-assessment">
-                    <strong>對我們的啟示:</strong> 樂居在數據分析和透明度方面有其獨特優勢。我們應學習其如何利用數據提升用戶體驗，並思考如何將類似的價值融入我們的平台。
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNRAISE 每日執行簡報 - 2026.01.26</title>
+    <style>
+        /* CSS Reset & Global Styles */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #F7FAFC; /* 淺灰 */
+            color: #2D3748;
+            line-height: 1.6;
+        }
 
-        <div id="industryNews" class="tab-content">
-            <div class
+        h1, h2, h3, h4, h5, h6 {
+            color: #1A365D; /* 深藍 */
+            font-weight: 600;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        a {
+            color: #D69E2E; /* 金色 */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Dashboard */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-card {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 5px solid #1A365D; /* Default border */
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card .label {
+            font-size: 0.9em;
+            color: #718096;
+            margin-bottom: 5px;
+        }
+
+        .dashboard-card .value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #1A365D;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 等寬字體 */
+        }
+
+        /* Executive Summary */
+        .executive-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .summary-card {
+            background-color: #F7FAFC; /* 淺灰 */
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background-color: #D69E2E; /* Default border color */
+        }
+
+        .summary-card.high::before { background-color: #E53E3E; /* 🔴 Danger Red */ }
+        .summary-card.medium::before { background-color: #DD6B20; /* 🟡 Warning Orange */ }
+        .summary-card.low::before { background-color: #38A169; /* 🟢 Success Green */ }
+
+        .summary-card .icon {
+            font-size: 1.8em;
+            margin-right: 15px;
+            line-height: 1;
+        }
+
+        .summary-card .content h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #1A365D;
+        }
+
+        .summary-card .content p {
+            margin: 0;
+            font-size: 0.95em;
+            color: #4A5568;
+        }
+
+        .summary-card .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .summary-card .tag.high { background-color: #FEE2E2; color: #E53E3E; }
+        .summary-card .tag.medium { background-color: #FEEBCF; color: #DD6B20; }
+        .summary-card .tag.low { background-color: #C6F6D5; color: #38A169; }
+
+        /* Market Intelligence - Tabs */
+        .tab-container {
+            margin-bottom: 30px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid #E2E8F0;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #718096;
+            white-space: nowrap;
+            transition: color 0.2s ease, border-bottom-color 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            color: #1A365D;
+            border-bottom-color: #D69E2E;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Competitor Card */
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .competitor-card {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .competitor-card .logo-name {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .competitor-card .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: #E2E8F0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: #1A365D;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .competitor-card h4 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .competitor-card .summary {
+            font-size: 0.95em;
+            color: #4A5568;
+            margin-bottom: 15px;
+        }
+
+        .competitor-card .impact {
+            font-size: 0.9em;
+            color: #718096;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        /* Industry News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .news-card .meta {
+            font-size: 0.85em;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+
+        .news-card .description {
+            font-size: 0.9em;
+            color: #4A5568;
+            margin-bottom: 15px;
+        }
+
+        .news-card .category-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-right: 8px;
+            background-color: #EBF4FF;
+            color: #2B6CB0;
+        }
+        .news-card .category-tag.proptech { background-color: #C6F6D5; color: #2F855A; }
+        .news-card .category-tag.ai { background-color: #EBF8FF; color: #3182CE; }
+        .news-card .category-tag.irrelevant { background-color: #FED7D7; color: #C53030; }
+
+
+        /* Internal Updates */
+        .internal-updates-section {
+            margin-bottom: 40px;
+        }
+
+        .internal-updates-group {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .internal-updates-group summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #1A365D;
+            cursor: pointer;
+            outline: none;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .internal-updates-group details[open] summary {
+            border-bottom: 1px solid #CBD5E0;
+        }
+
+        .internal-updates-group summary .badge {
+            background-color: #D69E2E;
+            color: #FFFFFF;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+
+        .internal-updates-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .internal-updates-group li {
+            padding: 10px 20px;
+            border-bottom: 1px dashed #EDF2F7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+            color: #4A5568;
+        }
+
+        .internal-updates-group li:last-child {
+            border-bottom: none;
+        }
+
+        .internal-updates-group li .meta {
+            font-size: 0.8em;
+            color: #718096;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        /* Action List */
+        .action-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .action-item {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-item input[type="checkbox"] {
+            margin-right: 15px;
+            margin-top: 3px; /* Align checkbox with text */
+            transform: scale(1.3); /* Slightly larger checkbox */
+        }
+
+        .action-item .content {
+            flex-grow: 1;
+        }
+
+        .action-item .content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .action-item .content p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #4A5568;
+        }
+
+        .action-item .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .action-item .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .action-item .tag.priority-high { background-color: #FEE2E2; color: #E53E3E; }
+        .action-item .tag.priority-medium { background-color: #FEEBCF; color: #DD6B20; }
+        .action-item .tag.priority-low { background-color: #C6F6D5; color: #38A169; }
+        .action-item .tag.time { background-color: #EBF4FF; color: #2B6CB0; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #E2E8F0;
+            font-size: 0.85em;
+            color: #718096;
+        }
+
+        footer .brand {
+            font-weight: 700;
+            color: #1A365D;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-grid, .executive-summary-grid, .competitor-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .dashboard-card, .summary-card, .competitor-card, .news-card, .action-item, .internal-updates-group {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                flex: 1 1 auto;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FUNRAISE 每日執行簡報</h1>
+            <p style="color: #718096; font-size: 1.1em;">2026年01月26日 星期一，早安 Nelsen!</p>
+        </header>
+
+        <section class="dashboard">
+            <h2>📈 頂部儀表板</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="label">📰 今日新聞數量</div>
+                    <div class="value">5</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="label">🏢 競品動態數量</div>
+                    <div class="value">2</div> <!-- CoStar, VTS have updates -->
+                </div>
+                <div class="dashboard-card">
+                    <div class="label">📝 內部更新數量</div>
+                    <div class="value">18</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="label">⚡ 需關注事項數量</div>
+                    <div class="value">4</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="executive-summary">
+            <h2>🎯 執行摘要</h2>
+            <div class="executive-summary-grid">
+                <div class="summary-card high">
+                    <span class="icon">🏢</span>
+                    <div class="content">
+                        <h3>CoStar Group 2026 財報展望強勁<span class="tag high">🔴高</span></h3>
+                        <p>主要競爭對手CoStar公布超預期財報展望，並授權股票回購，顯示市場信心。Homes.com盈利延遲需關注。</p>
+                    </div>
+                </div>
+                <div class="summary-card high">
+                    <span class="icon">🏠</span>
+                    <div class="content">
+                        <h3>PickPeak 生態系及商業模式加速推進<span class="tag high">🔴高</span></h3>
+                        <p>內部多項更新聚焦PickPeak平台商業模式發想與原生模組開發，顯示核心產品進入關鍵發展階段。</p>
+                    </div>
+                </div>
+                <div class="summary-card medium">
+                    <span class="icon">🤖</span>
+                    <div class="content">
+                        <h3>VTS 持續深耕商用不動產 AI 應用<span class="tag medium">🟡中</span></h3>
+                        <p>競品VTS雖無近期更新，但其網站顯示持續強調AI在商用不動產領域的應用及市場趨勢，提醒我們關注AI策略。</p>
+                    </div>
+                </div>
+                <div class="summary-card low">
+                    <span class="icon">❓</span>
+                    <div class="content">
+                        <h3>PropTech 外部新聞關聯性較低<span class="tag low">🟢低</span></h3>
+                        <p>今日外部新聞多與PropTech核心業務無直接關聯，需警惕數據來源的精準性或市場缺乏直接PropTech熱點。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="market-intelligence">
+            <h2>📊 市場情報</h2>
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openTab(event, 'competitor-tracking')">競品追蹤</button>
+                    <button class="tab-button" onclick="openTab(event, 'industry-news')">產業新聞</button>
+                </div>
+
+                <div id="competitor-tracking" class="tab-content active">
+                    <div class="competitor-grid">
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">CS</div>
+                                <h4>CoStar Group</h4>
+                            </div>
+                            <p class="summary">CoStar公布2026年財務展望，營收預計37.8-38.2億美元（年增18%），高於市場預期；淨利1.75-2.15億美元；授權15億美元股票回購計畫；Homes.com盈利目標延至2030年。分析師評級分歧，J.P. Morgan維持強烈買入（目標101美元），BNP Paribas下調至中立（目標64美元）。</p>
+                            <a href="https://www.costargroup.com/investors/news" target="_blank">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>顯示強勁的市場地位和增長預期，但Homes.com盈利延遲可能反映市場挑戰。我們需持續關注其在住宅市場的進展。</p>
+                        </div>
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">VTS</div>
+                                <h4>VTS</h4>
+                            </div>
+                            <p class="summary">Firecrawl監測顯示VTS博客最新文章(2025年9月)聚焦AI在商用不動產的應用及科技人才中心對辦公空間需求的影響，強調AI轉型領導力。</p>
+                            <a href="https://www.vts.com/blog/ai-in-commercial-real-estate" target="_blank">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>VTS持續強化其在AI及市場洞察方面的領導力，我們應審視自身AI策略，並尋找差異化競爭點。</p>
+                        </div>
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">CBRE</div>
+                                <h4>CBRE</h4>
+                            </div>
+                            <p class="summary">無重大更新。</p>
+                            <a href="#" onclick="return false;">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>暫無直接可觀察動態，持續監測其市場報告與策略發布。</p>
+                        </div>
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">信義</div>
+                                <h4>信義商業</h4>
+                            </div>
+                            <p class="summary">無重大更新。</p>
+                            <a href="#" onclick="return false;">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>台灣本地競品暫無顯著動態，可關注其季度財報或市場活動。</p>
+                        </div>
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">永慶</div>
+                                <h4>永慶商業</h4>
+                            </div>
+                            <p class="summary">無重大更新。</p>
+                            <a href="#" onclick="return false;">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>台灣本地競品暫無顯著動態，可關注其季度財報或市場活動。</p>
+                        </div>
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">591</div>
+                                <h4>591 房屋</h4>
+                            </div>
+                            <p class="summary">無重大更新。</p>
+                            <a href="#" onclick="return false;">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>台灣本地線上平台暫無顯著動態，需關注其流量與功能更新。</p>
+                        </div>
+                        <div class="competitor-card">
+                            <div class="logo-name">
+                                <div class="logo-placeholder">樂居</div>
+                                <h4>樂居</h4>
+                            </div>
+                            <p class="summary">無重大更新。</p>
+                            <a href="#" onclick="return false;">了解更多</a>
+                            <p class="impact"><strong>影響評估：</strong>台灣本地數據分析平台暫無顯著動態，可持續關注其數據報告。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="industry-news" class="tab-content">
+                    <div class="news-grid">
+                        <div class="news-card">
+                            <h4><a href="https://www.neatorama.com/2026/01/24/The-Perils-of-Relying-on-AI-in-Dating/" target="_blank">The Perils of Relying on AI in Dating</a></h4>
+                            <p class="meta">Neatorama.com • 2026-01-25</p>
+                            <p class="description">探討在約會中過度依賴AI助理的風險與情境。</p>
+                            <div class="tags">
+                                <span class="category-tag ai">AI</span>
+                                <span class="category-tag irrelevant">關聯性低</span>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <h4><a href="https://economictimes.indiatimes.com/industry/renewables/india-eu-fta-likely-to-cut-auto-import-duties-may-spur-surge-in-luxury-ev-imports/articleshow/127412481.cms" target="_blank">India-EU FTA likely to cut auto import duties, may spur surge in luxury EV imports</a></h4>
+                            <p class="meta">The Times of India • 2026-01-25</p>
+                            <p class="description">印度與歐盟自由貿易協定可能降低汽車進口關稅，預計將刺激豪華電動車在印度的銷售。</p>
+                            <div class="tags">
+                                <span class="category-tag">國際貿易</span>
+                                <span class="category-tag irrelevant">關聯性低</span>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <h4><a href="https://www.digitimes.com/news/a20260123PD244/lcd-display-materials-cost.html" target="_blank">South Korea advances OLED and PeLED with higher efficiency and longer perovskite lifespan</a></h4>
+                            <p class="meta">Digitimes • 2026-01-25</p>
+                            <p class="description">韓國研究團隊在可拉伸OLED和鈣鈦礦LED方面取得突破，提高了效率並延長了壽命。</p>
+                            <div class="tags">
+                                <span class="category-tag">科技創新</span>
+                                <span class="category-tag irrelevant">關聯性低</span>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <h4><a href="https://sneakernews.com/2026/01/24/nike-zoom-vomero-5-sail-rose-gold-iq9603-133/" target="_blank">The Nike Zoom Vomero 5 Goes Glitzy With “Rose Gold”</a></h4>
+                            <p class="meta">Sneaker News • 2026-01-25</p>
+                            <p class="description">Nike Zoom Vomero 5 推出「玫瑰金」配色，探討其在運動鞋市場的地位。</p>
+                            <div class="tags">
+                                <span class="category-tag">時尚消費</span>
+                                <span class="category-tag irrelevant">關聯性低</span>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <h4><a href="https://www.bgr.com/2079588/viral-tech-lifehacks-dont-work/" target="_blank">5 Viral Tech 'Lifehacks' That Don't Actually Work</a></h4>
+                            <p class="meta">BGR • 2026-01-25</p>
+                            <p class="description">揭露五個在網路上流傳但實際上無效的科技「生活黑客」。</p>
+                            <div class="tags">
+                                <span class="category-tag">科技趨勢</span>
+                                <span class="category-tag irrelevant">關聯性低</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="internal-updates-section">
+            <h2>🏠 公司內部動態</h2>
+            <div class="internal-updates-group">
+                <details>
+                    <summary>
+                        PickPeak 平台與商業模式
+                        <span class="badge">3</span>
+                    </summary>
+                    <ul>
+                        <li>
+                            <a href="https://www.notion.so/PP-2eeb2192451580f08974f7a8db7e153d" target="_blank">營運期的商業模式並如何在PP平台露出發想</a>
+                            <span class="meta">edited by 2cbd87...4bf • 02:18Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/PickPeak-2f1b2192451580988fd5d44e48cead21" target="_blank">PickPeak 生態系推薦原生模組</a>
+                            <span class="meta">edited by 2a7d87...eb6a • 02:14Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/1-13-PickPeak-eac5e286e12b435d991f6d9681792871" target="_blank">1/13 PickPeak 發表會(台北文創)</a>
+                            <span class="meta">edited by 28ed87...05f2 • 02:00Z</span>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+
+            <div class="internal-updates-group">
+                <details>
+                    <summary>
+                        市場拓展與合作夥伴
+                        <span class="badge">12</span>
+                    </summary>
+                    <ul>
+                        <li>
+                            <a href="https://www.notion.so/RAISEDAY-1-23-2f1b219245158013adc6cd7587488806" target="_blank">RAISEDAY感謝信發送名單(1/23發出)</a>
+                            <span class="meta">edited by 2cbd87...4bf • 02:02Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/11-20-670b0d9a62c747fb-a143-56416c31f5c1" target="_blank">11/20 建商說明會（國泰萬豪）</a>
+                            <span class="meta">edited by 28ed87...05f2 • 02:00Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f1b219245158047995cf93dfc5d2f84" target="_blank">王智弘</a>
+                            <span class="meta">edited by 2cbd87...4bf • 01:59Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/Eileen-2f1b21924515804eb6b8f5c960e9f496" target="_blank">甘絜瑩Eileen</a>
+                            <span class="meta">edited by 2cbd87...4bf • 01:58Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/Michael-Chen-2f1b21924515800a90fad08e20932028" target="_blank">Michael Chen</a>
+                            <span class="meta">edited by 2cbd87...4bf • 01:57Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f1b219245158086b4c0f64dcc7b516e" target="_blank">葉晨曦</a>
+                            <span class="meta">edited by 2cbd87...4bf • 01:57Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/Anthia-Wang-2f1b2192451580a1bcded1fd83bf2f5c" target="_blank">Anthia Wang</a>
+                            <span class="meta">edited by 2cbd87...4bf • 01:53Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f4b2192451580ccaaacd653f7fd4c84" target="_blank">政治大學（白仁德教授）</a>
+                            <span class="meta">edited by 1b6d87...a528 • 00:39Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f4b2192451580259885daf8ec4b60da" target="_blank">慧城地產</a>
+                            <span class="meta">edited by 1b6d87...a528 • 00:38Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f1b2192451580169503d237b2fb0a59" target="_blank">瑞普萊坊</a>
+                            <span class="meta">edited by 1b6d87...a528 • 00:36Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f1b2192451580769d0aea3c0d7d0243" target="_blank">店面需求者(吳先生)</a>
+                            <span class="meta">edited by 1b6d87...a528 • 00:36Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f4b21924515804ab8fcdebcb6654e4c" target="_blank">增站</a>
+                            <span class="meta">edited by 1b6d87...a528 • 00:36Z</span>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+
+            <div class="internal-updates-group">
+                <details>
+                    <summary>
+                        內部營運與報告
+                        <span class="badge">3</span>
+                    </summary>
+                    <ul>
+                        <li>
+                            <a href="https://www.notion.so/BSC-Weekly-2026-01-23-410b5e0ee874463eb32703e492053f4c" target="_blank">BSC Weekly 2026.01.23</a>
+                            <span class="meta">edited by 2a7d87...eb6a • 02:12Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/RAISEDAY-2dbb2192451580a0a3dcc8fa26f34110" target="_blank">RAISEDAY 活動日人力清單列表</a>
+                            <span class="meta">edited by 28ed87...05f2 • 05:09Z</span>
+                        </li>
+                        <li>
+                            <a href="https://www.notion.so/2f3b219245158129bd7ed30b739511e9" target="_blank">Untitled</a>
+                            <span class="meta">edited by 00000...0003 • 16:00Z</span>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+
+        <section class="action-items">
+            <h2>✅ 今日行動清單</h2>
+            <ul class="action-list">
+                <li class="action-item">
+                    <input type="checkbox" id="action1">
+                    <div class="content">
+                        <label for="action1"><h4>評估 CoStar Homes.com 延遲盈利的深層原因</h4></label>
+                        <p><strong>背景：</strong>CoStar作為主要競品，其住宅業務Homes.com盈利延遲可能反映市場挑戰或其策略調整。需深入分析其原因與對市場的潛在影響。</p>
+                        <div class="tags">
+                            <span class="tag priority-high">優先級: 🔴高</span>
+                            <span class="tag time">預估時間: 30min+</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item">
+                    <input type="checkbox" id="action2">
+                    <div class="content">
+                        <label for="action2"><h4>推進 PickPeak 商業模式落地細節</h4></label>
+                        <p><strong>背景：</strong>內部多項更新聚焦PickPeak平台商業模式發想與原生模組開發，需與相關團隊協調，確保策略與執行一致，加速產品落地。</p>
+                        <div class="tags">
+                            <span class="tag priority-high">優先級: 🔴高</span>
+                            <span class="tag time">預估時間: 30min+</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item">
+                    <input type="checkbox" id="action3">
+                    <div class="content">
+                        <label for="action3"><h4>審視外部新聞來源的 PropTech 相關性與品質</h4></label>
+                        <p><strong>背景：</strong>今日外部新聞多數與PropTech核心業務關聯度低，可能影響情報質量。需評估新聞篩選機制或考慮拓展更精準的情報來源。</p>
+                        <div class="tags">
+                            <span class="tag priority-medium">優先級: 🟡中</span>
+                            <span class="tag time">預估時間: 15min</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-item">
+                    <input type="checkbox" id="action4">
+                    <div class="content">
+                        <label for="action4"><h4>研究 VTS 在 AI 應用上的最新策略與技術</h4></label>
+                        <p><strong>背景：</strong>競品VTS持續強調AI在商用不動產的應用，我們需保持競爭力，研究其AI應用趨勢，尋找差異化與合作機會。</p>
+                        <div class="tags">
+                            <span class="tag priority-medium">優先級: 🟡中</span>
+                            <span class="tag time">預估時間: 15min</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>資料來源：News API, Perplexity AI, Notion API, Firecrawl API</p>
+            <p>生成時間：2026年01月26日 08:00 AM (UTC+8)</p>
+            <p class="brand">Powered by FUNRAISE AI</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Initialize the first tab as active on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tab-buttons .tab-button").click();
+        });
+    </script>
+</body>
+</html>
