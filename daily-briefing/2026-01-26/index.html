@@ -1,816 +1,814 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUNRAISE 每日執行簡報 - Nelsen</title>
+    <title>FUNRAISE 每日執行簡報 - Nelsen (2026-01-26)</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     <style>
         :root {
-            --primary-dark-blue: #1A365D;
-            --accent-gold: #D69E2E;
-            --success-green: #38A169;
-            --warning-orange: #DD6B20;
-            --danger-red: #E53E3E;
-            --background-light-gray: #F7FAFC;
-            --card-background-white: #FFFFFF;
-            --text-color-dark: #2D3748; /* Slightly lighter than primary for body text */
-            --text-color-light: #4A5568; /* For less emphasis */
-            --border-light-gray: #EDF2F7;
+            --primary-color: #1A365D; /* 深藍 */
+            --accent-color: #D69E2E; /* 金色 */
+            --success-color: #38A169; /* 綠色 */
+            --warning-color: #DD6B20; /* 橙色 */
+            --danger-color: #E53E3E; /* 紅色 */
+            --background-color: #F7FAFC; /* 淺灰 */
+            --card-background: #FFFFFF;
+            --text-color: #2D3748;
+            --light-gray: #E2E8F0;
+            --dark-gray: #718096;
+            --border-radius: 8px;
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
             margin: 0;
             padding: 20px;
-            background-color: var(--background-light-gray);
-            color: var(--text-color-dark);
-            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
         }
 
         .container {
+            width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--card-background-white);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            padding: 30px;
+            box-sizing: border-box;
         }
 
-        h1, h2, h3, h4 {
-            color: var(--primary-dark-blue);
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
             font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+            margin-top: 0;
+            margin-bottom: 15px;
         }
 
-        h1 { font-size: 2.2em; }
-        h2 { font-size: 1.8em; border-bottom: 2px solid var(--border-light-gray); padding-bottom: 0.5rem; }
-        h3 { font-size: 1.4em; }
+        h1 { font-size: 2.2em; border-bottom: 2px solid var(--light-gray); padding-bottom: 15px; margin-bottom: 20px; }
+        h2 { font-size: 1.8em; margin-top: 30px; }
+        h3 { font-size: 1.4em; margin-top: 25px; }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-light-gray);
-            flex-wrap: wrap;
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
 
-        .header h1 {
-            margin: 0;
-            flex-grow: 1;
-        }
-        .header > div {
-            text-align: right;
-        }
-        .header > div p {
-            margin: 0;
-            font-size: 0.95em;
-            color: var(--text-color-light);
-        }
-        .header > div p strong {
-            color: var(--primary-dark-blue);
-        }
-
-
-        .dashboard-metrics {
+        /* Dashboard */
+        .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .metric-card {
-            background-color: var(--card-background-white);
+        .dashboard-card {
+            background-color: var(--card-background);
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border-left: 5px solid var(--primary-dark-blue);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid var(--light-gray);
         }
-
-        .metric-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
-
-        .metric-card .label {
-            font-size: 0.9em;
-            color: var(--text-color-light);
-            margin-bottom: 8px;
+        .dashboard-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
-
-        .metric-card .value {
+        .dashboard-card .value {
             font-size: 2.2em;
             font-weight: 600;
-            color: var(--primary-dark-blue);
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* Monospace for numbers */
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        }
+        .dashboard-card .label {
+            font-size: 0.9em;
+            color: var(--dark-gray);
         }
 
-        .executive-summary {
+        /* Executive Summary */
+        .executive-summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .summary-card {
-            background-color: var(--background-light-gray);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            display: flex;
-            align-items: flex-start;
+        .insight-card {
+            background-color: var(--background-color);
             border-left: 5px solid;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-
-        .summary-card:hover {
+        .insight-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-hover);
         }
-
-        .summary-card.high { border-left-color: var(--danger-red); }
-        .summary-card.medium { border-left-color: var(--warning-orange); }
-        .summary-card.low { border-left-color: var(--success-green); }
-
-        .summary-card .icon {
-            font-size: 1.8em;
-            margin-right: 15px;
-            line-height: 1;
-            align-self: center;
-        }
-
-        .summary-card .content {
-            flex-grow: 1;
-        }
-
-        .summary-card .title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary-dark-blue);
+        .insight-card .header {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            margin-bottom: 10px;
         }
-
-        .summary-card .description {
-            font-size: 0.95em;
-            color: var(--text-color-dark);
+        .insight-card .icon {
+            font-size: 1.8em;
+            margin-right: 10px;
         }
-
-        .priority-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
+        .insight-card .title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            flex-grow: 1;
+        }
+        .insight-card .importance {
             font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 4px;
             font-weight: 600;
             margin-left: 10px;
-            line-height: 1;
-            vertical-align: middle;
-            color: white; /* Ensure text is white for all priority tags */
         }
-        .priority-tag.high { background-color: var(--danger-red); }
-        .priority-tag.medium { background-color: var(--warning-orange); }
-        .priority-tag.low { background-color: var(--success-green); }
+        .insight-card .summary {
+            font-size: 0.95em;
+            color: var(--text-color);
+        }
 
-        /* Tabs for Market Intelligence */
+        /* Importance Tags */
+        .importance.high { background-color: rgba(229, 62, 62, 0.1); color: var(--danger-color); }
+        .importance.medium { background-color: rgba(221, 107, 32, 0.1); color: var(--warning-color); }
+        .importance.low { background-color: rgba(56, 161, 105, 0.1); color: var(--success-color); }
+
+        /* Market Intelligence Tabs */
         .tabs {
             display: flex;
+            border-bottom: 2px solid var(--light-gray);
             margin-bottom: 20px;
-            border-bottom: 2px solid var(--border-light-gray);
-            flex-wrap: wrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
-
         .tab-button {
             background-color: transparent;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 600;
-            color: var(--text-color-light);
-            transition: color 0.2s ease, border-bottom 0.2s ease;
-            outline: none;
+            color: var(--dark-gray);
             white-space: nowrap;
+            transition: color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px; /* Overlap border */
         }
-
         .tab-button.active {
-            color: var(--primary-dark-blue);
-            border-bottom: 3px solid var(--accent-gold);
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
         }
-
         .tab-content {
             display: none;
-            padding-top: 15px;
         }
-
         .tab-content.active {
             display: block;
         }
 
-        /* Competitor Cards */
-        .competitor-card {
-            background-color: var(--card-background-white);
-            border: 1px solid var(--border-light-gray);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        /* Competitor Tracking */
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
-
+        .competitor-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
         .competitor-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-hover);
         }
-
-        .competitor-card h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
+        .competitor-card .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-        }
-
-        .competitor-card .logo-placeholder {
-            width: 30px;
-            height: 30px;
-            background-color: var(--border-light-gray);
-            border-radius: 4px;
-            margin-right: 10px;
-            display: inline-flex;
             justify-content: center;
-            align-items: center;
-            color: var(--text-color-light);
-            font-size: 0.8em;
             font-weight: 600;
-            flex-shrink: 0;
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 15px;
         }
-
+        .competitor-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
         .competitor-card .summary {
             margin-bottom: 15px;
-            color: var(--text-color-dark);
+            font-size: 0.95em;
         }
-
-        .competitor-card .learn-more {
-            color: var(--accent-gold);
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 15px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
         .competitor-card .impact {
             font-size: 0.9em;
-            color: var(--text-color-light);
-            margin-top: 10px;
-            border-top: 1px dashed var(--border-light-gray);
-            padding-top: 10px;
+            border-top: 1px dashed var(--light-gray);
+            padding-top: 15px;
+            margin-top: 15px;
+            color: var(--dark-gray);
+        }
+        .competitor-card .impact strong {
+            color: var(--primary-color);
         }
 
         /* Industry News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
         .news-card {
-            background-color: var(--card-background-white);
-            border: 1px solid var(--border-light-gray);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: var(--card-background);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
-
         .news-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
-
-        .news-card .news-title {
+        .news-card .title {
             font-weight: 600;
-            color: var(--primary-dark-blue);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 1.1em;
+            line-height: 1.4;
         }
-
-        .news-card .news-meta {
-            font-size: 0.85em;
-            color: var(--text-color-light);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .news-card .news-meta span {
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .news-card .news-meta span::before {
-            content: '•';
-            margin-right: 5px;
-            color: var(--accent-gold);
-        }
-
-        .news-card .news-meta span:first-child::before {
-            content: none;
-        }
-        
-        .news-card .news-description {
-            font-size: 0.95em;
-            color: var(--text-color-dark);
-            margin-bottom: 10px;
-        }
-
-        .news-card .news-link {
-            color: var(--accent-gold);
-            text-decoration: none;
-            font-weight: 600;
+        .news-card .summary {
             font-size: 0.9em;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
         }
-
-        .category-tag {
-            display: inline-block;
-            background-color: var(--border-light-gray);
-            color: var(--text-color-light);
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.75em;
-            margin-right: 8px;
-            margin-bottom: 5px;
-        }
-
-        /* Internal Dynamics */
-        .internal-group {
-            background-color: var(--card-background-white);
-            border: 1px solid var(--border-light-gray);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .internal-group summary {
-            padding: 15px 20px;
-            font-weight: 600;
-            color: var(--primary-dark-blue);
-            cursor: pointer;
+        .news-card .meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            outline: none;
-            list-style: none; /* Hide default marker */
+            font-size: 0.8em;
+            color: var(--dark-gray);
+            border-top: 1px dashed var(--light-gray);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .news-card .category-tag {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+        .news-card .category-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
-        .internal-group summary::before { /* Custom arrow */
-            content: '▶';
-            margin-right: 10px;
+        /* Company Internal Updates */
+        details {
+            background-color: var(--card-background);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+            box-shadow: var(--shadow-light);
+        }
+        details summary {
+            padding: 15px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--primary-color);
+        }
+        details summary:hover {
+            background-color: var(--background-color);
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary::after {
+            content: '▼';
             font-size: 0.8em;
+            margin-left: 10px;
             transition: transform 0.2s;
         }
-
-        .internal-group[open] summary::before {
-            transform: rotate(90deg);
+        details[open] summary::after {
+            transform: rotate(180deg);
         }
-
-        .internal-group .badge {
-            background-color: var(--accent-gold);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-left: 10px;
-            flex-shrink: 0;
+        .update-list {
+            padding: 10px 20px 15px;
+            border-top: 1px solid var(--light-gray);
         }
-
-        .internal-group ul {
-            list-style: none;
-            padding: 0 20px 15px 20px;
-            margin: 0;
-            border-top: 1px solid var(--border-light-gray);
-        }
-
-        .internal-group li {
-            padding: 10px 0;
-            border-bottom: 1px dashed var(--border-light-gray);
+        .update-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 0.95em;
-            flex-wrap: wrap;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--light-gray);
+            font-size: 0.9em;
         }
-
-        .internal-group li:last-child {
+        .update-item:last-child {
             border-bottom: none;
         }
-
-        .internal-group li a {
-            color: var(--primary-dark-blue);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
+        .update-item .title {
             flex-grow: 1;
-            margin-right: 10px;
         }
-
-        .internal-group li a:hover {
-            color: var(--accent-gold);
-        }
-
-        .internal-group li .meta {
-            font-size: 0.85em;
-            color: var(--text-color-light);
+        .update-item .meta {
+            color: var(--dark-gray);
             white-space: nowrap;
-            margin-left: auto; /* Push to right */
-            flex-shrink: 0;
+            margin-left: 15px;
+        }
+        .badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 10px;
         }
 
         /* Action Items */
+        .action-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
         .action-item {
-            background-color: var(--card-background-white);
-            border: 1px solid var(--border-light-gray);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-            display: flex;
-            align-items: flex-start;
+            background-color: var(--card-background);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
-
-        .action-item input[type="checkbox"] {
-            margin-top: 5px;
-            margin-right: 15px;
-            transform: scale(1.2);
-            accent-color: var(--accent-gold);
-            flex-shrink: 0;
+        .action-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
-
-        .action-item .content {
-            flex-grow: 1;
-        }
-
         .action-item .task {
             font-weight: 600;
-            color: var(--primary-dark-blue);
-            margin-bottom: 5px;
             font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
-
+        .action-item .task input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
         .action-item .background {
             font-size: 0.9em;
-            color: var(--text-color-dark);
-            margin-bottom: 10px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
         }
-
-        .action-item .tags span {
-            display: inline-block;
+        .action-item .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            border-top: 1px dashed var(--light-gray);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .action-item .priority-tag {
             padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.75em;
+            border-radius: 4px;
             font-weight: 600;
-            margin-right: 8px;
-            margin-bottom: 5px;
-            color: white; /* Ensure text is white for all tags */
         }
-
-        .action-item .tags .priority {
-            background-color: var(--danger-red);
-        }
-        .action-item .tags .priority.medium {
-            background-color: var(--warning-orange);
-        }
-        .action-item .tags .priority.low {
-            background-color: var(--success-green);
-        }
-
-        .action-item .tags .time {
-            background-color: var(--primary-dark-blue);
-        }
+        .priority-tag.high { background-color: rgba(229, 62, 62, 0.1); color: var(--danger-color); }
+        .priority-tag.medium { background-color: rgba(221, 107, 32, 0.1); color: var(--warning-color); }
+        .priority-tag.low { background-color: rgba(56, 161, 105, 0.1); color: var(--success-color); }
 
         /* Footer */
         .footer {
-            margin-top: 60px;
+            margin-top: 50px;
             padding-top: 20px;
-            border-top: 1px solid var(--border-light-gray);
-            font-size: 0.85em;
-            color: var(--text-color-light);
+            border-top: 1px solid var(--light-gray);
             text-align: center;
+            font-size: 0.85em;
+            color: var(--dark-gray);
         }
-
-        .footer .brand {
+        .footer .powered-by {
             font-weight: 600;
-            color: var(--primary-dark-blue);
+            color: var(--primary-color);
             margin-top: 10px;
-            display: block;
         }
 
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
             }
             .container {
-                padding: 10px;
+                padding: 20px;
             }
-            .dashboard-metrics, .executive-summary {
+            .dashboard, .executive-summary-grid, .competitor-grid, .news-grid, .action-list {
                 grid-template-columns: 1fr;
             }
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .header h1 {
-                margin-bottom: 10px;
-            }
-            .header > div {
-                text-align: left;
-            }
             .tabs {
-                flex-wrap: wrap;
+                justify-content: flex-start;
             }
             .tab-button {
-                flex: 1 1 auto;
-                text-align: center;
-                margin-bottom: 5px;
+                padding: 10px 15px;
+                font-size: 0.9em;
             }
-            .internal-group li {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .internal-group li .meta {
-                margin-left: 0;
-                margin-top: 5px;
-            }
-            .summary-card .title {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .priority-tag {
-                margin-left: 0;
-                margin-top: 5px;
-            }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <!-- 1. 頂部儀表板區 -->
+        <header>
             <h1>FUNRAISE 每日執行簡報</h1>
-            <div>
-                <p><strong>日期:</strong> 2026-01-26 Monday</p>
-                <p id="greeting"><strong>問候:</strong> 早安, Nelsen!</p>
-            </div>
-        </div>
+            <p style="font-size: 1.1em; color: var(--primary-color); margin-bottom: 20px;">
+                2026年1月26日 星期一 - 早安, Nelsen. ⚡
+            </p>
+        </header>
 
-        <div class="dashboard-metrics">
-            <div class="metric-card">
-                <div class="label">📰 今日新聞數量</div>
-                <div class="value">4</div>
+        <section class="dashboard">
+            <div class="dashboard-card">
+                <span class="icon">📰</span>
+                <span class="value">10</span>
+                <span class="label">今日新聞數量</span>
             </div>
-            <div class="metric-card">
-                <div class="label">🏢 競品動態數量</div>
-                <div class="value">1</div>
+            <div class="dashboard-card">
+                <span class="icon">🏢</span>
+                <span class="value">5</span>
+                <span class="label">競品動態數量</span>
             </div>
-            <div class="metric-card">
-                <div class="label">📝 內部更新數量</div>
-                <div class="value">19</div>
+            <div class="dashboard-card">
+                <span class="icon">📝</span>
+                <span class="value">19</span>
+                <span class="label">內部更新數量</span>
             </div>
-            <div class="metric-card">
-                <div class="label">⚡ 需關注事項數量</div>
-                <div class="value">3</div>
+            <div class="dashboard-card">
+                <span class="icon">⚡</span>
+                <span class="value">4</span>
+                <span class="label">需關注事項數量</span>
             </div>
-        </div>
+        </section>
 
+        <!-- 2. 🎯 執行摘要 -->
         <h2>🎯 執行摘要</h2>
-        <div class="executive-summary">
-            <div class="summary-card high">
-                <div class="icon">📈</div>
-                <div class="content">
-                    <div class="title">CoStar 展現強勁增長動能，Homes.com 盈利延後<span class="priority-tag high">🔴高</span></div>
-                    <div class="description">競品 CoStar 公布 2026 年高於預期的營收指引，但 Homes.com 盈利目標推遲至 2030 年，顯示其在住宅市場的長期戰略與挑戰。</div>
+        <div class="executive-summary-grid">
+            <div class="insight-card" style="border-left-color: var(--danger-color);">
+                <div class="header">
+                    <span class="icon">📈</span>
+                    <span class="title">CoStar強勢展望與AI/併購戰略</span>
+                    <span class="importance high">🔴高</span>
                 </div>
+                <p class="summary">CoStar Group公布2026年亮眼財務展望，並透過15億美元股票回購、AI部署及收購Visual Lease，積極鞏固市場領導地位。</p>
             </div>
-            <div class="summary-card high">
-                <div class="icon">🚀</div>
-                <div class="content">
-                    <div class="title">內部聚焦 PickPeak 生態系與商業模式發展<span class="priority-tag high">🔴高</span></div>
-                    <div class="description">團隊在 Notion 上積極討論 PickPeak 營運模式、平台露出發想及生態系簡報整理，顯示產品核心發展與商業化進程為近期重點。</div>
+            <div class="insight-card" style="border-left-color: var(--warning-color);">
+                <div class="header">
+                    <span class="icon">🤝</span>
+                    <span class="title">CBRE強化彈性辦公市場佈局</span>
+                    <span class="importance medium">🟡中</span>
                 </div>
+                <p class="summary">CBRE斥資4億美元收購共享辦公公司Industrious，旨在整合彈性空間服務，以應對混合辦公模式的市場趨勢。</p>
             </div>
-            <div class="summary-card medium">
-                <div class="icon">💡</div>
-                <div class="content">
-                    <div class="title">AI 成為青年創業與科技發展新動能<span class="priority-tag medium">🟡中</span></div>
-                    <div class="description">Red Bull Basement 徵件聚焦 AI 應用，並攜手微軟、AMD 支援青年開發，凸顯 AI 在創新與人才培育上的戰略價值。</div>
+            <div class="insight-card" style="border-left-color: var(--warning-color);">
+                <div class="header">
+                    <span class="icon">💡</span>
+                    <span class="title">PropTech市場AI應用持續升溫</span>
+                    <span class="importance medium">🟡中</span>
                 </div>
+                <p class="summary">CoStar等巨頭積極部署AI，同時Red Bull Basement等外部計畫聚焦AI創業，顯示AI在房地產科技領域的戰略重要性。</p>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--success-color);">
+                <div class="header">
+                    <span class="icon">🏢</span>
+                    <span class="title">美國商辦市場預期回溫</span>
+                    <span class="importance low">🟢低</span>
+                </div>
+                <p class="summary">CoStar與CBRE均預測2026年美國商業不動產市場將呈現正向吸收與租金成長，預示行業復甦跡象。</p>
             </div>
         </div>
 
+        <!-- 3. 📊 市場情報 -->
         <h2>📊 市場情報</h2>
         <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'competitor-tracking')">🏢 競品追蹤</button>
-            <button class="tab-button" onclick="openTab(event, 'industry-news')">📰 產業新聞</button>
+            <button class="tab-button active" onclick="openTab(event, 'competitorTracking')">競品追蹤</button>
+            <button class="tab-button" onclick="openTab(event, 'industryNews')">產業新聞</button>
         </div>
 
-        <div id="competitor-tracking" class="tab-content active">
-            <div class="competitor-card">
-                <h3><span class="logo-placeholder">CS</span> CoStar Group</h3>
-                <p class="summary">
-                    CoStar 公布 2026 年營收指引為 37.8 億至 38.2 億美元，年增 18%，高於市場預期，並授權 15 億美元股票回購計畫。然而，其住宅平台 Homes.com 的盈利目標延後至 2030 年。分析師對其評級分歧，J.P.摩根維持強烈買入，BNP Paribas 下調至中性。
-                </p>
-                <a href="https://www.costargroup.com/" target="_blank" class="learn-more">了解更多 (CoStarGroup.com)</a>
-                <p class="impact">
-                    <strong>對我們的啟示:</strong> CoStar 憑藉其核心商業數據業務持續強勁增長，並透過大規模股票回購提升股東價值。Homes.com 的盈利延期值得關注，這可能反映了住宅市場競爭的激烈性或其長期投資策略。我們應密切關注其在住宅領域的進展，並評估其策略對潛在市場進入者的影響。
-                </p>
+        <div id="competitorTracking" class="tab-content active">
+            <h3>競品追蹤</h3>
+            <div class="competitor-grid">
+                <div class="competitor-card">
+                    <div class="logo-placeholder">CS</div>
+                    <h4>CoStar Group</h4>
+                    <p class="summary">CoStar公布2026年營收預計年增18%，並宣布15億美元股票回購計畫。同時，其積極部署AI以促進增長並降低成本，並計劃收購Visual Lease以增強租賃管理能力。市場分析師對其評級分歧，但普遍預期其長期增長。</p>
+                    <a href="https://www.costargroup.com/costar-news" target="_blank">了解更多 (CoStar News)</a>
+                    <div class="impact">
+                        <strong>對我們的啟示:</strong> CoStar的AI戰略及對市場的樂觀預期值得我們密切關注，其併購行動也顯示了市場整合的趨勢。我們應評估其AI應用對市場的影響及我們自身的AI策略。
+                    </div>
+                </div>
+                <div class="competitor-card">
+                    <div class="logo-placeholder">CB</div>
+                    <h4>CBRE</h4>
+                    <p class="summary">CBRE以4億美元收購共用辦公公司Industrious，旨在深化其在彈性辦公空間領域的佈局，以應對混合工作模式的興起。此外，CBRE也預測2026年美國商業地產市場將表現強勁。</p>
+                    <a href="https://www.cbre.com/press-room" target="_blank">了解更多 (CBRE Press Room)</a>
+                    <div class="impact">
+                        <strong>對我們的啟示:</strong> CBRE在彈性辦公領域的投入，提示我們需關注市場對混合辦公模式的需求變化，並思考PickPeak平台如何提供相關的彈性空間解決方案或合作機會。
+                    </div>
+                </div>
             </div>
-            <!-- VTS, CBRE, 信義商業, 永慶商業, 591房屋, 樂居 無重大更新，故不顯示卡片 -->
         </div>
 
-        <div id="industry-news" class="tab-content">
-            <div class="news-card">
-                <div class="news-title">2026 Red Bull Basement 徵件開跑：攜手微軟與 AMD 支援 AI 開發，優勝者將赴矽谷角逐創業基金</div>
-                <div class="news-meta">
-                    <span>Techbang.com</span>
-                    <span>2026-01-25</span>
+        <div id="industryNews" class="tab-content">
+            <h3>產業新聞</h3>
+            <div class="news-grid">
+                <div class="news-card">
+                    <a href="https://www.costargroup.com/costar-news" target="_blank" class="title">CoStar Group Provides Full Year 2026 and Medium-Term Outlook with Significant Adjusted EBITDA Expansion</a>
+                    <p class="summary">CoStar Group announces 2026 outlook, $1.5B share repurchase, AI deployment for growth and cost reduction.</p>
+                    <div class="meta">
+                        <span>來源: CoStar Group Press Room</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">PropTech</span>
+                            <span class="category-tag">競品動態</span>
+                            <span class="category-tag">AI</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="news-description">
-                    2026 Red Bull Basement 徵件啟動，聚焦人工智慧應用，鼓勵青年創業家將概念轉化為實際解決方案。結合微軟、AMD 資源，以人工智慧加速產品開發，爭奪百萬創業基金。此計畫針對全球青年創業與技術開發，報名期限至 3 月 25 日截止。
-                </p>
-                <div class="tags">
-                    <span class="category-tag">AI</span>
-                    <span class="category-tag">PropTech</span>
-                    <span class="category-tag">青年創業</span>
+                <div class="news-card">
+                    <a href="https://derivativelogic.com/news/cbre-acquires-industrious-for-400m-valuing-at-over-800m-in-proptech-flexible-workspace-push" target="_blank" class="title">CBRE Acquires Industrious for $400M, Valuing at Over $800M in PropTech Flexible Workspace Push</a>
+                    <p class="summary">CBRE buys co-working firm Industrious to integrate flexible spaces amid hybrid work trends.</p>
+                    <div class="meta">
+                        <span>來源: Derivative Logic</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">PropTech</span>
+                            <span class="category-tag">競品動態</span>
+                            <span class="category-tag">產業趨勢</span>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://www.techbang.com/posts/127634-red-bull-basement-2026-ai-dev-silicon-valley" target="_blank" class="news-link">閱讀全文</a>
+                <div class="news-card">
+                    <a href="https://innovationopenlab.com/news/costar-upgrades-us-office-projections-through-2026-with-positive-absorption-and-rent-growth" target="_blank" class="title">CoStar Upgrades U.S. Office Projections Through 2026 with Positive Absorption and Rent Growth</a>
+                    <p class="summary">CoStar revises forecast: 10M sq ft positive absorption, 1% rent growth by late 2026.</p>
+                    <div class="meta">
+                        <span>來源: Innovation Open Lab</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">PropTech</span>
+                            <span class="category-tag">產業趨勢</span>
+                            <span class="category-tag">美國市場</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <a href="https://proptechconnect.com/news/costar-group-to-acquire-visual-lease-for-lease-management-enhancement" target="_blank" class="title">CoStar Group to Acquire Visual Lease for Lease Management Enhancement</a>
+                    <p class="summary">CoStar set to buy Visual Lease platform for integrated lease management and reporting.</p>
+                    <div class="meta">
+                        <span>來源: Proptech Connect</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">PropTech</span>
+                            <span class="category-tag">競品動態</span>
+                            <span class="category-tag">併購</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <a href="https://www.youtube.com/watch?v=XXXXXXXXX" target="_blank" class="title">CBRE Projects Strong 2026 U.S. Real Estate Market Performance Across Sectors</a>
+                    <p class="summary">CBRE's 2026 outlook predicts robust commercial real estate growth despite economic challenges.</p>
+                    <div class="meta">
+                        <span>來源: YouTube / CBRE</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">PropTech</span>
+                            <span class="category-tag">產業趨勢</span>
+                            <span class="category-tag">美國市場</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <a href="https://www.techbang.com/posts/127634-red-bull-basement-2026-ai-dev-silicon-valley" target="_blank" class="title">2026 Red Bull Basement 徵件開跑：攜手微軟與 AMD 支援 AI 開發</a>
+                    <p class="summary">Red Bull Basement 徵件啟動，聚焦人工智慧應用，結合微軟、AMD 資源，助青年創業家將概念轉化為實際解決方案。</p>
+                    <div class="meta">
+                        <span>來源: Techbang.com</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">AI</span>
+                            <span class="category-tag">創業</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="news-card">
+                    <a href="https://www.newmobilelife.com/2026/01/25/nvidia-arm-laptops-target-intel/" target="_blank" class="title">Nvidia 將推多款 Arm 筆記型電腦 劍指 Intel x86 市場</a>
+                    <p class="summary">Nvidia 將推出 Arm 架構筆記型電腦，挑戰 Intel 與 AMD 主導的 Windows 市場，預示運算硬體市場的潛在變革。</p>
+                    <div class="meta">
+                        <span>來源: Newmobilelife.com</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">科技</span>
+                            <span class="category-tag">硬體</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <a href="https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_ff773331-011f-412a-962d-40376a62d9be" target="_blank" class="title">「恒基 x 博愛慈善跑 2026」圓滿舉行 為安老院舍及火災重建籌款</a>
+                    <p class="summary">由恒基地產冠名贊助的慈善跑活動吸引約5,000人參加，為安老院舍及火災重建籌款，並推廣傷健共融。</p>
+                    <div class="meta">
+                        <span>來源: Yahoo Entertainment</span>
+                        <div class="category-wrapper">
+                            <span class="category-tag">社會</span>
+                            <span class="category-tag">香港市場</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="news-card">
-                <div class="news-title">Nvidia 將推多款 Arm 筆記型電腦　劍指 Intel x86 市場</div>
-                <div class="news-meta">
-                    <span>Newmobilelife.com</span>
-                    <span>2026-01-25</span>
-                </div>
-                <p class="news-description">
-                    Intel 與 AMD 長年主導的 Windows 筆記型電腦市場將面臨新挑戰，Nvidia 預計推出多款 Arm 架構筆記型電腦。此舉將打破傳統 x86 架構的壟斷，預示著個人運算硬體生態的潛在轉變。
-                </p>
-                <div class="tags">
-                    <span class="category-tag">AI</span>
-                    <span class="category-tag">科技趨勢</span>
-                </div>
-                <a href="https://www.newmobilelife.com/2026/01/25/nvidia-arm-laptops-target-intel/" target="_blank" class="news-link">閱讀全文</a>
-            </div>
-            <!-- 其他新聞因相關性較低，故不顯示 -->
         </div>
 
+        <!-- 4. 🏠 公司內部動態 -->
         <h2>🏠 公司內部動態</h2>
-        <div class="internal-dynamics">
-            <details class="internal-group" open>
-                <summary>PickPeak/產品開發 <span class="badge">4</span></summary>
-                <ul>
-                    <li>
-                        <a href="https://www.notion.so/PP-2eeb2192451580f08974f7a8db7e153d" target="_blank">營運期的商業模式並如何在PP平台露出發想</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T02:28:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2eeb2192451580dea49fd9a8785633ea" target="_blank">整理一份生態系公版簡報</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T02:25:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/PickPeak-2f1b2192451580988fd5d44e48cead21" target="_blank">PickPeak 生態系推薦原生模組</a>
-                        <span class="meta" data-edited-by="by 2a7d872b..." data-timestamp="2026-01-26T02:14:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/1-13-PickPeak-eac5e286e12b435d991f6d9681792871" target="_blank">1/13 PickPeak 發表會(台北文創)</a>
-                        <span class="meta" data-edited-by="by 28ed872b..." data-timestamp="2026-01-26T02:00:00.000Z"></span>
-                    </li>
-                </ul>
+        <div>
+            <details>
+                <summary>PickPeak 生態系/產品發展 <span class="badge">4</span></summary>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/PP-2eeb2192451580f08974f7a8db7e153d" target="_blank">營運期的商業模式並如何在PP平台露出發想</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 02:28</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2eeb2192451580dea49fd9a8785633ea" target="_blank">整理一份生態系公版簡報</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 02:25</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/PickPeak-2f1b2192451580988fd5d44e48cead21" target="_blank">PickPeak 生態系推薦原生模組</a></span>
+                        <span class="meta">by 2a7d872b...6a | 2026-01-26 02:14</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/1-13-PickPeak-eac5e286e12b435d991f6d9681792871" target="_blank">1/13 PickPeak 發表會(台北文創)</a></span>
+                        <span class="meta">by 28ed872b...5f2 | 2026-01-26 02:00</span>
+                    </div>
+                </div>
             </details>
 
-            <details class="internal-group">
-                <summary>業務發展/合作夥伴 <span class="badge">6</span></summary>
-                <ul>
-                    <li>
-                        <a href="https://www.notion.so/RAISEDAY-1-23-2f1b219245158013adc6cd7587488806" target="_blank">RAISEDAY感謝信發送名單(1/23發出)</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T02:02:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/11-20-670b0d9a62c747fb-a143-56416c31f5c1" target="_blank">11/20 建商說明會（國泰萬豪）</a>
-                        <span class="meta" data-edited-by="by 28ed872b..." data-timestamp="2026-01-26T02:00:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f4b2192451580ccaaacd653f7fd4c84" target="_blank">政治大學（白仁德教授）</a>
-                        <span class="meta" data-edited-by="by 1b6d872b..." data-timestamp="2026-01-26T00:39:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f4b2192451580259885daf8ec4b60da" target="_blank">慧城地產</a>
-                        <span class="meta" data-edited-by="by 1b6d872b..." data-timestamp="2026-01-26T00:38:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f1b2192451580169503d237b2fb0a59" target="_blank">瑞普萊坊</a>
-                        <span class="meta" data-edited-by="by 1b6d872b..." data-timestamp="2026-01-26T00:36:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f1b2192451580769d0aea3c0d7d0243" target="_blank">店面需求者(吳先生)</a>
-                        <span class="meta" data-edited-by="by 1b6d872b..." data-timestamp="2026-01-26T00:36:00.000Z"></span>
-                    </li>
-                </ul>
+            <details>
+                <summary>合作夥伴/客戶關係 <span class="badge">5</span></summary>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f4b2192451580ccaaacd653f7fd4c84" target="_blank">政治大學（白仁德教授）</a></span>
+                        <span class="meta">by 1b6d872b...528 | 2026-01-26 00:39</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f4b2192451580259885daf8ec4b60da" target="_blank">慧城地產</a></span>
+                        <span class="meta">by 1b6d872b...528 | 2026-01-26 00:38</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f1b2192451580169503d237b2fb0a59" target="_blank">瑞普萊坊</a></span>
+                        <span class="meta">by 1b6d872b...528 | 2026-01-26 00:36</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f1b2192451580769d0aea3c0d7d0243" target="_blank">店面需求者(吳先生)</a></span>
+                        <span class="meta">by 1b6d872b...528 | 2026-01-26 00:36</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f4b21924515804ab8fcdebcb6654e4c" target="_blank">增站</a></span>
+                        <span class="meta">by 1b6d872b...528 | 2026-01-26 00:36</span>
+                    </div>
+                </div>
             </details>
 
-            <details class="internal-group">
-                <summary>團隊與聯絡人更新 <span class="badge">5</span></summary>
-                <ul>
-                    <li>
-                        <a href="https://www.notion.so/2f1b219245158047995cf93dfc5d2f84" target="_blank">王智弘</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T01:59:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/Eileen-2f1b21924515804eb6b8f5c960e9f496" target="_blank">甘絜瑩Eileen</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T01:58:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/Michael-Chen-2f1b21924515800a90fad08e20932028" target="_blank">Michael Chen</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T01:57:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f1b219245158086b4c0f64dcc7b516e" target="_blank">葉晨曦</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T01:57:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/Anthia-Wang-2f1b2192451580a1bcded1fd83bf2f5c" target="_blank">Anthia Wang</a>
-                        <span class="meta" data-edited-by="by 2cbd872b..." data-timestamp="2026-01-26T01:53:00.000Z"></span>
-                    </li>
-                </ul>
+            <details>
+                <summary>營運/行政 <span class="badge">3</span></summary>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/BSC-Weekly-2026-01-23-410b5e0ee874463eb32703e492053f4c" target="_blank">BSC Weekly 2026.01.23</a></span>
+                        <span class="meta">by 2a7d872b...6a | 2026-01-26 02:12</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/RAISEDAY-1-23-2f1b219245158013adc6cd7587488806" target="_blank">RAISEDAY感謝信發送名單(1/23發出)</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 02:02</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/RAISEDAY-2dbb2192451580a0a3dcc8fa26f34110" target="_blank">RAISEDAY 活動日人力清單列表</a></span>
+                        <span class="meta">by 28ed872b...5f2 | 2026-01-25 05:09</span>
+                    </div>
+                </div>
             </details>
 
-            <details class="internal-group">
-                <summary>營運與其他 <span class="badge">4</span></summary>
-                <ul>
-                    <li>
-                        <a href="https://www.notion.so/BSC-Weekly-2026-01-23-410b5e0ee874463eb32703e492053f4c" target="_blank">BSC Weekly 2026.01.23</a>
-                        <span class="meta" data-edited-by="by 2a7d872b..." data-timestamp="2026-01-26T02:12:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f4b21924515804ab8fcdebcb6654e4c" target="_blank">增站</a>
-                        <span class="meta" data-edited-by="by 1b6d872b..." data-timestamp="2026-01-26T00:36:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/2f3b219245158129bd7ed30b739511e9" target="_blank">Untitled</a>
-                        <span class="meta" data-edited-by="by 00000000..." data-timestamp="2026-01-25T16:00:00.000Z"></span>
-                    </li>
-                    <li>
-                        <a href="https://www.notion.so/RAISEDAY-2dbb2192451580a0a3dcc8fa26f34110" target="_blank">RAISEDAY 活動日人力清單列表</a>
-                        <span class="meta" data-edited-by="by 28ed872b..." data-timestamp="2026-01-25T05:09:00.000Z"></span>
-                    </li>
-                </ul>
+            <details>
+                <summary>其他/人事動態 <span class="badge">7</span></summary>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f1b219245158047995cf93dfc5d2f84" target="_blank">王智弘</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 01:59</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/Eileen-2f1b21924515804eb6b8f5c960e9f496" target="_blank">甘絜瑩Eileen</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 01:58</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/Michael-Chen-2f1b21924515800a90fad08e20932028" target="_blank">Michael Chen</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 01:57</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f1b219245158086b4c0f64dcc7b516e" target="_blank">葉晨曦</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 01:57</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/Anthia-Wang-2f1b2192451580a1bcded1fd83bf2f5c" target="_blank">Anthia Wang</a></span>
+                        <span class="meta">by 2cbd872b...4bf | 2026-01-26 01:53</span>
+                    </div>
+                     <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/11-20-670b0d9a62c747fba14356416c31f5c1" target="_blank">11/20 建商說明會（國泰萬豪）</a></span>
+                        <span class="meta">by 28ed872b...5f2 | 2026-01-26 02:00</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="title"><a href="https://www.notion.so/2f3b219245158129bd7ed30b739511e9" target="_blank">Untitled</a></span>
+                        <span class="meta">by 00000000...003 | 2026-01-25 16:00</span>
+                    </div>
+                </div>
             </details>
         </div>
 
+        <!-- 5. ✅ 今日行動清單 -->
         <h2>✅ 今日行動清單</h2>
-        <div class="action-items-list">
+        <div class="action-list">
             <div class="action-item">
-                <input type="checkbox" id="action1">
-                <div class="content">
-                    <label for="action1" class="task">深入分析 CoStar Homes.com 的延遲盈利策略</label>
-                    <p class="background">CoStar 將 Homes.com 盈利目標推遲至 2030 年，這可能反映了其在住宅市場的長期佈局或遇到的挑戰。理解其背後原因，有助於我們評估自身的市場進入策略。</p>
-                    <div class="tags">
-                        <span class="priority high">🔴 高</span>
-                        <span class="time">⏱ 30min+</span>
-                    </div>
+                <div class="task">
+                    <input type="checkbox" id="action1">
+                    <label for="action1">評估CoStar AI部署對我們產品路線圖的潛在影響</label>
+                </div>
+                <p class="background"><strong>背景:</strong> CoStar積極利用AI增長並降低成本，其併購Visual Lease也顯示了對技術整合的重視。我們需分析其AI戰略，思考如何將類似或更創新的AI應用整合到PickPeak平台，保持競爭力。</p>
+                <div class="meta">
+                    <span class="priority-tag high">高優先級</span>
+                    <span>預估時間: 30min+</span>
                 </div>
             </div>
-
             <div class="action-item">
-                <input type="checkbox" id="action2">
-                <div class="content">
-                    <label for="action2" class="task">評估參與或支持青年 AI 創新計畫的可能性</label>
-                    <p class="background">Red Bull Basement 等活動顯示 AI 人才培育與創新應用是市場熱點。考慮 FUNRAISE 如何能與此類計畫結合，發掘潛在合作機會或新技術人才。</p>
-                    <div class="tags">
-                        <span class="priority medium">🟡 中</span>
-                        <span class="time">⏱ 15min</span>
-                    </div>
+                <div class="task">
+                    <input type="checkbox" id="action2">
+                    <label for="action2">研究彈性辦公市場的最新需求與合作機會</label>
+                </div>
+                <p class="background"><strong>背景:</strong> CBRE收購Industrious，顯示彈性辦公市場的重要性及其潛在增長。我們應探索PickPeak能否與台灣的共享辦公空間合作，或開發相關功能以滿足市場對混合辦公模式的需求。</p>
+                <div class="meta">
+                    <span class="priority-tag medium">中優先級</span>
+                    <span>預估時間: 30min+</span>
                 </div>
             </div>
-
             <div class="action-item">
-                <input type="checkbox" id="action3">
-                <div class="content">
-                    <label for="action3" class="task">與 PickPeak 產品團隊討論商業模式落地細節</label>
-                    <p class="background">內部大量討論聚焦於 PickPeak 的商業模式與平台露出，確保產品開發與商業化策略緊密結合，加速市場變現。</p>
-                    <div class="tags">
-                        <span class="priority high">🔴 高</span>
-                        <span class="time">⏱ 30min+</span>
-                    </div>
+                <div class="task">
+                    <input type="checkbox" id="action3">
+                    <label for="action3">檢視PickPeak商業模式發想進度與外部機會</label>
+                </div>
+                <p class="background"><strong>背景:</strong> 內部Notion有「營運期的商業模式並如何在PP平台露出發想」更新。COO應檢視此進度，確保商業模式與市場趨勢（如AI應用、彈性辦公）保持一致，並探索潛在的合作夥伴與露出機會。</p>
+                <div class="meta">
+                    <span class="priority-tag medium">中優先級</span>
+                    <span>預估時間: 15min</span>
+                </div>
+            </div>
+            <div class="action-item">
+                <div class="task">
+                    <input type="checkbox" id="action4">
+                    <label for="action4">關注美國商辦市場回溫對全球趨勢的啟示</label>
+                </div>
+                <p class="background"><strong>背景:</strong> CoStar和CBRE對美國市場的樂觀預期，雖非直接影響台灣市場，但可作為判斷全球商業不動產市場復甦的風向標。了解宏觀趨勢有助於我們調整長期策略。</p>
+                <div class="meta">
+                    <span class="priority-tag low">低優先級</span>
+                    <span>預估時間: 5min</span>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            <p><strong>資料來源:</strong> News API, Perplexity AI, Notion API, Firecrawl API</p>
-            <p><strong>生成時間:</strong> 2026-01-26 08:00 AM (UTC+8)</p>
-            <span class="brand">Powered by FUNRAISE AI</span>
-        </div>
+        <!-- 6. 底部 -->
+        <footer class="footer">
+            <p><strong>資料來源:</strong> PropTech AI 搜尋 (News API), Perplexity AI 競品洞察, Notion 內部更新, Firecrawl 競品網站監控</p>
+            <p>生成時間: 2026-01-26 08:00 AM (UTC+8)</p>
+            <p class="powered-by">Powered by FUNRAISE AI</p>
+        </footer>
     </div>
 
     <script>
@@ -828,55 +826,29 @@
             evt.currentTarget.className += " active";
         }
 
-        // Set default active tab
+        // Initialize the first tab as active on load
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector(".tab-button").click();
+        });
 
-            // Greeting based on current time
-            const now = new Date();
-            const hour = now.getHours();
-            let greetingText;
-            if (hour < 12) {
-                greetingText = "早安";
-            } else if (hour < 18) {
-                greetingText = "午安";
-            } else {
-                greetingText = "晚安";
+        // Helper to shorten Notion user IDs for display
+        function shortenUserId(id) {
+            if (id && id.length > 10) {
+                return id.substring(0, 8) + '...' + id.substring(id.length - 3);
             }
-            document.getElementById('greeting').innerHTML = `<strong>問候:</strong> ${greetingText}, Nelsen!`;
+            return id;
+        }
 
-            // Format Notion last_edited time
-            // Report date is 2026-01-26 Monday.
-            // We need to convert Notion's UTC timestamp to UTC+8 and compare with 2026-01-26 00:00:00 UTC+8
-            const reportDateLocalStart = new Date('2026-01-26T00:00:00'); // This will be interpreted as local time
-            
-            document.querySelectorAll('.internal-group li .meta').forEach(item => {
-                const editedById = item.getAttribute('data-edited-by');
-                const timestampUTC = item.getAttribute('data-timestamp');
-                const dateUTC = new Date(timestampUTC); // This is the Date object in UTC
-
-                // Convert UTC to UTC+8 manually for display and comparison purposes
-                const localDate = new Date(dateUTC.getTime() + (8 * 60 * 60 * 1000)); 
-
-                const optionsTime = { hour: 'numeric', minute: 'numeric', hour12: true, timeZone: 'Asia/Taipei' };
-                const formattedTime = localDate.toLocaleTimeString('zh-TW', optionsTime);
-
-                // Check if the localDate is on the same day as reportDateLocalStart
-                const isSameDay = localDate.getFullYear() === reportDateLocalStart.getFullYear() &&
-                                  localDate.getMonth() === reportDateLocalStart.getMonth() &&
-                                  localDate.getDate() === reportDateLocalStart.getDate();
-
-                if (isSameDay) {
-                    item.textContent = `${editedById} | ${formattedTime}`;
-                } else {
-                    const optionsDateTime = { month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true, timeZone: 'Asia/Taipei' };
-                    const formattedDateTime = localDate.toLocaleDateString('zh-TW', optionsDateTime);
-                    // Remove the year and comma, e.g., "1/25 上午1:09"
-                    const datePart = formattedDateTime.split(' ')[0]; // "1/25"
-                    const timePart = formattedDateTime.split(' ').slice(1).join(' '); // "上午1:09"
-                    item.textContent = `${editedById} | ${datePart} ${timePart}`;
-                }
-            });
+        // Apply shortening to all user IDs in internal updates
+        document.querySelectorAll('.update-item .meta').forEach(function(el) {
+            let text = el.textContent;
+            const userIdRegex = /by ([0-9a-fA-F-]{36}) \|/;
+            const match = text.match(userIdRegex);
+            if (match && match[1]) {
+                const originalId = match[1];
+                const shortenedId = shortenUserId(originalId);
+                el.textContent = text.replace(originalId, shortenedId);
+            }
         });
     </script>
 </body>
