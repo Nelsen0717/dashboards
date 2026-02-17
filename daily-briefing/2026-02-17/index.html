@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNRAISE 每日執行簡報 - Nelsen</title>
+    <style>
+        :root {
+            --primary-color: #1A365D; /* Deep Blue */
+            --accent-color: #D69E2E; /* Gold */
+            --success-color: #38A169; /* Green */
+            --warning-color: #DD6B20; /* Orange */
+            --danger-color: #E53E3E; /* Red */
+            --background-color: #F7FAFC; /* Light Gray */
+            --card-background: #FFFFFF;
+            --text-color: #2D3748; /* Darker text */
+            --light-text-color: #718096; /* Lighter text */
+            --border-color: #E2E8F0; /* Light border */
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 20px; }
+        h3 { font-size: 1.4em; }
+        h4 { font-size: 1.2em; }
+
+        /* Dashboard */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+
+        .dashboard-metrics {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .metric-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .metric-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .metric-card .value {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-family: 'SF Mono', 'Consolas', monospace; /* Monospace for numbers */
+        }
+
+        .metric-card .label {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-top: 5px;
+        }
+
+        /* Executive Summary */
+        .executive-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .insight-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            border-left: 5px solid; /* Color based on importance */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .insight-card .icon {
+            font-size: 1.8em;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .insight-card-content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .insight-card-content p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--light-text-color);
+        }
+
+        .importance-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .importance-tag.high { background-color: #FEE2E2; color: var(--danger-color); }
+        .importance-tag.medium { background-color: #FEF3C7; color: var(--warning-color); }
+        .importance-tag.low { background-color: #D1FAE5; color: var(--success-color); }
+
+        /* Market Intelligence Tabs (using details for simplicity) */
+        details {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            font-weight: 600;
+            padding: 15px 20px;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary-color);
+            display: block;
+            position: relative;
+        }
+
+        summary::marker {
+            display: none; /* Hide default marker */
+        }
+
+        summary::before {
+            content: '▶'; /* Custom arrow */
+            position: absolute;
+            left: 10px;
+            font-size: 0.8em;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .details-content {
+            padding: 10px 20px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Competitor Tracking */
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .competitor-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .competitor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .competitor-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .competitor-card .logo-placeholder {
+            width: 30px;
+            height: 30px;
+            background-color: #E2E8F0;
+            border-radius: 4px;
+            margin-right: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: var(--light-text-color);
+        }
+
+        .competitor-card p {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-bottom: 10px;
+        }
+
+        .competitor-card .impact {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
+        }
+        .competitor-card .impact span {
+            font-weight: 400;
+            color: var(--text-color);
+        }
+        .competitor-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .competitor-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Industry News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .news-card h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: var(--primary-color);
+        }
+
+        .news-card p {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-bottom: 10px;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8em;
+            color: var(--light-text-color);
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .news-meta .source {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .news-meta .category-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background-color: #EBF4FF; /* Light blue */
+            color: #2B6CB0; /* Blue */
+            font-weight: 500;
+            font-size: 0.75em;
+        }
+
+        /* Internal Updates */
+        .internal-updates-section {
+            padding: 20px;
+            background-color: var(--card-background);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--light-text-color);
+            font-size: 1.1em;
+        }
+
+        /* Action Items */
+        .action-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-item {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .action-item input[type="checkbox"] {
+            margin-right: 15px;
+            margin-top: 4px; /* Align with text */
+            transform: scale(1.4);
+            accent-color: var(--accent-color);
+        }
+
+        .action-content h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: var(--primary-color);
+        }
+
+        .action-content p {
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--light-text-color);
+        }
+
+        .action-meta {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.85em;
+        }
+
+        .priority-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+        .priority-tag.high { background-color: #FEE2E2; color: var(--danger-color); }
+        .priority-tag.medium { background-color: #FEF3C7; color: var(--warning-color); }
+        .priority-tag.low { background-color: #D1FAE5; color: var(--success-color); }
+
+        .time-estimate {
+            background-color: #EDF2F7;
+            color: #4A5568;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--light-text-color);
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .brand {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .dashboard-metrics {
+                flex-direction: column;
+            }
+            .metric-card {
+                min-width: unset;
+                width: 100%;
+            }
+            .executive-summary-grid, .competitor-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-header h1 {
+                font-size: 1.8em;
+            }
+            .dashboard-header .date-greeting {
+                font-size: 0.9em;
+            }
+            summary::before {
+                left: 5px;
+            }
+            .details-content {
+                padding: 10px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>FUNRAISE 每日執行簡報</h1>
+            <div class="date-greeting">
+                <p style="margin:0; font-weight:600;">2026-02-17 Tuesday</p>
+                <p style="margin:5px 0 0 0; color:var(--primary-color);">午安, Nelsen!</p>
+            </div>
+        </div>
+
+        <div class="dashboard-metrics">
+            <div class="metric-card">
+                <div class="icon">📰</div>
+                <div class="value">7</div>
+                <div class="label">今日新聞數量</div>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🏢</div>
+                <div class="value">2</div>
+                <div class="label">競品動態數量</div>
+            </div>
+            <div class="metric-card">
+                <div class="icon">📝</div>
+                <div class="value">0</div>
+                <div class="label">內部更新數量</div>
+            </div>
+            <div class="metric-card">
+                <div class="icon">⚡</div>
+                <div class="value">4</div>
+                <div class="label">需關注事項數量</div>
+            </div>
+        </div>
+
+        <h2>🎯 執行摘要</h2>
+        <div class="executive-summary-grid">
+            <div class="insight-card" style="border-left-color: var(--danger-color);">
+                <div class="icon">📈</div>
+                <div class="insight-card-content">
+                    <h4>PropTech 產業聚焦 AI 與雲端創新<span class="importance-tag high">🔴高</span></h4>
+                    <p>多項產業新聞強調 AI 和雲端技術是 PropTech 未來成長的核心驅動力，市場預計2032年將達到883億美元規模。</p>
+                </div>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--danger-color);">
+                <div class="icon">⚠️</div>
+                <div class="insight-card-content">
+                    <h4>CoStar 面臨股東壓力，Homes.com 策略調整<span class="importance-tag high">🔴高</span></h4>
+                    <p>CoStar 雖營收展望樂觀，但因資本支出過高遭股東批評，並計畫減少 Homes.com 投資以求2029年收支平衡，值得密切關注其市場策略變化。</p>
+                </div>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--danger-color);">
+                <div class="icon">🔄</div>
+                <div class="insight-card-content">
+                    <h4>PropTech 市場告別「成長至上」，格局轉變<span class="importance-tag high">🔴高</span></h4>
+                    <p>產業領導者需面對新的市場現實，意味著未來將更注重效率、盈利與可持續發展，而非單純的規模擴張。</p>
+                </div>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--warning-color);">
+                <div class="icon">💰</div>
+                <div class="insight-card-content">
+                    <h4>代幣化房地產債券初露鋒芒<span class="importance-tag medium">🟡中</span></h4>
+                    <p>MetaWealth 成功推出1800萬歐元的代幣化住宅項目債券，預示著房地產投資領域的新興金融創新模式。</p>
+                </div>
+            </div>
+            <div class="insight-card" style="border-left-color: var(--warning-color);">
+                <div class="icon">🔍</div>
+                <div class="insight-card-content">
+                    <h4>VTS 持續關注 AI 與租賃市場預測<span class="importance-tag medium">🟡中</span></h4>
+                    <p>VTS Blog 發布2026年租賃預測並探討 AI 在商業房地產中的應用，顯示其對技術趨勢和市場洞察的持續投入。</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>📊 市場情報</h2>
+
+        <details open>
+            <summary>3.1 競品追蹤</summary>
+            <div class="details-content">
+                <div class="competitor-grid">
+                    <div class="competitor-card">
+                        <h4><span class="logo-placeholder">CS</span> CoStar Group</h4>
+                        <p><strong>最新動態：</strong> CoStar 公布2026年營收展望為37.8億至38.2億美元，年增約18%，高於市場預期。然而，D.E. Shaw集團批評其資本支出過高，要求董事會變革，並計畫在2026年將 Homes.com 投資減少3000萬美元，目標在2029年實現收支平衡。</p>
+                        <p><strong>市場表現：</strong> 股價觸及52週低點48.55美元，過去5年跌32%（落後S&P 500），但過去10年年化報酬17.82%優於市場。</p>
+                        <a href="https://www.google.com/search?q=CoStar+Group+news+2026" target="_blank">了解更多</a>
+                        <p class="impact"><strong>影響評估：</strong> <span>CoStar 在維持成長的同時，面臨股東對資本效率的嚴格審視。Homes.com 的策略調整可能影響其在住宅市場的佈局，為我們提供了評估自身數據與平台投資策略的參考點。</span></p>
+                    </div>
+                    <div class="competitor-card">
+                        <h4><span class="logo-placeholder">VT</span> VTS</h4>
+                        <p><strong>最新動態：</strong> VTS Blog 發布「2026 VTS Leasing Prediction Outlook」，並持續更新關於 AI 在商業房地產中應用的文章，如「The Real Estate AI Revolution」。</p>
+                        <a href="https://www.vts.com/blog" target="_blank">了解更多</a>
+                        <p class="impact"><strong>影響評估：</strong> <span>VTS 積極透過內容行銷展現其在商業地產和技術創新（特別是 AI）方面的領導力。其市場預測和 AI 應用洞察，值得我們借鑒並與我們的市場分析進行對比。</span></p>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: var(--light-text-color);">CBRE、信義商業、永慶商業、591 房屋、樂居：無重大更新。</p>
+            </div>
+        </details>
+
+        <details open>
+            <summary>3.2 產業新聞</summary>
+            <div class="details-content">
+                <div class="news-grid">
+                    <div class="news-card">
+                        <h5>Proptech Australia 2026 Panel: Opportunities and Challenges Ahead</h5>
+                        <p>新任董事會討論2026 PropTech挑戰與機會，包括AI數據處理、REA收購iGuide等創新。</p>
+                        <div class="news-meta">
+                            <span class="source">Proptech Association Australia</span>
+                            <span class="category-tag">PropTech 產業趨勢</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <h5>Five Hard Truths Reshaping Proptech in 2026</h5>
+                        <p>PropTech領導者需面對5大現實：成長至上時代結束，產業格局轉變。</p>
+                        <div class="news-meta">
+                            <span class="source">LMRE</span>
+                            <span class="category-tag">PropTech 產業趨勢</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <h5>Multifamily Innovation & AI Summit 2026 Announced</h5>
+                        <p>多戶住宅高管學習AI與創新，提升營運效率與居民體驗。</p>
+                        <div class="news-meta">
+                            <span class="source">Proptech Vision</span>
+                            <span class="category-tag">PropTech 產業趨勢</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <h5>PropTech Has a Bright Future with AI and Cloud Innovations</h5>
+                        <p>新世代PropTech利用AI、雲端與IoT革新房地產，市場預計2032達883億美元。</p>
+                        <div class="news-meta">
+                            <span class="source">International Banker</span>
+                            <span class="category-tag">PropTech 產業趨勢</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <h5>MetaWealth Launches €18M Tokenized Real Estate Bonds</h5>
+                        <p>與One United Properties合作推出布加勒斯特住宅項目代幣化債券，目標19%年回報。</p>
+                        <div class="news-meta">
+                            <span class="source">PROPTECH-X</span>
+                            <span class="category-tag">投資動態</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <h5>RETCON 2026: Real Estate Tech Conference Announced</h5>
+                        <p>主要PropTech會議聚集業主、投資者與科技創新者，探索房地產未來技術。</p>
+                        <div class="news-meta">
+                            <span class="source">Proptech Vision</span>
+                            <span class="category-tag">PropTech 產業趨勢</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <h5>CRETI Venture Summit 2026: Investor-Only PropTech Event</h5>
+                        <p>邀請制投資峰會，連結房地產科技領域創投與私募股權投資者。</p>
+                        <div class="news-meta">
+                            <span class="source">Proptech Vision</span>
+                            <span class="category-tag">投資動態</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <h2>🏠 公司內部動態</h2>
+        <div class="internal-updates-section">
+            <p>過去 24 小時無內部頁面更新。</p>
+        </div>
+
+        <h2>✅ 今日行動清單</h2>
+        <div class="action-list">
+            <div class="action-item">
+                <input type="checkbox" id="action1">
+                <div class="action-content">
+                    <h4>深入分析 CoStar Homes.com 投資策略調整及其潛在影響</h4>
+                    <p><strong>相關背景：</strong> CoStar 因股東壓力調整 Homes.com 投資，目標2029年收支平衡，這可能預示市場競爭格局變化，需評估對我們業務的潛在啟示。</p>
+                    <div class="action-meta">
+                        <span class="priority-tag high">🔴高</span>
+                        <span class="time-estimate">30min+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" id="action2">
+                <div class="action-content">
+                    <h4>研究 PropTech 領域 AI 和雲端技術的最新應用案例</h4>
+                    <p><strong>相關背景：</strong> 多個產業新聞強調 AI 和雲端是 PropTech 未來主要成長動能，了解領先應用有助於我們產品策略規劃。</p>
+                    <div class="action-meta">
+                        <span class="priority-tag high">🔴高</span>
+                        <span class="time-estimate">30min+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" id="action3">
+                <div class="action-content">
+                    <h4>評估代幣化房地產債券模式對本地市場的可行性</h4>
+                    <p><strong>相關背景：</strong> MetaWealth 成功推出代幣化債券，此新興投資模式可能為房地產金融帶來創新，值得探討其在台灣市場的潛力。</p>
+                    <div class="action-meta">
+                        <span class="priority-tag medium">🟡中</span>
+                        <span class="time-estimate">15min</span>
+                    </div>
+                </div>
+            </div>
+            <div class="action-item">
+                <input type="checkbox" id="action4">
+                <div class="action-content">
+                    <h4>審閱 VTS 2026年租賃預測報告，並與內部數據進行對比</h4>
+                    <p><strong>相關背景：</strong> VTS 作為重要競品，其租賃預測能提供市場洞察，有助於驗證或調整我們對市場的判斷。</p>
+                    <div class="action-meta">
+                        <span class="priority-tag medium">🟡中</span>
+                        <span class="time-estimate">15min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>資料來源：News API (PropTech 產業新聞), Perplexity (競品洞察), Notion (公司內部更新), Firecrawl (競品網站監控)</p>
+            <p>生成時間：2026-02-17 14:30 (UTC+8)</p>
+            <p class="brand">Powered by FUNRAISE AI</p>
+        </div>
+    </div>
+</body>
+</html>
