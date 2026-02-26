@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNRAISE 每日執行簡報 - 2026年2月26日</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #F7FAFC; /* 淺灰 */
+            color: #2D3748; /* 深灰 */
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #1A365D; /* 深藍 */
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; border-bottom: 2px solid #E2E8F0; padding-bottom: 10px;}
+        h3 { font-size: 1.5em; }
+        h4 { font-size: 1.2em; }
+
+        /* Card Styles */
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: all 0.2s ease-in-out;
+            border-left: 5px solid transparent; /* For category border */
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .metric-card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            text-align: center;
+            border-left: 5px solid #1A365D; /* 深藍 */
+        }
+
+        .metric-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .metric-card .value {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #D69E2E; /* 金色 */
+            font-family: 'SF Mono', 'Segoe UI Mono', monospace; /* 等寬字體 */
+        }
+
+        .metric-card .label {
+            font-size: 1em;
+            color: #4A5568;
+        }
+
+        /* Executive Summary */
+        .exec-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .exec-summary-card {
+            background-color: #F0F4F8; /* 淡色背景 */
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 5px solid;
+        }
+
+        .exec-summary-card.high { border-left-color: #E53E3E; /* 危險紅 */ }
+        .exec-summary-card.medium { border-left-color: #DD6B20; /* 警告橙 */ }
+        .exec-summary-card.low { border-left-color: #38A169; /* 成功綠 */ }
+
+        .exec-summary-card .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .exec-summary-card .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #1A365D;
+        }
+
+        .exec-summary-card .title {
+            font-weight: 600;
+            color: #1A365D;
+            font-size: 1.1em;
+        }
+
+        .exec-summary-card .summary {
+            color: #4A5568;
+            font-size: 0.95em;
+        }
+
+        .exec-summary-card .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .exec-summary-card .tag.high { background-color: #FED7D7; color: #E53E3E; }
+        .exec-summary-card .tag.medium { background-color: #FEEBCF; color: #DD6B20; }
+        .exec-summary-card .tag.low { background-color: #C6F6D5; color: #38A169; }
+
+        /* Market Intelligence Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #E2E8F0;
+            margin-bottom: 20px;
+            overflow-x: auto; /* Allow horizontal scrolling on small screens */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #718096;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        .tab-button.active {
+            color: #1A365D;
+            border-bottom-color: #D69E2E; /* 金色 */
+        }
+
+        .tab-button:hover:not(.active) {
+            color: #1A365D;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Competitor Tracking */
+        .competitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .competitor-card .logo-placeholder {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1A365D;
+            margin-bottom: 10px;
+        }
+
+        .competitor-card .impact-assessment {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #F7FAFC;
+            border-left: 3px solid #D69E2E;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Industry News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            padding: 15px;
+            border-left: 5px solid #38A169; /* 綠色 */
+        }
+        .news-card .news-title {
+            font-weight: 600;
+            color: #1A365D;
+            margin-bottom: 8px;
+        }
+        .news-card .news-meta {
+            font-size: 0.85em;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+        .news-card .news-summary {
+            font-size: 0.9em;
+            color: #4A5568;
+        }
+        .news-card .news-tag {
+            display: inline-block;
+            background-color: #E2E8F0;
+            color: #4A5568;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-right: 5px;
+            margin-top: 8px;
+        }
+
+
+        /* Internal Dynamics */
+        .internal-updates-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .project-group {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            padding: 15px 20px;
+            border-left: 5px solid #D69E2E; /* 金色 */
+        }
+
+        .project-group summary {
+            font-weight: 600;
+            color: #1A365D;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-group summary::marker {
+            color: #D69E2E; /* 金色 */
+        }
+        .project-group summary::before {
+            content: '📂'; /* Folder icon */
+            margin-right: 8px;
+        }
+
+        .update-badge {
+            background-color: #D69E2E;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .update-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .update-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #E2E8F0;
+            font-size: 0.9em;
+        }
+
+        .update-list li:last-child {
+            border-bottom: none;
+        }
+
+        .update-list li a {
+            color: #1A365D;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .update-list li a:hover {
+            text-decoration: underline;
+        }
+
+        .update-meta {
+            font-size: 0.8em;
+            color: #718096;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Action List */
+        .action-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .action-item {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border-left: 5px solid;
+        }
+
+        .action-item.high-priority { border-left-color: #E53E3E; }
+        .action-item.medium-priority { border-left-color: #DD6B20; }
+        .action-item.low-priority { border-left-color: #38A169; }
+
+        .action-item .task-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .action-item .task-description {
+            font-weight: 600;
+            color: #1A365D;
+            font-size: 1.1em;
+            flex-grow: 1;
+        }
+
+        .action-item .task-checkbox {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .action-item .task-background {
+            font-size: 0.9em;
+            color: #4A5568;
+            margin-bottom: 10px;
+        }
+
+        .action-item .priority-tag, .action-item .time-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .action-item .priority-tag.high { background-color: #FED7D7; color: #E53E3E; }
+        .action-item .priority-tag.medium { background-color: #FEEBCF; color: #DD6B20; }
+        .action-item .priority-tag.low { background-color: #C6F6D5; color: #38A169; }
+
+        .action-item .time-tag {
+            background-color: #EBF8FF;
+            color: #2B6CB0;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #E2E8F0;
+            text-align: center;
+            font-size: 0.85em;
+            color: #718096;
+        }
+
+        .footer .brand {
+            font-weight: 600;
+            color: #1A365D;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .dashboard, .exec-summary-grid, .competitor-grid, .news-grid, .action-list {
+                grid-template-columns: 1fr;
+            }
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. 頂部儀表板區 -->
+        <header>
+            <h1>FUNRAISE 每日執行簡報</h1>
+            <p style="color: #4A5568; font-size: 1.1em;">
+                <span id="greeting">日安</span>, Nelsen! 這裡是您 2026年2月26日 (星期四) 的最新情報。
+            </p>
+            <div class="dashboard">
+                <div class="metric-card">
+                    <div class="icon">📰</div>
+                    <div class="value">6</div>
+                    <div class="label">今日新聞數量</div>
+                </div>
+                <div class="metric-card">
+                    <div class="icon">🏢</div>
+                    <div class="value">4</div>
+                    <div class="label">競品動態數量</div>
+                </div>
+                <div class="metric-card">
+                    <div class="icon">📝</div>
+                    <div class="value">1</div>
+                    <div class="label">內部更新數量</div>
+                </div>
+                <div class="metric-card">
+                    <div class="icon">⚡</div>
+                    <div class="value">5</div>
+                    <div class="label">需關注事項數量</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. 🎯 執行摘要 -->
+        <section>
+            <h2>🎯 執行摘要</h2>
+            <div class="exec-summary-grid">
+                <div class="exec-summary-card high">
+                    <div class="header">
+                        <span class="icon">📈</span>
+                        <h3 class="title">JLL與CBRE營收強勁增長</h3>
+                    </div>
+                    <p class="summary">JLL與CBRE均報告創紀錄營收，預期2026年持續成長，尤其CBRE資料中心業務貢獻顯著。</p>
+                    <span class="tag high">🔴 高</span>
+                </div>
+                <div class="exec-summary-card high">
+                    <div class="header">
+                        <span class="icon">🔗</span>
+                        <h3 class="title">PropTech API整合成為新趨勢</h3>
+                    </div>
+                    <p class="summary">JLL、CBRE、VTS、Yardi等業界巨頭正積極推動API整合，以提升平台互通性與數據即時性。</p>
+                    <span class="tag high">🔴 高</span>
+                </div>
+                <div class="exec-summary-card medium">
+                    <div class="header">
+                        <span class="icon">📉</span>
+                        <h3 class="title">CoStar財報表現與市場反應</h3>
+                    </div>
+                    <p class="summary">CoStar Q4營收及EPS超預期，但2026年Q1營收指引低於市場共識，導致股價下跌。</p>
+                    <span class="tag medium">🟡 中</span>
+                </div>
+                <div class="exec-summary-card medium">
+                    <div class="header">
+                        <span class="icon">🧠</span>
+                        <h3 class="title">VTS聚焦AI資產管理</h3>
+                    </div>
+                    <p class="summary">VTS近期部落格文章強調「AI優先的資產管理」及「房地產AI革命」，展現其對AI策略的投入。</p>
+                    <span class="tag medium">🟡 中</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 📊 市場情報 -->
+        <section>
+            <h2>📊 市場情報</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'competitorTracking')">🏢 競品追蹤</button>
+                <button class="tab-button" onclick="openTab(event, 'industryNews')">📰 產業新聞</button>
+            </div>
+
+            <div id="competitorTracking" class="tab-content active">
+                <div class="competitor-grid">
+                    <div class="card competitor-card">
+                        <div class="logo-placeholder">JLL</div>
+                        <h4>動態摘要</h4>
+                        <ul>
+                            <li>全業務營收成長，銷售融資增19%、租賃增17%，預期2026年持續成長，受辦公及產業需求回升推動。</li>
+                            <li>積極推動API整合，實現即時租賃數據、ESG報告，提升PropTech平台互通性。</li>
+                        </ul>
+                        <a href="https://www.costar.com" target="_blank">了解更多 (CoStar)</a> | <a href="https://www.business20channel.com" target="_blank">了解更多 (Business20Channel)</a>
+                        <div class="impact-assessment">
+                            <strong>啟示：</strong> JLL的強勁增長顯示商業地產市場復甦，其API策略值得我們深入研究，探索合作或借鑒模式。
+                        </div>
+                    </div>
+
+                    <div class="card competitor-card">
+                        <div class="logo-placeholder">CBRE</div>
+                        <h4>動態摘要</h4>
+                        <ul>
+                            <li>資料中心業務貢獻14%獲利，預計2026年新增20億美元營收，並收購Pearce Services強化服務。</li>
+                            <li>積極推動API整合，提升PropTech平台互通性。</li>
+                        </ul>
+                        <a href="https://www.costar.com" target="_blank">了解更多 (CoStar)</a> | <a href="https://www.business20channel.com" target="_blank">了解更多 (Business20Channel)</a>
+                        <div class="impact-assessment">
+                            <strong>啟示：</strong> CBRE在資料中心領域的佈局值得關注，這可能代表高科技基礎設施對房地產的驅動作用。API整合趨勢再次被驗證。
+                        </div>
+                    </div>
+
+                    <div class="card competitor-card">
+                        <div class="logo-placeholder">CoStar Group</div>
+                        <h4>動態摘要</h4>
+                        <ul>
+                            <li>公布Q4財報，營收及調整後EPS超預期，但2026年Q1營收指引低於市場共識，導致股價下跌。</li>
+                            <li>預測美國產業空置率2026年達頂峰，辦公空置率穩定。</li>
+                        </ul>
+                        <a href="https://www.morningstar.com" target="_blank">了解更多 (Morningstar)</a> | <a href="https://www.businesswire.com" target="_blank">了解更多 (BusinessWire)</a>
+                        <div class="impact-assessment">
+                            <strong>啟示：</strong> CoStar的指引顯示市場可能存在局部不確定性，需關注其預測背後的具體原因，是否影響整體PropTech投資情緒。
+                        </div>
+                    </div>
+
+                    <div class="card competitor-card">
+                        <div class="logo-placeholder">VTS</div>
+                        <h4>動態摘要</h4>
+                        <ul>
+                            <li>積極推動API整合，提升PropTech平台互通性。</li>
+                            <li>近期部落格文章強調「AI-First Asset Management: Turning Leases into Living Intelligence」及「The Real Estate AI Revolution」。</li>
+                            <li>發布「2026 VTS Leasing Prediction Outlook」。</li>
+                        </ul>
+                        <a href="https://www.business20channel.com" target="_blank">了解更多 (Business20Channel)</a> | <a href="https://www.vts.com/blog" target="_blank">了解更多 (VTS Blog)</a>
+                        <div class="impact-assessment">
+                            <strong>啟示：</strong> VTS在AI和數據整合方面的持續投入，證明AI在資產管理和租賃預測領域的戰略重要性，我們應加速相關產品研發。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="industryNews" class="tab-content">
+                <div class="news-grid">
+                    <div class="news-card">
+                        <h4 class="news-title">JLL raises outlook for 2026, posts record revenue</h4>
+                        <p class="news-meta">來源: CoStar | 2026-02-26</p>
+                        <p class="news-summary">JLL 全業務營收成長，銷售融資增19%、租賃增17%，預期2026年持續成長，受辦公及產業需求回升推動。</p>
+                        <span class="news-tag">PropTech</span><span class="news-tag">競品動態</span>
+                    </div>
+                    <div class="news-card">
+                        <h4 class="news-title">CBRE hits record revenue with boost from data centers</h4>
+                        <p class="news-meta">來源: CoStar | 2026-02-26</p>
+                        <p class="news-summary">CBRE 資料中心業務貢獻14%獲利，預計2026年新增20億美元營收，收購Pearce Services強化服務。</p>
+                        <span class="news-tag">PropTech</span><span class="news-tag">競品動態</span>
+                    </div>
+                    <div class="news-card">
+                        <h4 class="news-title">APIs Become PropTech's New Currency as JLL, CBRE, VTS expand tie-ups</h4>
+                        <p class="news-meta">來源: Business20Channel | 2026-02-26</p>
+                        <p class="news-summary">JLL、CBRE、VTS、Yardi推動API整合，實現即時租賃數據、ESG報告，提升PropTech平台互通性。</p>
+                        <span class="news-tag">PropTech</span><span class="news-tag">產業趨勢</span><span class="news-tag">AI</span>
+                    </div>
+                    <div class="news-card">
+                        <h4 class="news-title">CoStar Expects U.S. Industrial Vacancy to Peak This Year</h4>
+                        <p class="news-meta">來源: BusinessWire | 2026-02-26</p>
+                        <p class="news-summary">CoStar預測美國產業空置率2026年達頂峰，租金成長持穩，受貨運衰退及次租空間影響。</p>
+                        <span class="news-tag">PropTech</span><span class="news-tag">競品動態</span>
+                    </div>
+                    <div class="news-card">
+                        <h4 class="news-title">CoStar Projects Stable U.S. Office Vacancy Through 2026</h4>
+                        <p class="news-meta">來源: Barchart | 2026-02-26</p>
+                        <p class="news-summary">CoStar看好美國辦公空置率穩定至2026年，租戶需求回升，人均空間需求穩定化。</p>
+                        <span class="news-tag">PropTech</span><span class="news-tag">產業趨勢</span>
+                    </div>
+                    <div class="news-card">
+                        <h4 class="news-title">CoStar Group to Report Financial Results on February 24, 2026</h4>
+                        <p class="news-meta">來源: Morningstar | 2026-02-26</p>
+                        <p class="news-summary">CoStar Group將於2/24公布2025年Q4及全年財報，並舉行電話會議討論展望。</p>
+                        <span class="news-tag">PropTech</span><span class="news-tag">競品動態</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 🏠 公司內部動態 -->
+        <section>
+            <h2>🏠 公司內部動態</h2>
+            <div class="internal-updates-section">
+                <details class="project-group" open>
+                    <summary>
+                        專案進度：SYNC+FEATURE
+                        <span class="update-badge">1 項更新</span>
+                    </summary>
+                    <ul class="update-list">
+                        <li>
+                            <a href="https://www.notion.so/SYNC-FEATURE-C3-2-25-312b21924515805a834ece12dce12fc9" target="_blank">
+                                [SYNC+FEATURE] 台壽C3案週會 2/25
+                            </a>
+                            <span class="update-meta">編輯者: 1c8d872b... | 最後編輯: 2026-02-25 07:55 UTC</span>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+
+        <!-- 5. ✅ 今日行動清單 -->
+        <section>
+            <h2>✅ 今日行動清單</h2>
+            <ul class="action-list">
+                <li class="action-item high-priority">
+                    <div class="task-header">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-description">深入研究JLL/CBRE的成長驅動因素與資料中心策略</div>
+                    </div>
+                    <p class="task-background">兩大競品營收強勁增長，尤其CBRE在資料中心的佈局值得我們借鑒，評估潛在的市場機會。</p>
+                    <span class="priority-tag high">🔴 高</span>
+                    <span class="time-tag">30min+</span>
+                </li>
+                <li class="action-item high-priority">
+                    <div class="task-header">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-description">評估FUNRAISE的API策略與外部合作潛力</div>
+                    </div>
+                    <p class="task-background">PropTech產業API整合趨勢顯著，檢視我們現有API能力，探索與潛在夥伴的合作機會，提升平台互通性。</p>
+                    <span class="priority-tag high">🔴 高</span>
+                    <span class="time-tag">30min+</span>
+                </li>
+                <li class="action-item medium-priority">
+                    <div class="task-header">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-description">分析CoStar Q1營收指引細節及市場反應</div>
+                    </div>
+                    <p class="task-background">CoStar雖Q4超預期但Q1指引疲軟，了解其原因有助於我們判斷整體市場情緒及可能存在的風險。考慮其財報電話會議內容。</p>
+                    <span class="priority-tag medium">🟡 中</span>
+                    <span class="time-tag">15min</span>
+                </li>
+                <li class="action-item medium-priority">
+                    <div class="task-header">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-description">審閱VTS的AI資產管理策略與FUNRAISE的AI路線圖</div>
+                    </div>
+                    <p class="task-background">VTS持續強調AI在資產管理中的應用，我們應對標其策略，確保FUNRAISE的AI產品發展方向具備競爭力。</p>
+                    <span class="priority-tag medium">🟡 中</span>
+                    <span class="time-tag">15min</span>
+                </li>
+                <li class="action-item low-priority">
+                    <div class="task-header">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-description">跟進台壽C3案週會的決議與後續行動</div>
+                    </div>
+                    <p class="task-background">確保內部專案進度順利，了解會議結果及是否有需要Nelsen關注的議題。</p>
+                    <span class="priority-tag low">🟢 低</span>
+                    <span class="time-tag">5min</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 6. 底部 -->
+        <footer class="footer">
+            <p>
+                資料來源: News API, Perplexity AI, Notion API, Firecrawl API<br>
+                生成時間: <span id="generationTime"></span><br>
+                <span class="brand">Powered by FUNRAISE AI</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Set greeting based on current time
+        const now = new Date();
+        const hours = now.getHours();
+        let greeting;
+        if (hours < 12) {
+            greeting = "早安";
+        } else if (hours < 18) {
+            greeting = "午安";
+        } else {
+            greeting = "晚安";
+        }
+        document.getElementById('greeting').textContent = greeting;
+
+        // Set generation time
+        document.getElementById('generationTime').textContent = now.toLocaleString('zh-TW', {
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: false
+        });
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Initialize first tab as active
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector(".tab-button").click();
+        });
+    </script>
+</body>
+</html>
